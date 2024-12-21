@@ -1,0 +1,34 @@
+.menu-contenedor {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .menu-titulo {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .menu-descripcion {
+    margin: 10px 0;
+  }
+  
+  .menu-botones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .menu-boton {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .menu-boton:hover {
+    background-color: #45a049;
+  }
+  

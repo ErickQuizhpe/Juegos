@@ -1,0 +1,102 @@
+.game-component {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    background-color: #f5eaf7; /* Fondo similar al borde morado */
+    padding: 20px;
+    border: 5px solid #d1addd; /* Borde exterior */
+    border-radius: 15px;
+  }
+  
+  .table-container {
+    margin: 20px auto;
+    display: inline-block;
+  }
+  
+  .operation-table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    background-color: white; /* Fondo blanco de la tabla */
+    border: 2px solid black; /* Borde grueso para toda la tabla */
+  }
+  
+  .operation-table th {
+    background-color: #f0eefc; /* Fondo de encabezados */
+    color: #333; /* Texto de encabezados */
+    padding: 10px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 1px solid #999; /* Bordes sutiles */
+  }
+  
+  .operation-table th:nth-child(1),
+  .operation-table th:nth-child(4) {
+    background-color: #99d7a8; /* Fondo verde para CM y C */
+    color: #005b2a; /* Color de texto */
+  }
+  
+  .operation-table th:nth-child(2),
+  .operation-table th:nth-child(5) {
+    background-color: #f7b0b4; /* Fondo rojo para DM y D */
+    color: #a7000c; /* Color de texto */
+  }
+  
+  .operation-table th:nth-child(3),
+  .operation-table th:nth-child(6) {
+    background-color: #b6d9f8; /* Fondo azul para UM y U */
+    color: #003e73; /* Color de texto */
+  }
+  
+  .operation-table td {
+    font-size: 22px; /* Tamaño de números */
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black; /* Bordes internos */
+  }
+  
+  .operation-symbol {
+    text-align: left;
+    font-weight: bold;
+    font-size: 24px;
+    color: black;
+    padding-left: 10px;
+  }
+  
+  .result-line {
+    text-align: center;
+    border-top: 3px solid black;
+  }
+  
+  input[type="text"] {
+    margin-top: 20px;
+    font-size: 20px;
+    padding: 10px;
+    width: 80px;
+    border: 2px solid #999;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  button {
+    margin-top: 15px;
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #99d7a8; /* Botón verde claro */
+    color: #005b2a; /* Texto verde oscuro */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  button:hover {
+    background-color: #88c495; /* Color más oscuro al pasar el mouse */
+  }
+  
+  .feedback {
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  
