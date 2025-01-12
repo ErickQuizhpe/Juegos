@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/global.css";
-// import "../pages/MultiplicacionesUnidades.html";
+
+
 const GamesPage = () => {
   const navigate = useNavigate();
 
@@ -20,8 +21,8 @@ const GamesPage = () => {
         <button onClick={() => goToGame("subtraction")}>Resta</button>
         <button onClick={() => goToGame("multiplication")}>Multiplicación</button>
         <button onClick={() => goToGame("division")}>División</button>
-        <button onClick={() => goToGame("multiplicaciones-unidades")}>
-          TEST
+        <button onClick={() => navigate("/Multiplicaciones")}>
+          Multiplicaciones Prueba
         </button>
       </div>
       <button className="logout-button" onClick={handleLogout}>
