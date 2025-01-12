@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/global.css";
-import "../pages/MultiplicacionesUnidades.html";
+// import "../pages/MultiplicacionesUnidades.html";
 const GamesPage = () => {
   const navigate = useNavigate();
 

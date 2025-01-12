@@ -1,34 +1,27 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/global.css";
-import unidades from "../assets/UNIDADES.png"
-import operaciones from "../assets/Operaciones.jpg"
-import Prueba from "../componets/prueba";
-
+import unidades from "../assets/UNIDADES.png";
+import operaciones from "../assets/Operaciones.jpg";
 
 const HomePage = () => {
   const navigate = useNavigate();
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>SELECCIONE UN JUEGO</h1>
-      
+      <h1 style={styles.title}>SELECCIONE UN ACTIVIDAD</h1>
+
       <div style={styles.optionsContainer}>
         <div
           style={styles.option}
           onClick={() => navigate("/games?type=operations")}
         >
-          <img
-            src={operaciones}
-            alt="Operaciones"
-            style={styles.icon}
-          />
+          <img src={operaciones} alt="Operaciones" style={styles.icon} />
           <p>Operaciones con agrupaciones</p>
         </div>
         <div
           style={styles.option}
           onClick={() => navigate("/games?type=units")}
         >
-          
           <img
             src={unidades}
             alt="Identificación de unidades"
@@ -37,9 +30,6 @@ const HomePage = () => {
           <p>Identificación unidades y operaciones matemáticas</p>
         </div>
       </div>
-      <button style={styles.exitButton} onClick={() => navigate("/")}>
-       CLICK PARA SALIR 
-      </button>
     </div>
   );
 };
@@ -51,12 +41,16 @@ const styles = {
     alignItems: "center",
     backgroundColor: "#d0f0ff",
     height: "100vh",
+    width: "100%",
     padding: "20px",
   },
   title: {
-    fontSize: "24px",
+    fontSize: "40px",
     color: "#4a4a4a",
     marginBottom: "20px",
+    letterSpacing: "2px",
+    textShadow:
+      "2px 2px 5px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 255, 255, 0.6)",
   },
   optionsContainer: {
     display: "flex",
