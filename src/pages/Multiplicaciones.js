@@ -65,10 +65,10 @@ function Multiplicaciones() {
             <MultiplicacionDisco />
           </aside>
 
-          {/* Footer */}
+          {/* Footer
           <footer className="footer bg-gray-800 text-white py-4 text-center">
             <p>UCAUCUE © Copyright 2025</p>
-          </footer>
+          </footer> */}
         </div>
       </div>
     </div>

@@ -1,35 +1,69 @@
 import React, { useState } from "react";
-import "../styles/GameComponent.css";
-import Big from "big.js";
+import { useNavigate } from "react-router-dom";
+// import "../styles/GameComponent.css";
+import "../styles/Prueba.css";
 
-const MultiplicacionComponent = () => {
-  const [num1, setNum1] = useState(""); // Número 1 ingresado por el usuario
-  const [num2, setNum2] = useState(""); // Número 2 ingresado por el usuario
-  const [userAnswer, setUserAnswer] = useState([]); // Respuesta del usuario por dígito
-  const [feedback, setFeedback] = useState(""); // Retroalimentación
-  const [correctAnswer, setCorrectAnswer] = useState([]); // Respuesta correcta dividida en dígitos
+const GameComponent = () => {
+  const navigate = useNavigate();
+  const [feedback, setFeedback] = useState("");
+  const [exerciseCount, setExerciseCount] = useState(0);
+  const [showCompletionMessage, setShowCompletionMessage] = useState(false);
 
-  const handleInputChange = (e, setFunction) => {
-    const value = e.target.value;
-    if (/^\d*$/.test(value)) {
-      setFunction(value);
+  const [num1, setNum1] = useState(["", "", "", "", "", ""]);
+  const [num2, setNum2] = useState(["", "", "", "", "", ""]);
+  const [userAnswer, setUserAnswer] = useState(Array(7).fill(""));
+  const [carry, setCarry] = useState(Array(6).fill(""));
+  const [partialResults, setPartialResults] = useState([]); // Nueva tabla para los resultados parciales
+
+  // Calcula la respuesta correcta (multiplicación)
+  const calculateCorrectAnswer = () => {
+    const num1Value = parseInt(num1.join(""), 10) || 0;
+    const num2Value = parseInt(num2.join(""), 10) || 0;
+    return num1Value * num2Value;
+  };
+
+  // Maneja el cambio en los valores de los dígitos llevados
+  const handleCarryChange = (index, value) => {
+    if (/^\d?$/.test(value)) {
+      const updatedCarry = [...carry];
+      updatedCarry[index] = value;
+      setCarry(updatedCarry);
     }
   };
 
-
-  const handleGenerateAnswer = () => {
-    if (!num1 || !num2) {
-      setFeedback("Por favor, ingresa ambos números para realizar la operación.");
-      return;
+  // Maneja el cambio en los valores de los dígitos de entrada
+  const handleNumberChange = (index, value, numType) => {
+    if (/^\d?$/.test(value)) {
+      const updatedNum = numType === "num1" ? [...num1] : [...num2];
+      updatedNum[index] = value;
+      numType === "num1" ? setNum1(updatedNum) : setNum2(updatedNum);
     }
-  
-    const product = Big(num1).times(Big(num2)).toString(); // Usa Big.js para multiplicar
-    setCorrectAnswer(product.split("")); // Divide la respuesta en dígitos
-    setUserAnswer(Array(product.length).fill("")); // Inicializa las casillas vacías
-    setFeedback(""); // Limpia cualquier mensaje anterior
   };
 
-  const handleAnswerChange = (index, value) => {
+  // Genera la tabla dinámica basada en el tamaño de num2
+  const generatePartialResultsTable = () => {
+    const digitsInNum2 = num2.filter((digit) => digit !== "").length; // Número de cifras no vacías en num2
+    if (digitsInNum2 > 1) {
+      const initialTable = Array(digitsInNum2)
+        .fill(0)
+        .map(() => Array(7).fill("")); // Tabla vacía con filas = cifras de num2, columnas = 7
+      setPartialResults(initialTable);
+    } else {
+      setPartialResults([]); // No genera resultados parciales si num2 tiene solo una cifra
+    }
+  };
+
+  // Maneja el cambio en los valores de la tabla de resultados parciales
+  const handlePartialResultChange = (rowIndex, colIndex, value) => {
+    if (/^\d?$/.test(value)) {
+      const updatedResults = [...partialResults];
+      updatedResults[rowIndex][colIndex] = value;
+      setPartialResults(updatedResults);
+    }
+  };
+
+  // Maneja el cambio en los valores de la respuesta del usuario
+  const handleUserAnswerChange = (index, value) => {
     if (/^\d?$/.test(value)) {
       const updatedAnswer = [...userAnswer];
       updatedAnswer[index] = value;
@@ -37,82 +71,158 @@ const MultiplicacionComponent = () => {
     }
   };
 
+  // Maneja la verificación de la respuesta ingresada por el usuario
   const handleCheckAnswer = () => {
-    if (JSON.stringify(userAnswer) === JSON.stringify(correctAnswer)) {
+    const correctAnswer = calculateCorrectAnswer();
+    const correctAnswerDigits = correctAnswer
+      .toString()
+      .padStart(7, "0")
+      .split(""); // Respuesta correcta como array de dígitos
+    const userResponse = userAnswer.map((digit) => digit || "0"); // Asegúrate de que los campos vacíos se consideren como "0"
+
+    if (JSON.stringify(userResponse) === JSON.stringify(correctAnswerDigits)) {
       setFeedback("¡Correcto! 🎉");
     } else {
       setFeedback(
-        `Incorrecto. La respuesta correcta es ${correctAnswer.join("")}.`
+        `Incorrecto. La respuesta correcta es ${correctAnswerDigits.join("")}.`
       );
+    }
+
+    // Incrementa el contador de ejercicios
+    setExerciseCount(exerciseCount + 1);
+
+    if (exerciseCount >= 5) {
+      setShowCompletionMessage(true);
+    } else {
+      setUserAnswer(Array(7).fill(""));
+      setCarry(Array(6).fill(""));
+      generatePartialResultsTable(); // Generar nueva tabla dinámica
     }
   };
 
   return (
     <div className="game-component">
-      <h1 className="text-2xl font-bold mb-4">Multiplicación de Números</h1>
-      
-      {/* Entrada de números */}
-      <div className="inputs-container mb-4">
-        <div>
-          <label htmlFor="num1">Número 1:</label>
-          <input
-            id="num1"
-            type="text"
-            value={num1}
-            onChange={(e) => handleInputChange(e, setNum1)}
-            className="number-input"
-          />
-        </div>
-        <div>
-          <label htmlFor="num2">Número 2:</label>
-          <input
-            id="num2"
-            type="text"
-            value={num2}
-            onChange={(e) => handleInputChange(e, setNum2)}
-            className="number-input"
-          />
-        </div>
-        <button onClick={handleGenerateAnswer} className="generate-button">
-          Generar
-        </button>
+      <h1>Juego de Multiplicación</h1>
+
+      {/* Tabla de entrada principal */}
+      <div className="table-container">
+        <table className="operation-table">
+          <thead>
+            <tr>
+              <th>MM</th>
+              <th>CM</th>
+              <th>DM</th>
+              <th>UM</th>
+              <th>C</th>
+              <th>D</th>
+              <th>U</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {carry.map((digit, index) => (
+                <td key={index}>
+                  <input
+                    type="text"
+                    maxLength="1"
+                    value={digit}
+                    onChange={(e) => handleCarryChange(index, e.target.value)}
+                  />
+                </td>
+              ))}
+            </tr>
+            <tr>
+              {num1.map((digit, index) => (
+                <td key={index}>
+                  <input
+                    type="text"
+                    maxLength="1"
+                    value={digit}
+                    onChange={(e) =>
+                      handleNumberChange(index, e.target.value, "num1")
+                    }
+                  />
+                </td>
+              ))}
+            </tr>
+            <tr>
+              {num2.map((digit, index) => (
+                <td key={index}>
+                  <input
+                    type="text"
+                    maxLength="1"
+                    value={digit}
+                    onChange={(e) =>
+                      handleNumberChange(index, e.target.value, "num2")
+                    }
+                  />
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      {/* Tabla para respuesta */}
-      {correctAnswer.length > 0 && (
+      {/* Tabla dinámica para resultados parciales */}
+      {partialResults.length > 0 && (
         <div className="table-container">
-          <h2 className="text-lg font-semibold mb-2">Tabla de Respuesta</h2>
-          <table className="answer-table">
+          <table className="operation-table">
             <tbody>
-              <tr>
-                {correctAnswer.map((_, index) => (
-                  <td key={`answer-cell-${index}`}>
-                    <input
-                      type="text"
-                      maxLength="1"
-                      value={userAnswer[index]}
-                      onChange={(e) => handleAnswerChange(index, e.target.value)}
-                      className="answer-input"
-                    />
-                  </td>
-                ))}
-              </tr>
+              {partialResults.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  {row.map((cell, colIndex) => (
+                    <td key={colIndex}>
+                      <input
+                        type="text"
+                        maxLength="1"
+                        value={cell}
+                        onChange={(e) =>
+                          handlePartialResultChange(
+                            rowIndex,
+                            colIndex,
+                            e.target.value
+                          )
+                        }
+                      />
+                    </td>
+                  ))}
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
       )}
 
-      {/* Retroalimentación y botón de comprobación */}
-      <div className="feedback-container mt-4">
-        {feedback && <p className="feedback">{feedback}</p>}
-        {correctAnswer.length > 0 && (
-          <button onClick={handleCheckAnswer} className="check-button">
-            Comprobar
-          </button>
-        )}
+      {/* Tabla para la respuesta del usuario */}
+      <div className="table-container">
+        <table className="operation-table">
+          <tbody>
+            <tr>
+              {userAnswer.map((digit, index) => (
+                <td key={index}>
+                  <input
+                    type="text"
+                    maxLength="1"
+                    value={digit}
+                    onChange={(e) => handleUserAnswerChange(index, e.target.value)}
+                  />
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
       </div>
+
+
+      {feedback && <p>{feedback}</p>}
+      {showCompletionMessage ? (
+        <h2>¡Bien hecho! Has completado todos los ejercicios.</h2>
+      ) : (
+        <button onClick={handleCheckAnswer}>Comprobar</button>
+      )}
+      <button onClick={() => navigate("/games")}>Regresar</button>
     </div>
   );
 };
 
-export default MultiplicacionComponent;
+export default GameComponent;

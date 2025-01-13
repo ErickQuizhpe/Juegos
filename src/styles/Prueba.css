@@ -1,0 +1,63 @@
+.operation-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 0px;
+    border:2px solid #000;
+  }
+  
+  .operation-table td,
+  .operation-table th {
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 2px;
+    margin-top: 0;
+  }
+  
+  .operation-table input {
+    width: 100%;
+    text-align: center;
+    border: none;
+    background: transparent;
+    font-size: 2rem;
+  }
+  
+  .table-container:nth-child(1) .operation-table {
+    background: linear-gradient(to right, #ebac9c, #feb47b); /* Degradado 1 */
+    color: #fff;
+  }
+  
+  .table-container:nth-child(2) .operation-table {
+    background: linear-gradient(to right, #ccafea, #2575fc); /* Degradado 2 */
+    color: #fff;
+  }
+  
+  .table-container:nth-child(3) .operation-table {
+    background: linear-gradient(to right, #f3b5a4, #ef8787); /* Degradado 3 */
+    color: #fff;
+  }
+  
+  .table-container {
+    margin-bottom: 0px !important; 
+  }
+  
+  .operation-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto; /* Centra la tabla */
+  }
+  
+  .operation-table td,
+  .operation-table th {
+    border: 1px solid #ddd;
+    padding: 5px; /* Reduce el espacio interno de las celdas */
+    text-align: center;
+  }
+  
+  .operation-table input {
+    width: 100%;
+    text-align: center;
+    border: none;
+    background: transparent;
+    font-size: 2rem; /* Ajusta el tamaño de la fuente */
+  }
+  
