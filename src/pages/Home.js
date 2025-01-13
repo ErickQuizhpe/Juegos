@@ -2,32 +2,38 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/global.css";
 import unidades from "../assets/UNIDADES.png";
-import operaciones from "../assets/Operaciones.jpg";
+import operaciones from "../assets/Image/OperacionAgruaoacion.jpg";
+
 
 const HomePage = () => {
   const navigate = useNavigate();
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>SELECCIONE UN ACTIVIDAD</h1>
+      <h1 className="font-bold text-5xl text-blue-800" 
+      >SELECCIONE UN ACTIVIDAD</h1>
 
       <div style={styles.optionsContainer}>
-        <div
+        <div 
           style={styles.option}
           onClick={() => navigate("/games?type=operations")}
         >
-          <img src={operaciones} alt="Operaciones" style={styles.icon} />
-          <p>Operaciones con agrupaciones</p>
+          <img className="size-3" src={operaciones}
+           alt="Operaciones" style={styles.icon} />
+          <p className="font-bold text-5xl">Operaciones con agrupaciones</p>
         </div>
+
+
+        
         <div
           style={styles.option}
-          onClick={() => navigate("/games?type=units")}
+          onClick={() => navigate("/OperacionesAgrupaciones")}
         >
           <img
             src={unidades}
             alt="Identificación de unidades"
             style={styles.icon}
           />
-          <p>Identificación unidades y operaciones matemáticas</p>
+          <p>Operaciones Matemáticas</p>
         </div>
       </div>
     </div>
