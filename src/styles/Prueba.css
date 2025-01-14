@@ -54,7 +54,7 @@
   
 
   .carry_row tr:nth-child(1) { /*color para la fila de las llevadas*/
-    background-color: rgb(240, 142, 214);
+    background-color: rgb(231, 170, 242);
     border-radius: 3px;
   }
   .operation-table input {

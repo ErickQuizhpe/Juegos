@@ -23,6 +23,15 @@ h1 {
   background-color: #e3f7ff; /* Fondo azul pastel */
 }
 
+
+
+.result-line {
+  border-radius: 1px !important;
+  height: 0.5px !important;
+  background: linear-gradient(to right, #564843, #696e6f); /* Degradado de colores */
+  width: 100%;
+}
+
 .operation-table {
   border-collapse: collapse;
   background-color: #fff; /* Fondo blanco para claridad */
