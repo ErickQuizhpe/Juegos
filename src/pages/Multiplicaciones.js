@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Multiplicacion.css";
 import MultiplicacionDisco from "./MultiplicacionDisco";
-import Prueba from "./Prueba";
+import Prueba from "./MultiplicacionPrueba";
 
 function Multiplicaciones() {
   return (

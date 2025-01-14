@@ -6,7 +6,7 @@ import React from "react";
 import IdentificacionUnidadesJuego from "./componets/IdentificacionUnidadesJuego";
 import Multiplicaciones from "./pages/Multiplicaciones";
 import OperacionesAgrupacion from "./pages/OperacionesAgrupacion";
-
+import RestaPrueba from "./pages/RestaPrueba";
 function App() {
   return (
     <Router>
@@ -18,11 +18,18 @@ function App() {
         <Route path="/games" element={<GamesPage />} />
 
         {/* Página para juegos específicos */}
-        <Route path="/game/:operation" element={<IdentificacionUnidadesJuego />} />
+        <Route
+          path="/game/:operation"
+          element={<IdentificacionUnidadesJuego />}
+        />
 
         <Route path="/Multiplicaciones" element={<Multiplicaciones />} />
 
-        <Route path="/OperacionesAgrupaciones" element={<OperacionesAgrupacion />} />
+        <Route
+          path="/OperacionesAgrupaciones"
+          element={<OperacionesAgrupacion />}
+        />
+        <Route path="/RestaPrueba" element={<RestaPrueba />} />
       </Routes>
     </Router>
   );
