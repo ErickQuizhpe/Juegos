@@ -9,10 +9,11 @@ const GameComponent = () => {
   const [exerciseCount, setExerciseCount] = useState(0);
   const [showCompletionMessage, setShowCompletionMessage] = useState(false);
 
-  const [num1, setNum1] = useState(["", "", "", "", "", ""]);
-  const [num2, setNum2] = useState(["", "", "", "", "", ""]);
-  const [userAnswer, setUserAnswer] = useState(Array(7).fill(""));
-  const [carry, setCarry] = useState(Array(6).fill(""));
+  // Genera la tabla para ingresar la multiplicación
+  const [num1, setNum1] = useState(["", "", "", "", "", "", "", "", "", ""]);
+  const [num2, setNum2] = useState(["", "", "", "", "", "", "", "", "", ""]);
+  const [userAnswer, setUserAnswer] = useState(Array(10).fill(""));
+  const [carry, setCarry] = useState(Array(10).fill(""));
   const [partialResults, setPartialResults] = useState([]); // Nueva tabla para los resultados parciales
 
   // Calcula la respuesta correcta (multiplicación)
@@ -46,7 +47,7 @@ const GameComponent = () => {
     if (digitsInNum2 > 1) {
       const initialTable = Array(digitsInNum2)
         .fill(0)
-        .map(() => Array(7).fill("")); // Tabla vacía con filas = cifras de num2, columnas = 7
+        .map(() => Array(10).fill("")); // Tabla vacía con filas = cifras de num2, columnas = 10
       setPartialResults(initialTable);
     } else {
       setPartialResults([]); // No genera resultados parciales si num2 tiene solo una cifra
@@ -76,7 +77,7 @@ const GameComponent = () => {
     const correctAnswer = calculateCorrectAnswer();
     const correctAnswerDigits = correctAnswer
       .toString()
-      .padStart(7, "0")
+      .padStart(7, "")
       .split(""); // Respuesta correcta como array de dígitos
     const userResponse = userAnswer.map((digit) => digit || "0"); // Asegúrate de que los campos vacíos se consideren como "0"
 
@@ -94,28 +95,29 @@ const GameComponent = () => {
     if (exerciseCount >= 5) {
       setShowCompletionMessage(true);
     } else {
-      setUserAnswer(Array(7).fill(""));
-      setCarry(Array(6).fill(""));
+      setUserAnswer(Array(10).fill(""));
+      setCarry(Array(10).fill(""));
       generatePartialResultsTable(); // Generar nueva tabla dinámica
     }
   };
 
   return (
-    <div className="game-component">
-      <h1>Juego de Multiplicación</h1>
-
+    <div className="game-component ">
       {/* Tabla de entrada principal */}
       <div className="table-container">
-        <table className="operation-table">
+        <table className="operation-table carry_row">
           <thead>
             <tr>
-              <th>MM</th>
-              <th>CM</th>
-              <th>DM</th>
-              <th>UM</th>
-              <th>C</th>
-              <th>D</th>
-              <th>U</th>
+              <th>  </th>
+              <th>cm</th>
+              <th>dM</th>
+              <th>uM</th>
+              <th>Cm</th>
+              <th>Dm</th>
+              <th>Um</th>
+              <th> C</th>
+              <th> D</th>
+              <th> U</th>
             </tr>
           </thead>
           <tbody>
@@ -170,7 +172,8 @@ const GameComponent = () => {
             <tbody>
               {partialResults.map((row, rowIndex) => (
                 <tr key={rowIndex}>
-                  {row.map((cell, colIndex) => (
+                  {/* Generar celdas con base en las columnas disponibles */}
+                  {row.slice(0, row.length - rowIndex).map((cell, colIndex) => (
                     <td key={colIndex}>
                       <input
                         type="text"
@@ -204,7 +207,9 @@ const GameComponent = () => {
                     type="text"
                     maxLength="1"
                     value={digit}
-                    onChange={(e) => handleUserAnswerChange(index, e.target.value)}
+                    onChange={(e) =>
+                      handleUserAnswerChange(index, e.target.value)
+                    }
                   />
                 </td>
               ))}
@@ -212,7 +217,6 @@ const GameComponent = () => {
           </tbody>
         </table>
       </div>
-
 
       {feedback && <p>{feedback}</p>}
       {showCompletionMessage ? (

@@ -15,11 +15,7 @@ body {
 
 /* Título principal */
 h1 {
-    font-size: 50px;
-    color: #570fb5;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
-    text-align: center;
+  
     animation: fadeIn 1s ease-in-out;
 }
 
