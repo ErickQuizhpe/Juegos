@@ -15,6 +15,7 @@ const GameComponent = () => {
   const [userAnswer, setUserAnswer] = useState(Array(10).fill(""));
   const [carry, setCarry] = useState(Array(10).fill(""));
   const [partialResults, setPartialResults] = useState([]); // Nueva tabla para los resultados parciales
+  const [operationStarted, setOperationStarted] = useState(false); // Estado para controlar si la operación ha comenzado
 
   // Calcula la respuesta correcta (multiplicación)
   const calculateCorrectAnswer = () => {
@@ -43,14 +44,16 @@ const GameComponent = () => {
 
   // Genera la tabla dinámica basada en el tamaño de num2
   const generatePartialResultsTable = () => {
-    const digitsInNum2 = num2.filter((digit) => digit !== "").length; // Número de cifras no vacías en num2
+    // Filtra las cifras numéricas en num2, ignorando las que no son números
+    const digitsInNum2 = num2.filter((digit) => /^\d$/.test(digit)).length; // Solo cuenta las cifras numéricas
+
     if (digitsInNum2 > 1) {
       const initialTable = Array(digitsInNum2)
         .fill(0)
         .map(() => Array(10).fill("")); // Tabla vacía con filas = cifras de num2, columnas = 10
       setPartialResults(initialTable);
     } else {
-      setPartialResults([]); // No genera resultados parciales si num2 tiene solo una cifra
+      setPartialResults([]); // No genera resultados parciales si num2 tiene solo una cifra válida
     }
   };
 
@@ -77,38 +80,52 @@ const GameComponent = () => {
     const correctAnswer = calculateCorrectAnswer();
     const correctAnswerDigits = correctAnswer
       .toString()
-      .padStart(7, "")
-      .split(""); // Respuesta correcta como array de dígitos
-    const userResponse = userAnswer.map((digit) => digit || "0"); // Asegúrate de que los campos vacíos se consideren como "0"
+      .padStart(10, "") // Rellena con ceros hasta 10 dígitos
+      .split("");
+    const userResponse = userAnswer
+      .join("") // Une la respuesta del usuario
+      .padStart(10, "") // Rellena con ceros si es necesario
+      .split(""); // Lo convierte en un array
 
     if (JSON.stringify(userResponse) === JSON.stringify(correctAnswerDigits)) {
       setFeedback("¡Correcto! 🎉");
+      // Incrementa el contador de ejercicios
+      setExerciseCount(exerciseCount + 1);
+
+      if (exerciseCount >= 5) {
+        setShowCompletionMessage(true);
+      }
     } else {
       setFeedback(
         `Incorrecto. La respuesta correcta es ${correctAnswerDigits.join("")}.`
       );
     }
+  };
+  // Maneja la acción de ingresar operación
+  const handleStartOperation = () => {
+    setOperationStarted(true); // Marca la operación como iniciada
+    generatePartialResultsTable(); // Generar la tabla de resultados parciales
+  };
 
-    // Incrementa el contador de ejercicios
-    setExerciseCount(exerciseCount + 1);
-
-    if (exerciseCount >= 5) {
-      setShowCompletionMessage(true);
-    } else {
-      setUserAnswer(Array(10).fill(""));
-      setCarry(Array(10).fill(""));
-      generatePartialResultsTable(); // Generar nueva tabla dinámica
-    }
+  // Maneja la acción de limpiar todo
+  const handleClear = () => {
+    setNum1(["", "", "", "", "", "", "", "", "", ""]);
+    setNum2(["", "", "", "", "", "", "", "", "", ""]);
+    setUserAnswer(Array(10).fill(""));
+    setCarry(Array(10).fill(""));
+    setPartialResults([]);
+    setOperationStarted(false); // Restablece el estado de la operación
+    setFeedback(""); // Limpiar mensaje de retroalimentación
   };
 
   return (
-    <div className="game-component ">
+    <div className="game-component">
       {/* Tabla de entrada principal */}
       <div className="table-container">
         <table className="operation-table carry_row">
           <thead>
             <tr>
-              <th>  </th>
+              <th> </th>
               <th>cm</th>
               <th>dM</th>
               <th>uM</th>
@@ -165,8 +182,13 @@ const GameComponent = () => {
         </table>
       </div>
 
+      {/* Botón para ingresar operación */}
+      {!operationStarted && (
+        <button onClick={handleStartOperation}>Ingresar operación</button>
+      )}
+
       {/* Tabla dinámica para resultados parciales */}
-      {partialResults.length > 0 && (
+      {operationStarted && partialResults.length > 0 && (
         <div className="table-container">
           <table className="operation-table">
             <tbody>
@@ -197,33 +219,36 @@ const GameComponent = () => {
       )}
 
       {/* Tabla para la respuesta del usuario */}
-      <div className="table-container">
-        <table className="operation-table">
-          <tbody>
-            <tr>
-              {userAnswer.map((digit, index) => (
-                <td key={index}>
-                  <input
-                    type="text"
-                    maxLength="1"
-                    value={digit}
-                    onChange={(e) =>
-                      handleUserAnswerChange(index, e.target.value)
-                    }
-                  />
-                </td>
-              ))}
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      {operationStarted && (
+        <div className="table-container">
+          <table className="operation-table">
+            <tbody>
+              <tr>
+                {userAnswer.map((digit, index) => (
+                  <td key={index}>
+                    <input
+                      type="text"
+                      maxLength="1"
+                      value={digit}
+                      onChange={(e) =>
+                        handleUserAnswerChange(index, e.target.value)
+                      }
+                    />
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )}
 
       {feedback && <p>{feedback}</p>}
       {showCompletionMessage ? (
         <h2>¡Bien hecho! Has completado todos los ejercicios.</h2>
       ) : (
-        <button onClick={handleCheckAnswer}>Comprobar</button>
+        <button onClick={handleCheckAnswer}>Comprobar Respuesta</button>
       )}
+      <button onClick={handleClear}>Limpiar</button>
       <button onClick={() => navigate("/games")}>Regresar</button>
     </div>
   );
