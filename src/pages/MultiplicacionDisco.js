@@ -11,19 +11,20 @@ function MultiplicacionDisco() {
   };
 
   return (
-    <div className="disco-container">
+    <div className="multiplicacion-disco-container">
       {/* Selección de número 1 */}
-      <div className="disco-item">
-        <label htmlFor="numero1" className="font-bold text-2xl">
+      <div className="multiplicacion-disco-item">
+        <label htmlFor="numero1" className="multiplicacion-disco-label">
           Número 1:
         </label>
-        <select className="text-3xl text-center text-red-900"
+        <select
+          className="multiplicacion-disco-select numero1-select"
           id="numero1"
           value={numero1}
           onChange={(e) => setNumero1(Number(e.target.value))}
         >
           {[...Array(12).keys()].map((i) => (
-            <option className="text-2xl" key={i} value={i + 1}>
+            <option key={i} value={i + 1}>
               {i + 1}
             </option>
           ))}
@@ -31,11 +32,12 @@ function MultiplicacionDisco() {
       </div>
 
       {/* Selección de número 2 */}
-      <div className="disco-item">
-        <label htmlFor="numero2" className="font-bold text-2xl">
+      <div className="multiplicacion-disco-item">
+        <label htmlFor="numero2" className="multiplicacion-disco-label">
           Número 2:
         </label>
-        <select className="text-3xl text-center text-blue-900 "
+        <select
+          className="multiplicacion-disco-select numero2-select"
           id="numero2"
           value={numero2}
           onChange={(e) => setNumero2(Number(e.target.value))}
@@ -49,20 +51,21 @@ function MultiplicacionDisco() {
       </div>
 
       {/* Botón para calcular */}
-      <div className="disco-item ">
+      <div className="multiplicacion-disco-item">
         <button
           onClick={handleCalcular}
-          className="transition-colors duration-300 ease-in-out bg-green-500
-           text-white hover:bg-blue-500 hover:text-gray-900 p-3 rounded-md
-            txt-3xl font-bold">
-          Calcular
+          className="multiplicacion-disco-button"
+        >
+          ¡Calcular!
         </button>
       </div>
 
       {/* Cuadro de resultado */}
       {resultado !== null && (
-        <div className="disco-item">
-          <h3 className="font-bold text-2xl text-black-900">Resultado: {resultado}</h3>
+        <div className="multiplicacion-disco-item">
+          <h3 className="multiplicacion-disco-result">
+            El resultado es: {resultado}
+          </h3>
         </div>
       )}
     </div>

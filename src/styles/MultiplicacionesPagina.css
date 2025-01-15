@@ -9,73 +9,58 @@ body {
     box-sizing: border-box;
     font-family: sans-serif;
     letter-spacing: 2px !important;
-    background-color: #eaea76;
 }
 
 .grid {
     box-sizing: border-box;
-
     margin: auto;
     display: grid;
     align-content: center;
     /* border: 2px solid blue; */
-    grid-template-columns: minmax(200px, 1fr) minmax(500px, 3fr) minmax(200px, 1fr);
+    grid-template-columns: minmax(200px, 1fr) minmax(600px, 3fr) minmax(300px,1fr);
     grid-template-rows: auto 1fr auto;
     grid-auto-flow: dense;
-    gap: 10px 0px;
+    gap: 10px 5px;
     flex-flow: wrap;
     grid-template-areas:
         "header header header"
         "nav main aside"
-        "footer footer footer"
-    ;
-
+        "footer footer footer";
 }
 
 .grid_item {
-
     background-color: #fff;
     border-radius: 9px;
-
-}
-
-
-h1 {
-    margin-top: 0;
-    text-align: center;
-    font-family: sans-serif;
-    font-size: large;
 }
 
 .header {
     grid-area: header;
     background-color: rgba(83, 241, 96, 0.6);
     color: #fff;
-
 }
 
 .nav {
     grid-area: nav;
     padding: 10px 30px;
     border-radius: 6px;
+
 }
 
 .main {
     grid-area: main;
     padding: 10px 30px;
-
-
-
+    
 }
 
 .aside {
+
+    flex-wrap: nowrap;
     grid-area: aside;
-    padding: 10px 30px;
+    flex-flow: dense;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
+    align-items: stretch;
+    justify-content: start;
 }
 
 .footer {
@@ -90,7 +75,6 @@ h1 {
 header ul {
     display: flex;
     justify-content: space-evenly;
-
 }
 
 header li {
@@ -103,45 +87,32 @@ header a {
     text-transform: capitalize;
 }
 
-
 nav li {
     list-style: none;
     padding: 10px;
-
 }
 
 nav a {
     color: red;
     text-decoration: none;
-
-
 }
 
 nav {
     text-align: center;
-
 }
 
 @media screen and (max-width: 800px) {
     .aside {
         display: none;
     }
-
 }
 
 .cuadricula {
     display: grid;
-    height: 500px;
+    height: 100vh;
     width: 100%;
     margin: 0;
     box-sizing: border-box;
     font-family: sans-serif;
     letter-spacing: 2px;
-    
-
-
-
-
-
-
 }

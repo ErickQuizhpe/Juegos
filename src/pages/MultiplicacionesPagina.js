@@ -1,15 +1,18 @@
 import React from "react";
-import "../styles/Multiplicacion.css";
+import "../styles/MultiplicacionesPagina.css";
 import MultiplicacionDisco from "./MultiplicacionDisco";
-import Prueba from "./MultiplicacionPrueba";
+import Prueba from "./MultiplicacionOperacion";
 
 function Multiplicaciones() {
   return (
     <div>
       <div className="bg-gray-100 min-h-screen">
         {/* Header */}
-        <header className=" header bg-blue-600 text-white py-3 text-center shadow-md">
-          <h1 className="text-4xl font-bold">Multiplicación de Números</h1>
+        <header
+          className=" header bg-blue-
+        text-balance text-white py-3 text-center shadow-md"
+        >
+          <h1 className="text-6xl font-bold">Multiplicación de Números</h1>
         </header>
 
         <div className="grid">
@@ -42,13 +45,10 @@ function Multiplicaciones() {
 
           {/* Main Content */}
           <main className="main">
-            <h1 className="text-2xl font-bold mb-4">
+            <h2 className="text-3xl font-bold mb-4">
               Resuelve el ejercicio a continuación
-            </h1>
-            <div className="cuadricula">{
-              <Prueba/>
-              
-              }</div>
+            </h2>
+            <div className="cuadricula">{<Prueba />}</div>
           </main>
 
           {/* Aside Section */}
@@ -65,10 +65,10 @@ function Multiplicaciones() {
             <MultiplicacionDisco />
           </aside>
 
-          {/* Footer
+          Footer
           <footer className="footer bg-gray-800 text-white py-4 text-center">
             <p>UCAUCUE © Copyright 2025</p>
-          </footer> */}
+          </footer>
         </div>
       </div>
     </div>

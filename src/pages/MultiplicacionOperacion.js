@@ -1,6 +1,35 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import "../styles/GameComponent.css";
+
+/**
+ * GameComponent is a React functional component for a multiplication game.
+ * It manages user input for two numbers, calculates the correct multiplication result,
+ * and validates the user's answer. The component provides feedback on correctness,
+ * supports multiple exercises, and includes UI elements for user interaction.
+ * 
+ * State Variables:
+ * - feedback: Stores feedback messages for the user.
+ * - exerciseCount: Tracks the number of exercises completed.
+ * - showCompletionMessage: Indicates whether to show the completion message.
+ * - num1: Represents the first number as an array of digits.
+ * - num2: Represents the second number as an array of digits.
+ * - userAnswer: Stores the user's answer as an array of digits.
+ * - carry: Manages carry digits for calculations.
+ * - partialResults: Stores partial results for display.
+ * - operationStarted: Flags whether the operation has begun.
+ * 
+ * Functions:
+ * - calculateCorrectAnswer: Computes the correct result of the multiplication.
+ * - handleCarryChange: Updates the carry digits based on user input.
+ * - handleNumberChange: Updates the digits of num1 or num2 based on user input.
+ * - handleClearCarry: Clears the carry digits.
+ * - generatePartialResultsTable: Creates a table for partial multiplication results.
+ * - handlePartialResultChange: Updates partial results based on user input.
+ * - handleUserAnswerChange: Updates the user's answer based on input.
+ * - handleCheckAnswer: Validates the user's answer against the correct one.
+ * - handleStartOperation: Initiates the operation and generates partial results.
+ * - handleClear: Resets the game state for a new operation.
+ */
 
 const GameComponent = () => {
   const navigate = useNavigate();
@@ -41,12 +70,11 @@ const GameComponent = () => {
       numType === "num1" ? setNum1(updatedNum) : setNum2(updatedNum);
     }
   };
-  // Nueva función para limpiar la fila de acarreo
+  //función para limpiar la fila de acarreo
   const handleClearCarry = () => {
     setCarry(Array(8).fill("")); // Restablece la fila de acarreo a valores vacíos
   };
 
-  // Genera la tabla dinámica basada en el tamaño de num2
   const generatePartialResultsTable = () => {
     // Filtra las cifras numéricas en num2, ignorando las que no son números
     const digitsInNum2 = num2.filter((digit) => /^\d$/.test(digit)).length; // Solo cuenta las cifras numéricas
@@ -216,7 +244,6 @@ const GameComponent = () => {
           </tbody>
         </table>
       </div>
-      {/* Botón para ingresar operación */}
 
       {/* Mostrar las líneas solo cuando la operación ha comenzado */}
       {operationStarted && (
@@ -225,7 +252,7 @@ const GameComponent = () => {
           <td colSpan="7" className="result-line">
             ------------------------------------------------------------------------------------------------------
           </td>
-          >{/* Tabla dinámica para resultados parciales */}
+          {/* Tabla dinámica para resultados parciales */}
           {partialResults.length > 0 && (
             <div className="table-container">
               <table className="operation-table">

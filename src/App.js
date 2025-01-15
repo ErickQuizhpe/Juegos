@@ -4,7 +4,7 @@ import HomePage from "./pages/Home";
 import GamesPage from "./pages/Gamepage";
 import React from "react";
 import IdentificacionUnidadesJuego from "./componets/IdentificacionUnidadesJuego";
-import Multiplicaciones from "./pages/Multiplicaciones";
+import Multiplicaciones from "./pages/MultiplicacionesPagina";
 import OperacionesAgrupacion from "./pages/OperacionesAgrupacion";
 import RestaPrueba from "./pages/RestaPrueba";
 function App() {
