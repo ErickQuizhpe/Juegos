@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/GameComponent.css";
+import "../styles/RestaOperacion.css";
 
 const GameComponent = () => {
   const navigate = useNavigate();
   const [feedback, setFeedback] = useState("");
-  const [exerciseCount, setExerciseCount] = useState(0); // Contador de ejercicios
+  const [exerciseCount, setExerciseCount] = useState(0); 
   const [showCompletionMessage, setShowCompletionMessage] = useState(false);
 
-  const [num1, setNum1] = useState(["", "", "", "", "", "", ""]); 
-  const [num2, setNum2] = useState(["__", "", "", "", "", "", ""]); 
-  const [userAnswer, setUserAnswer] = useState(Array(7).fill("")); 
-  const [carry, setCarry] = useState(Array(7).fill("")); 
+  const [num1, setNum1] = useState(["", "", "", "", "", "", ""]);
+  const [num2, setNum2] = useState(["__", "", "", "", "", "", ""]);
+  const [userAnswer, setUserAnswer] = useState(Array(7).fill(""));
+  const [carry, setCarry] = useState(Array(7).fill(""));
 
   const calculateCorrectAnswer = () => {
     const num1Int = parseInt(num1.join(""), 10);
@@ -23,7 +23,7 @@ const GameComponent = () => {
     const correctAnswer = calculateCorrectAnswer()
       .toString()
       .padStart(7, "0")
-      .split(""); 
+      .split("");
     const userResponse = userAnswer.map((digit) => digit || "0");
 
     if (JSON.stringify(userResponse) === JSON.stringify(correctAnswer)) {
@@ -39,10 +39,10 @@ const GameComponent = () => {
     if (exerciseCount >= 9) {
       setShowCompletionMessage(true);
     } else {
-      setNum1(["", "", "", "", "", "", ""]); 
-      setNum2(["__", "", "", "", "", "", ""]); 
-      setUserAnswer(Array(7).fill("")); 
-      setCarry(Array(7).fill("")); 
+      setNum1(["", "", "", "", "", "", ""]);
+      setNum2(["__", "", "", "", "", "", ""]);
+      setUserAnswer(Array(7).fill(""));
+      setCarry(Array(7).fill(""));
     }
   };
 
@@ -70,20 +70,16 @@ const GameComponent = () => {
     }
   };
 
-  const formatNumber = (num) => {
-    return num.split("");
-  };
-
   return (
-    <div className="game-component">
-      <h1 className="title">¡Vamos a Restar!</h1>
-      
-      <div className="table-container">
-        <div className="operation-symbol">-</div>
-        <table className="operation-table">
+    <div className="game-component-resta">
+      <h1 className="game-component-resta-title">¡Vamos a Restar!</h1>
+
+      <div className="game-component-resta-table-container">
+        <div className="game-component-resta-operation-symbol">-</div>
+        <table className="game-component-resta-operation-table">
           <thead>
             <tr>
-              <th></th>  
+              <th></th>
               <th>CM</th>
               <th>DM</th>
               <th>UM</th>
@@ -93,7 +89,7 @@ const GameComponent = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="carry-row">
+            <tr className="game-component-resta-carry-row">
               {carry.map((digit, index) => (
                 <td key={index}>
                   <input
@@ -101,7 +97,7 @@ const GameComponent = () => {
                     maxLength="1"
                     value={digit}
                     onChange={(e) => handleCarryChange(index, e.target.value)}
-                    className="carry-input"
+                    className="game-component-resta-carry-input"
                   />
                 </td>
               ))}
@@ -113,8 +109,10 @@ const GameComponent = () => {
                     type="text"
                     maxLength="1"
                     value={digit}
-                    onChange={(e) => handleNumberChange(index, e.target.value, "num1")}
-                    className="number-input"
+                    onChange={(e) =>
+                      handleNumberChange(index, e.target.value, "num1")
+                    }
+                    className="game-component-resta-number-input"
                   />
                 </td>
               ))}
@@ -126,14 +124,16 @@ const GameComponent = () => {
                     type="text"
                     maxLength="1"
                     value={digit}
-                    onChange={(e) => handleNumberChange(index, e.target.value, "num2")}
-                    className="number-input"
+                    onChange={(e) =>
+                      handleNumberChange(index, e.target.value, "num2")
+                    }
+                    className="game-component-resta-number-input"
                   />
                 </td>
               ))}
             </tr>
             <tr>
-              <td colSpan="7" className="result-line">
+              <td colSpan="7" className="game-component-resta-result-line">
                 __________________________________________________________________
               </td>
             </tr>
@@ -145,7 +145,7 @@ const GameComponent = () => {
                     maxLength="1"
                     value={digit}
                     onChange={(e) => handleAnswerChange(index, e.target.value)}
-                    className="answer-input"
+                    className="game-component-resta-answer-input"
                   />
                 </td>
               ))}
@@ -154,19 +154,25 @@ const GameComponent = () => {
         </table>
       </div>
 
-      {feedback && <p className="feedback">{feedback}</p>}
+      {feedback && <p className="game-component-resta-feedback">{feedback}</p>}
 
       {showCompletionMessage ? (
-        <div className="completion-message">
+        <div className="game-component-resta-completion-message">
           <h2>¡Bien hecho! 🎉 Has completado todos los ejercicios.</h2>
         </div>
       ) : (
-        <button onClick={handleCheckAnswer} className="check-button">
+        <button
+          onClick={handleCheckAnswer}
+          className="game-component-resta-check-button"
+        >
           Comprobar
         </button>
       )}
 
-      <button onClick={() => navigate("/games")} className="back-button">
+      <button
+        onClick={() => navigate("/games")}
+        className="game-component-resta-back-button"
+      >
         Regresar
       </button>
     </div>

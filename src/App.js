@@ -6,7 +6,9 @@ import React from "react";
 import IdentificacionUnidadesJuego from "./componets/IdentificacionUnidadesJuego";
 import Multiplicaciones from "./pages/MultiplicacionesPagina";
 import OperacionesAgrupacion from "./pages/OperacionesAgrupacion";
-import RestaPrueba from "./pages/RestaPrueba";
+import RestaPagina from "./pages/RestaPagina"
+
+
 function App() {
   return (
     <Router>
@@ -29,7 +31,7 @@ function App() {
           path="/OperacionesAgrupaciones"
           element={<OperacionesAgrupacion />}
         />
-        <Route path="/RestaPrueba" element={<RestaPrueba />} />
+        <Route path="/RestaPagina" element={<RestaPagina />} />
       </Routes>
     </Router>
   );

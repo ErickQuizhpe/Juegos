@@ -18,7 +18,7 @@ const GamesPage = () => {
       <h1>Selecciona un juego</h1>
       <div className="button-container">
         <button onClick={() => goToGame("addition")}>Suma</button>
-        <button onClick={() => navigate("/RestaPrueba")}>Resta</button>
+        <button onClick={() => navigate("/RestaPagina")}>Resta</button>
         <button onClick={() => goToGame("multiplication")}>Multiplicación</button>
         <button onClick={() => goToGame("division")}>División</button>
         <button onClick={() => navigate("/Multiplicaciones")}>

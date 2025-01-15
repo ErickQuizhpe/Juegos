@@ -1,0 +1,32 @@
+/* Tablas */
+.game-component-resta-operation-table {
+    width: 100%;
+    margin: 0;
+    margin-left: 0;
+    border-collapse: collapse; /* Evita el espacio entre celdas */
+  }
+  
+  .game-component-resta-operation-table th,
+  .game-component-resta-operation-table td {
+    padding: 2px; /* Reduce el espacio interno de las celdas */
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    width: 25px;
+    border: 1px solid #ddd; /* Añade bordes ligeros para una mejor visualización */
+  }
+  
+  /* Inputs */
+  .game-component-resta-number-input,
+  .game-component-resta-answer-input,
+  .game-component-resta-carry-input {
+    font-size: 20px; /* Ajusta el tamaño de fuente */
+    padding: 5px; /* Reduce el padding dentro de los inputs */
+    width: 50px; /* Ajusta el ancho del input */
+    border: 2px solid #ffa07a; /* Naranja suave */
+    border-radius: 10px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Ligero efecto 3D */
+  }
+  

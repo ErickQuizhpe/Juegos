@@ -1,7 +1,9 @@
 import React from "react";
 import "../styles/MultiplicacionesPagina.css";
 import MultiplicacionDisco from "./MultiplicacionDisco";
-import MultiplicacionOperacion from "./MultiplicacionOperacion";
+import RestaOperacion from "./RestaOperacion";
+import "../styles/GameComponent.css";
+
 
 function Multiplicaciones() {
   return (
@@ -9,7 +11,7 @@ function Multiplicaciones() {
       <div className="bg-gray-100 min-h-screen">
         {/* Header */}
         <header className="header bg-blue-600 text-white py-3 text-center shadow-md">
-          <h1 className="text-6xl font-bold">Multiplicación de Números</h1>
+          <h1 className="text-6xl font-bold">Resta de Números</h1>
         </header>
 
         <div className="grid">
@@ -37,7 +39,7 @@ function Multiplicaciones() {
             <h2 className="text-2xl font-bold mb-4">
               Resuelve el ejercicio a continuación
             </h2>
-            <div className="cuadricula">{<MultiplicacionOperacion />}</div>
+            <div className="cuadricula">{<RestaOperacion />}</div>
           </main>
 
           {/* Aside Section */}
