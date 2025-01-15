@@ -1,12 +1,13 @@
 /* Estilo general para el contenedor */
 .multiplicacion-disco-container {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  padding: 10px;
-  background: linear-gradient(135deg, #9894f8, #5465fb, #ffeda1, #84fab0, #8fd3f4);
+  padding: 10px 5px;
+background-color: E0E0E0;
 background-size: 300% 300%;
 
   border-radius: 12px;
