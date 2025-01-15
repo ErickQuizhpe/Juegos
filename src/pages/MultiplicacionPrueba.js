@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import "../styles/GameComponent.css";
-import "../styles/Prueba.css";
 
 const GameComponent = () => {
   const navigate = useNavigate();
@@ -217,86 +216,91 @@ const GameComponent = () => {
           </tbody>
         </table>
       </div>
-{/* Botón para ingresar operación */}
-{!operationStarted && (
-  <button onClick={handleStartOperation}>Ingresar operación</button>
-)}
+      {/* Botón para ingresar operación */}
 
-{/* Mostrar las líneas solo cuando la operación ha comenzado */}
-{operationStarted && (
-  <>
-    {/* Línea debajo de la tabla de entrada */}
-    <td colSpan="7" className="result-line">
-      ---------------------------------------------------------------------------------------------
-    </td>
-
-    {/* Tabla dinámica para resultados parciales */}
-    {partialResults.length > 0 && (
-      <div className="table-container">
-        <table className="operation-table">
-          <tbody>
-            {partialResults.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {/* Generar celdas con base en las columnas disponibles */}
-                {row.slice(0, row.length - rowIndex).map((cell, colIndex) => (
-                  <td key={colIndex}>
-                    <input
-                      type="text"
-                      maxLength="1"
-                      value={cell}
-                      onChange={(e) =>
-                        handlePartialResultChange(rowIndex, colIndex, e.target.value)
-                      }
-                    />
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    )}
-
-    {/* Línea encima de la tabla de resultados finales */}
-    <td colSpan="7" className="result-line">
-      ---------------------------------------------------------------------------------------------
-    </td>
-
-    {/* Tabla para la respuesta del usuario */}
-    <div className="table-container">
-      <table className="operation-table">
-        <tbody>
-          <tr>
-            {userAnswer.map((digit, index) => (
-              <td key={index}>
-                <input
-                  type="text"
-                  maxLength="1"
-                  value={digit}
-                  onChange={(e) =>
-                    handleUserAnswerChange(index, e.target.value)
-                  }
-                />
-              </td>
-            ))}
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </>
-)}
-
-
-      {feedback && <p>{feedback}</p>}
-      {showCompletionMessage ? (
-        <h2>¡Bien hecho! Has completado todos los ejercicios.</h2>
-      ) : (
-        <button onClick={handleCheckAnswer}>Comprobar Respuesta</button>
+      {/* Mostrar las líneas solo cuando la operación ha comenzado */}
+      {operationStarted && (
+        <>
+          {/* Línea encima de la tabla de resultados finales */}
+          <td colSpan="7" className="result-line">
+            ------------------------------------------------------------------------------------------------------
+          </td>
+          >{/* Tabla dinámica para resultados parciales */}
+          {partialResults.length > 0 && (
+            <div className="table-container">
+              <table className="operation-table">
+                <tbody>
+                  {partialResults.map((row, rowIndex) => (
+                    <tr key={rowIndex}>
+                      {/* Generar celdas con base en las columnas disponibles */}
+                      {row
+                        .slice(0, row.length - rowIndex)
+                        .map((cell, colIndex) => (
+                          <td key={colIndex}>
+                            <input
+                              type="text"
+                              maxLength="1"
+                              value={cell}
+                              onChange={(e) =>
+                                handlePartialResultChange(
+                                  rowIndex,
+                                  colIndex,
+                                  e.target.value
+                                )
+                              }
+                            />
+                          </td>
+                        ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+          {/* Línea encima de la tabla de resultados finales */}
+          <td colSpan="7" className="result-line">
+            ------------------------------------------------------------------------------------------------------
+          </td>
+          {/* Tabla para la respuesta del usuario */}
+          <div className="table-container">
+            <table className="operation-table">
+              <tbody>
+                <tr>
+                  {userAnswer.map((digit, index) => (
+                    <td key={index}>
+                      <input
+                        type="text"
+                        maxLength="1"
+                        value={digit}
+                        onChange={(e) =>
+                          handleUserAnswerChange(index, e.target.value)
+                        }
+                      />
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </>
       )}
-      <button onClick={handleClear}>Limpiar</button>
-      {/* Botón para limpiar solo la fila de acarreo */}
-      <button onClick={handleClearCarry}>Limpiar Acarreo</button>
-      <button onClick={() => navigate("/games")}>Regresar</button>
+
+      <div className="button-group">
+        {!operationStarted && (
+          <button onClick={handleStartOperation}>Ingresar operación</button>
+        )}
+        {feedback && <p>{feedback}</p>}
+        {showCompletionMessage ? (
+          <h2>¡Bien hecho! Has completado todos los ejercicios.</h2>
+        ) : (
+          <button onClick={handleCheckAnswer}>Comprobar Respuesta</button>
+        )}
+
+        <button onClick={handleClear}>Nueva Operación</button>
+        <button onClick={handleClearCarry}>Limpiar Acarreo</button>
+
+        <button onClick={() => navigate("/games")}>Regresar</button>
+      </div>
     </div>
   );
 };

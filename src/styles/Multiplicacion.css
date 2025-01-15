@@ -23,7 +23,7 @@ body {
     grid-template-rows: auto 1fr auto;
     grid-auto-flow: dense;
     gap: 10px 0px;
-    ;
+    flex-flow: wrap;
     grid-template-areas:
         "header header header"
         "nav main aside"
@@ -137,7 +137,7 @@ nav {
     box-sizing: border-box;
     font-family: sans-serif;
     letter-spacing: 2px;
-    background-color: #b5a0e2;
+    
 
 
 
