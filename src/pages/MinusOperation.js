@@ -17,10 +17,11 @@ const SubtractionOperation = () => {
 
   // Calcula la respuesta correcta (resta)
   const calculateCorrectAnswer = () => {
-    const num1Value = parseInt(num1.join(""), 10) || 0;
-    const num2Value = parseInt(num2.join(""), 10) || 0;
-    return num1Value - num2Value;
+    const num1Value = parseInt(num1.filter((digit) => /^\d$/.test(digit)).join(""), 10) || 0;
+    const num2Value = parseInt(num2.filter((digit) => /^\d$/.test(digit)).join(""), 10) || 0;
+    return num1Value - num2Value; // Realiza la resta correctamente
   };
+  
 
   // Maneja el cambio en los valores de los dígitos llevados
   const handleCarryChange = (index, value) => {
@@ -105,8 +106,8 @@ const SubtractionOperation = () => {
 
   // Maneja la acción de limpiar todo
   const handleClear = () => {
-    setNum1(Array(8).fill("")); // Restablece num1
-    setNum2(Array(8).fill("")); // Restablece num2
+    setNum1(["", "", "", "", "", "", "", ""]); // Restablece el primer número
+    setNum2(["-", "", "", "", "", "", "", ""]); // Restablece el segundo número
     setUserAnswer(Array(8).fill("")); // Restablece la respuesta
     setCarry(Array(8).fill("")); // Restablece la fila de acarreo
     setOperationStarted(false); // Restablece estado de operación
