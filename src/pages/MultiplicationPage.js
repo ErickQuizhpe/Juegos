@@ -1,15 +1,15 @@
 import React from "react";
-import "../styles/MultiplicacionesPagina.css";
-import MultiplicacionDisco from "./MultiplicacionDisco";
-import RestaOperacion from "./RestaOperacion";
+import "../styles/MultiplicationPage.css";
+import MultiplicacionDisco from "./MultiplicationTable";
+import MultiplicacionOperacion from "./MultiplicationOperation";
 
-function Multiplicaciones() {
+function MultiplicationPage() {
   return (
     <div>
       <div className="bg-gray-100 min-h-screen">
         {/* Header */}
         <header className="header bg-blue-600 text-white py-3 text-center shadow-md">
-          <h1 className="text-6xl font-bold">Resta de Números</h1>
+          <h1 className="text-6xl font-bold">Multiplicación de Números</h1>
         </header>
 
         <div className="grid">
@@ -37,14 +37,12 @@ function Multiplicaciones() {
             <h2 className="text-2xl font-bold mb-4">
               Resuelve el ejercicio a continuación
             </h2>
-            <div className="cuadricula">{RestaOperacion}</div>
+            <div className="cuadricula">{<MultiplicacionOperacion />}</div>
           </main>
 
           {/* Aside Section */}
           <aside className="aside bg-pink-200 rounded-md shadow-lg p-6">
-            <h2 className="text-3xl font-semibold mb-3">
-              Tablas de multiplicar
-            </h2>
+            <h2 className="text-3xl font-semibold mb-3">Tablas de multiplicar</h2>
             <MultiplicacionDisco />
           </aside>
 
@@ -57,4 +55,4 @@ function Multiplicaciones() {
   );
 }
 
-export default Multiplicaciones;
+export default MultiplicationPage;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/MultiplicationOperation.css";
 
 /**
  * GameComponent is a React functional component for a multiplication game.
@@ -31,7 +32,7 @@ import { useNavigate } from "react-router-dom";
  * - handleClear: Resets the game state for a new operation.
  */
 
-const GameComponent = () => {
+const MultiplicationOperation = () => {
   const navigate = useNavigate();
   const [feedback, setFeedback] = useState("");
   const [exerciseCount, setExerciseCount] = useState(0);
@@ -332,4 +333,4 @@ const GameComponent = () => {
   );
 };
 
-export default GameComponent;
+export default MultiplicationOperation;

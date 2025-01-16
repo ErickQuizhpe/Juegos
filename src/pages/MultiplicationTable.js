@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "../styles/MultiplicacionDisco.css";
+import "../styles/MultiplicationTable.css";
 
-function MultiplicacionDisco() {
+function MultiplicationTable() {
   const [numero1, setNumero1] = useState(1);
   const [numero2, setNumero2] = useState(1);
   const [resultado, setResultado] = useState(null);
@@ -72,4 +72,4 @@ function MultiplicacionDisco() {
   );
 }
 
-export default MultiplicacionDisco;
+export default MultiplicationTable;

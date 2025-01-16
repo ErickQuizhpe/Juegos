@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/GameComponent.css";
 
+
 const GameComponent = () => {
   const { operation } = useParams(); // Obtiene el tipo de operación
   const navigate = useNavigate();
