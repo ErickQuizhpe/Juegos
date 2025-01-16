@@ -6,8 +6,7 @@ import React from "react";
 import IdentificacionUnidadesJuego from "./componets/IdentificacionUnidadesJuego";
 import Multiplicaciones from "./pages/MultiplicationPage";
 import OperacionesAgrupacion from "./pages/OperacionesAgrupacion";
-
-
+import MinusPage from "./pages/MinusPage";
 
 function App() {
   return (
@@ -31,7 +30,7 @@ function App() {
           path="/OperacionesAgrupaciones"
           element={<OperacionesAgrupacion />}
         />
-
+        <Route path="/MinusPage" element={<MinusPage />}></Route>
       </Routes>
     </Router>
   );

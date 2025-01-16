@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/global.css";
-
+import "../styles/GameComponent.css";
 
 const GamesPage = () => {
   const navigate = useNavigate();
@@ -18,7 +17,7 @@ const GamesPage = () => {
       <h1>Selecciona un juego</h1>
       <div className="button-container">
         <button onClick={() => goToGame("addition")}>Suma</button>
-        <button onClick={() => navigate("/RestaPagina")}>Resta</button>
+        <button onClick={() => navigate("/MinusPage")}>Resta</button>
         <button onClick={() => goToGame("multiplication")}>Multiplicación</button>
         <button onClick={() => goToGame("division")}>División</button>
         <button onClick={() => navigate("/Multiplicaciones")}>
