@@ -10,7 +10,7 @@ const SubtractionOperation = () => {
 
   // Genera la tabla para ingresar la resta
   const [num1, setNum1] = useState(["", "", "", "", "", "", "", ""]);
-  const [num2, setNum2] = useState(["", "", "", "", "", "", "", ""]);
+  const [num2, setNum2] = useState(["-", "", "", "", "", "", "", ""]);
   const [userAnswer, setUserAnswer] = useState(Array(8).fill(""));
   const [carry, setCarry] = useState(Array(8).fill(""));
   const [operationStarted, setOperationStarted] = useState(false);
