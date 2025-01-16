@@ -19,7 +19,7 @@ const GamesPage = () => {
         <button onClick={() => goToGame('addition')}>Suma</button>
         <button onClick={() => goToGame('subtraction')}>Resta</button>
         <button onClick={() => goToGame('multiplication')}>Multiplicación</button>
-        <button onClick={() => goToGame('division')}>División</button>
+        <button onClick={() => navigate('/Division')}>División</button>
       </div>
       <button className="logout-button" onClick={handleLogout}>Salir</button>
     </div>

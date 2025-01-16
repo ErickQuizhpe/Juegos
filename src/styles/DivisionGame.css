@@ -1,0 +1,287 @@
+/* Estilos para el contenedor principal */
+.division-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to right, #ffcccc, #cce7ff); /* Gradiente suave */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+}
+
+/* Estilo para la sección de entrada */
+.input-section {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.input-section label {
+  font-size: 18px;
+  margin-bottom: 5px;
+  display: block;
+  font-weight: bold;
+}
+
+.input-section input {
+  padding: 10px;
+  font-size: 18px;
+  margin: 10px;
+  width: 120px; /* Asegura un tamaño consistente */
+  border-radius: 5px;
+  border: 2px solid #007bff;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.input-section input:focus {
+  border-color: #4caf50; /* Color cuando el input está en foco */
+}
+
+.input-section button {
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.input-section button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Sección de juego */
+.game-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-top: 20px;
+  position: relative;
+}
+
+.left-panel,
+.right-panel {
+  width: 45%;
+  text-align: center;
+  padding: 10px;
+}
+
+.divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background-color: #000;
+  z-index: 1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  margin-bottom: 20px;
+  justify-items: center; /* Centra los elementos dentro de las celdas */
+}
+
+.response-grid {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.grid-cell {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border: 2px solid #007bff;
+  margin: 0 5px;
+  border-radius: 5px;
+  background-color: #f0f8ff;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.grid-cell.current-cell {
+  background-color: #ffeb3b; /* Amarillo brillante para el paso actual */
+  transform: scale(1.1);
+}
+
+.grid-cell:hover {
+  background-color: #e7f3fe;
+  cursor: pointer;
+}
+
+.input-cell {
+  width: 60px;
+  padding: 5px;
+  margin: 5px;
+  font-size: 16px;
+  text-align: center;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+}
+
+.input-cell:focus {
+  background-color: #e0f7fa;
+}
+
+.line-divider {
+  position: absolute;
+  width: 3px;
+  background-color: #000;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+/* Sección de retroalimentación */
+.feedback {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.feedback-correct {
+  color: green;
+}
+
+.feedback-incorrect {
+  color: red;
+}
+
+/* Estilos de los botones de control */
+.control-buttons {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.control-buttons button {
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.control-buttons button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .game-section {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+  }
+
+  .grid {
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+
+  .input-section input {
+    width: 100%; /* Los inputs ocupan el 100% del ancho en pantallas pequeñas */
+  }
+
+  button {
+    width: 100%; /* El botón se adapta al ancho */
+  }
+}
+
+.cociente-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.cociente-input {
+  margin: 0 5px;
+  padding: 5px;
+  font-size: 18px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Aplica este estilo a los inputs tipo number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Para Firefox */
+  appearance: textfield; /* Para navegadores modernos */
+}
+
+
+/* Estilos para la sección de apoyo */
+.support-section {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.support-section h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #007bff; /* Color para el título */
+}
+
+.support-section .grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Igual que el dividendo */
+  gap: 5px;
+  justify-items: center;
+  margin-bottom: 20px;
+}
+
+.support-section .grid-cell {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border: 2px solid #007bff;
+  margin: 0 5px;
+  border-radius: 5px;
+  background-color: #f0f8ff;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.support-section .grid-cell:hover {
+  background-color: #e7f3fe;
+}
+.multiplicacion-input {
+  width: 50px;
+  text-align: center;
+}
+
+.input-error {
+  border: 2px solid red;
+  background-color: #ffdddd;
+}
+ 
