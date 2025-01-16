@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/MultiplicationPage.css";
-import MultiplicacionTable from "./MultiplicationTable";
+import MinusTable from "./MinusTable";
 import MinusOperation from "./MinusOperation";
 function MinusPage() {
   return (
@@ -41,8 +41,8 @@ function MinusPage() {
 
           {/* Aside Section */}
           <aside className="aside bg-pink-200 rounded-md shadow-lg p-6">
-            <h2 className="text-3xl font-semibold mb-3">Tablas de multiplicar</h2>
-            <MultiplicacionTable />
+            <h2 className="text-3xl font-semibold mb-3">Ayuda para restar</h2>
+            <MinusTable />
           </aside>
 
           <footer className="footer bg-gray-800 text-white py-4 text-center">

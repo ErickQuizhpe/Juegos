@@ -1,24 +1,24 @@
 import React, { useState } from "react";
-import "../styles/MultiplicationTable.css";
+import "../styles/MinusTable.css";
 
-function MultiplicationTable() {
+function SubtractionTable() {
   const [numero1, setNumero1] = useState(1);
   const [numero2, setNumero2] = useState(1);
   const [resultado, setResultado] = useState(null);
 
   const handleCalcular = () => {
-    setResultado(numero1 * numero2);
+    setResultado(numero1 - numero2);
   };
 
   return (
-    <div className="multiplicacion-disco-container">
+    <div className="resta-disco-container">
       {/* Selección de número 1 */}
-      <div className="multiplicacion-disco-item">
-        <label htmlFor="numero1" className="multiplicacion-disco-label">
+      <div className="resta-disco-item">
+        <label htmlFor="numero1" className="resta-disco-label">
           Número 1:
         </label>
         <select
-          className="multiplicacion-disco-select numero1-select"
+          className="resta-disco-select numero1-select"
           id="numero1"
           value={numero1}
           onChange={(e) => setNumero1(Number(e.target.value))}
@@ -32,12 +32,12 @@ function MultiplicationTable() {
       </div>
 
       {/* Selección de número 2 */}
-      <div className="multiplicacion-disco-item">
-        <label htmlFor="numero2" className="multiplicacion-disco-label">
+      <div className="resta-disco-item">
+        <label htmlFor="numero2" className="resta-disco-label">
           Número 2:
         </label>
         <select
-          className="multiplicacion-disco-select numero2-select"
+          className="resta-disco-select numero2-select"
           id="numero2"
           value={numero2}
           onChange={(e) => setNumero2(Number(e.target.value))}
@@ -51,19 +51,19 @@ function MultiplicationTable() {
       </div>
 
       {/* Botón para calcular */}
-      <div className="multiplicacion-disco-item">
+      <div className="resta-disco-item">
         <button
           onClick={handleCalcular}
-          className="multiplicacion-disco-button"
+          className="resta-disco-button"
         >
-          Multiplicar!
+          ¡Restar!
         </button>
       </div>
 
       {/* Cuadro de resultado */}
       {resultado !== null && (
-        <div className="multiplicacion-disco-item">
-          <h3 className="multiplicacion-disco-result">
+        <div className="resta-disco-item">
+          <h3 className="resta-disco-result">
             El resultado es: {resultado}
           </h3>
         </div>
@@ -72,4 +72,4 @@ function MultiplicationTable() {
   );
 }
 
-export default MultiplicationTable;
+export default SubtractionTable;

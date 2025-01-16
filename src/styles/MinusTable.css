@@ -1,0 +1,115 @@
+/* Estilos generales para la tabla de restas */
+.resta-disco-container {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    border-radius: 20px;
+    padding: 10px;
+    width: 210px;
+    margin: 0 auto;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 2s ease-out 1;
+}
+
+/* Animación para el fade-in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para cada ítem (selección de números, botones, etc.) */
+.resta-disco-item {
+    margin-bottom: 5px;
+    padding: 5px;
+    animation: slideIn 1s ease-in-out;
+    /* Animación de deslizamiento */
+}
+
+/* Animación para el slide-in */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Estilos para las etiquetas de los números */
+.resta-disco-label {
+    font-size: 1.6rem;
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    /* Efecto de sombra */
+    margin-bottom: 5px;
+}
+
+/* Estilos para los selectores de número */
+.resta-disco-select {
+    text-align: center;
+    background-color: #ffffff;
+    border: 2px solid #ff1493;
+    border-radius: 8px;
+    padding: 0px;
+    font-size: 1.3rem;
+    width: 50px;
+    margin-top: 2px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.resta-disco-select:focus {
+    border: 2px solid #ff69b4;
+    outline: none;
+    transform: scale(1.05);
+    /* Efecto de aumento al hacer foco */
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
+    /* Sombra brillante */
+}
+
+/* Estilos para el botón de calcular */
+.resta-disco-button {
+    background-color: #b8b7f4;
+    color: rgb(20, 19, 19);
+    font-size: 1.5rem;
+    padding: 18px 10px;
+    border-radius: 20px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Estilos para mostrar el resultado */
+.resta-disco-result {
+    font-size: 1.5rem;
+    color: #0b830b;
+    font-weight: bold;
+    margin-top: 25px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    background-color: #fffacd;
+    /* Fondo brillante */
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.resta-disco-result:hover {
+    background-color: #c9f3c9;
+    box-shadow: 0 8px 18px rgba(0, 255, 0, 0.4);
+    /* Efecto brillante al pasar el cursor */
+}

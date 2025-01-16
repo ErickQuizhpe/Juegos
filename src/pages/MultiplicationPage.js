@@ -42,7 +42,7 @@ function MultiplicationPage() {
 
           {/* Aside Section */}
           <aside className="aside bg-pink-200 rounded-md shadow-lg p-6">
-            <h2 className="text-3xl font-semibold mb-3">Tablas de multiplicar</h2>
+            <h2 className="text-3xl font-semibold mb-3">Ayuda para Multiplicar</h2>
             <MultiplicacionDisco />
           </aside>
 

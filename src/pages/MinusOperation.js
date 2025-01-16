@@ -60,8 +60,8 @@ const SubtractionOperation = () => {
     }
   
     const correctAnswer = calculateCorrectAnswer();
-    const correctAnswerStr = correctAnswer.toString().padStart(7, "0"); // Aseguramos que tenga al menos 7 dígitos
-    const userAnswerStr = userAnswer.join("").padStart(7, "0"); // Rellenamos con ceros si es necesario
+    const correctAnswerStr = correctAnswer.toString().padStart(7, ""); // Aseguramos que tenga al menos 7 dígitos
+    const userAnswerStr = userAnswer.join("").padStart(7, ""); // Rellenamos con ceros si es necesario
   
     if (userAnswerStr === correctAnswerStr) {
       setFeedback("¡Correcto! 🎉");

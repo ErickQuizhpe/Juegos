@@ -7,17 +7,25 @@
   justify-content: center;
   gap: 5px;
   padding: 40px 5px;
-background-color: E0E0E0;
-background-size: 300% 300%;
-
+  background-size: 300% 300%;
   border-radius: 12px;
+  background-color: #eb4444;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
-  animation: backgroundShift 8s ease-in-out infinite;
-  
-
+  animation: backgroundShift 10s ease-in-out infinite, containerEntrance 1s ease-out; /* Animación de entrada */
+  width: 210px;
 }
 
-
+/* Animación para la entrada del contenedor */
+@keyframes containerEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* Animación de pulsación para los elementos */
 .multiplicacion-disco-item {
@@ -26,13 +34,15 @@ background-size: 300% 300%;
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  animation: itemPulse 5ms ;
+  animation: itemPulse 5ms;
 }
 
 @keyframes itemPulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.05);
   }
@@ -41,7 +51,7 @@ background-size: 300% 300%;
 /* Estilo para las etiquetas */
 .multiplicacion-disco-label {
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   color: #ffffff;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
@@ -69,9 +79,9 @@ background-size: 300% 300%;
 
 /* Estilos para el botón */
 .multiplicacion-disco-button {
-  width: 150px;
+  width: 180px;
   margin-top: 10px;
-  padding: 20 0px;
+  padding: 20px 0px;
   background: linear-gradient(45deg, #f8a264, #e8b777);
   color: white;
   border: none;
@@ -86,9 +96,11 @@ background-size: 300% 300%;
   0% {
     box-shadow: 0 0 10px #ff4081, 0 0 20px #f50057;
   }
+
   50% {
     box-shadow: 0 0 20px #ffeb3b, 0 0 30px #ff4081;
   }
+
   100% {
     box-shadow: 0 0 10px #ff4081, 0 0 20px #f50057;
   }
@@ -96,7 +108,6 @@ background-size: 300% 300%;
 
 .multiplicacion-disco-button:hover {
   transform: scale(1.2);
-
 }
 
 .multiplicacion-disco-button:active {
@@ -108,7 +119,7 @@ background-size: 300% 300%;
 .multiplicacion-disco-result {
   margin-top: 10px;
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #ffeb3b;
   padding: 20px;
   background: rgba(0, 0, 0, 0.7);
@@ -121,6 +132,7 @@ background-size: 300% 300%;
   0% {
     text-shadow: 0 0 10px #ffeb3b, 0 0 20px #120c0e;
   }
+
   100% {
     text-shadow: 0 0 20px #ff4081, 0 0 30px #ffeb3b;
   }
