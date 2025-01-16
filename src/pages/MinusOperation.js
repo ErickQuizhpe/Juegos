@@ -51,37 +51,29 @@ const SubtractionOperation = () => {
     const isNum1Valid = num1.some((digit) => /^\d$/.test(digit));
     const isNum2Valid = num2.some((digit) => /^\d$/.test(digit));
     const isUserAnswerValid = userAnswer.some((digit) => /^\d$/.test(digit));
-
+  
     if (!isNum1Valid || !isNum2Valid || !isUserAnswerValid) {
       setFeedback(
         "Por favor, ingresa los números que deseas restar y el resultado antes de comprobar la respuesta."
       );
       return;
     }
-
+  
     const correctAnswer = calculateCorrectAnswer();
-    const correctAnswerDigits = correctAnswer
-      .toString()
-      .padStart(7, "")
-      .split("");
-    const userResponse = userAnswer
-      .join("")
-      .padStart(7, "")
-      .split(" ");
-
-    if (JSON.stringify(userResponse) === JSON.stringify(correctAnswerDigits)) {
+    const correctAnswerStr = correctAnswer.toString().padStart(7, "0"); // Aseguramos que tenga al menos 7 dígitos
+    const userAnswerStr = userAnswer.join("").padStart(7, "0"); // Rellenamos con ceros si es necesario
+  
+    if (userAnswerStr === correctAnswerStr) {
       setFeedback("¡Correcto! 🎉");
       setExerciseCount(exerciseCount + 1);
       if (exerciseCount >= 100) {
         setShowCompletionMessage(true);
       }
     } else {
-      setFeedback(
-        `Incorrecto. La respuesta correcta es ${correctAnswerDigits.join("")}.`
-      );
+      setFeedback(`Incorrecto. La respuesta correcta es ${correctAnswerStr}.`);
     }
   };
-
+  
   const handleStartOperation = () => {
     const isNum1Valid = num1.some((digit) => /^\d$/.test(digit));
     const isNum2Valid = num2.some((digit) => /^\d$/.test(digit));
