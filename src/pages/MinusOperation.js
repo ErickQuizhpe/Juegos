@@ -13,6 +13,7 @@ const SubtractionOperation = () => {
   const [userAnswer, setUserAnswer] = useState(Array(8).fill(""));
   const [carry, setCarry] = useState(Array(8).fill(""));
   const [operationStarted, setOperationStarted] = useState(false);
+  const [showResultLine, setShowResultLine] = useState(false); // Estado para la línea de resultado
 
   const calculateCorrectAnswer = () => {
     const num1Value =
@@ -66,7 +67,7 @@ const SubtractionOperation = () => {
     const userResponse = userAnswer
       .join("")
       .padStart(7, "")
-      .split("");
+      .split(" ");
 
     if (JSON.stringify(userResponse) === JSON.stringify(correctAnswerDigits)) {
       setFeedback("¡Correcto! 🎉");
@@ -89,6 +90,7 @@ const SubtractionOperation = () => {
       setCarry(Array(8).fill(""));
       setOperationStarted(true);
       setFeedback("");
+      setShowResultLine(true); // Mostrar la línea cuando se inicie la operación
     } else {
       setFeedback("Por favor, ingresa los números que deseas restar.");
     }
@@ -100,6 +102,7 @@ const SubtractionOperation = () => {
     setUserAnswer(Array(8).fill(""));
     setCarry(Array(8).fill(""));
     setOperationStarted(false);
+    setShowResultLine(false); // Ocultar la línea cuando se reinicie
     setFeedback("");
   };
 
@@ -166,7 +169,13 @@ const SubtractionOperation = () => {
       </div>
 
       {/* Línea divisoria visible solo cuando operationStarted es true */}
-      {operationStarted && <hr className="divider" />}
+      {showResultLine && (
+        <tr>
+          <td colSpan="7" className="result-line">
+            ------------------------------------------------------------------------------------------------------
+          </td>
+        </tr>
+      )}
 
       {/* Tabla para ingresar el resultado */}
       {operationStarted && (
