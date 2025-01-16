@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/MultiplicationOperation.css"; // Si usas CSS para estilo, no lo toques
+import "../styles/MultiplicationOperation.css";
 
 const SubtractionOperation = () => {
   const navigate = useNavigate();
@@ -8,22 +8,20 @@ const SubtractionOperation = () => {
   const [exerciseCount, setExerciseCount] = useState(0);
   const [showCompletionMessage, setShowCompletionMessage] = useState(false);
 
-  // Genera la tabla para ingresar la resta
   const [num1, setNum1] = useState(["", "", "", "", "", "", "", ""]);
   const [num2, setNum2] = useState(["-", "", "", "", "", "", "", ""]);
   const [userAnswer, setUserAnswer] = useState(Array(8).fill(""));
   const [carry, setCarry] = useState(Array(8).fill(""));
   const [operationStarted, setOperationStarted] = useState(false);
 
-  // Calcula la respuesta correcta (resta)
   const calculateCorrectAnswer = () => {
-    const num1Value = parseInt(num1.filter((digit) => /^\d$/.test(digit)).join(""), 10) || 0;
-    const num2Value = parseInt(num2.filter((digit) => /^\d$/.test(digit)).join(""), 10) || 0;
-    return num1Value - num2Value; // Realiza la resta correctamente
+    const num1Value =
+      parseInt(num1.filter((digit) => /^\d$/.test(digit)).join(""), 10) || 0;
+    const num2Value =
+      parseInt(num2.filter((digit) => /^\d$/.test(digit)).join(""), 10) || 0;
+    return num1Value - num2Value;
   };
-  
 
-  // Maneja el cambio en los valores de los dígitos llevados
   const handleCarryChange = (index, value) => {
     if (/^\d?$/.test(value)) {
       const updatedCarry = [...carry];
@@ -32,7 +30,6 @@ const SubtractionOperation = () => {
     }
   };
 
-  // Maneja el cambio en los valores de los dígitos de entrada
   const handleNumberChange = (index, value, numType) => {
     if (/^\d?$/.test(value)) {
       const updatedNum = numType === "num1" ? [...num1] : [...num2];
@@ -41,11 +38,6 @@ const SubtractionOperation = () => {
     }
   };
 
-  const generatePartialResultsTable = () => {
-    setCarry(Array(8).fill("")); // Resetea la tabla de acarreo
-  };
-
-  // Maneja el cambio en los valores de la respuesta del usuario
   const handleUserAnswerChange = (index, value) => {
     if (/^\d?$/.test(value)) {
       const updatedAnswer = [...userAnswer];
@@ -54,7 +46,6 @@ const SubtractionOperation = () => {
     }
   };
 
-  // Maneja la verificación de la respuesta ingresada por el usuario
   const handleCheckAnswer = () => {
     const isNum1Valid = num1.some((digit) => /^\d$/.test(digit));
     const isNum2Valid = num2.some((digit) => /^\d$/.test(digit));
@@ -62,21 +53,20 @@ const SubtractionOperation = () => {
 
     if (!isNum1Valid || !isNum2Valid || !isUserAnswerValid) {
       setFeedback(
-        "Por favor, ingresa los números que deseas restar antes de comprobar la respuesta."
+        "Por favor, ingresa los números que deseas restar y el resultado antes de comprobar la respuesta."
       );
-      return; // Detiene la ejecución si no se ingresaron valores válidos
+      return;
     }
 
-    // Verificación de la respuesta correcta
     const correctAnswer = calculateCorrectAnswer();
     const correctAnswerDigits = correctAnswer
       .toString()
-      .padStart(7, "") // Espacios en blanco para legibilidad de la respuesta
+      .padStart(7, "")
       .split("");
     const userResponse = userAnswer
-      .join("") // Une la respuesta del usuario
-      .padStart(7, "") // Espacios en blanco para legibilidad
-      .split(""); // Lo convierte en un array
+      .join("")
+      .padStart(7, "")
+      .split("");
 
     if (JSON.stringify(userResponse) === JSON.stringify(correctAnswerDigits)) {
       setFeedback("¡Correcto! 🎉");
@@ -91,32 +81,31 @@ const SubtractionOperation = () => {
     }
   };
 
-  // Maneja la acción de ingresar operación
   const handleStartOperation = () => {
     const isNum1Valid = num1.some((digit) => /^\d$/.test(digit));
     const isNum2Valid = num2.some((digit) => /^\d$/.test(digit));
 
     if (isNum1Valid && isNum2Valid) {
-      generatePartialResultsTable(); // Generar tabla de acarreo
+      setCarry(Array(8).fill(""));
       setOperationStarted(true);
+      setFeedback("");
     } else {
       setFeedback("Por favor, ingresa los números que deseas restar.");
     }
   };
 
-  // Maneja la acción de limpiar todo
   const handleClear = () => {
-    setNum1(["", "", "", "", "", "", "", ""]); // Restablece el primer número
-    setNum2(["-", "", "", "", "", "", "", ""]); // Restablece el segundo número
-    setUserAnswer(Array(8).fill("")); // Restablece la respuesta
-    setCarry(Array(8).fill("")); // Restablece la fila de acarreo
-    setOperationStarted(false); // Restablece estado de operación
-    setFeedback(""); // Limpiar mensaje
+    setNum1(["", "", "", "", "", "", "", ""]);
+    setNum2(["-", "", "", "", "", "", "", ""]);
+    setUserAnswer(Array(8).fill(""));
+    setCarry(Array(8).fill(""));
+    setOperationStarted(false);
+    setFeedback("");
   };
 
   return (
     <div className="game-component">
-      {/* Tabla de entrada principal */}
+      {/* Tabla para ingresar los números */}
       <div className="table-container">
         <table className="operation-table carry_row">
           <thead>
@@ -126,9 +115,9 @@ const SubtractionOperation = () => {
               <th>Cm</th>
               <th>Dm</th>
               <th>Um</th>
-              <th> C</th>
-              <th> D</th>
-              <th> U</th>
+              <th>C</th>
+              <th>D</th>
+              <th>U</th>
             </tr>
           </thead>
           <tbody>
@@ -176,30 +165,31 @@ const SubtractionOperation = () => {
         </table>
       </div>
 
-      {/* Mostrar tabla de resultados solo cuando la operación ha comenzado */}
+      {/* Línea divisoria visible solo cuando operationStarted es true */}
+      {operationStarted && <hr className="divider" />}
+
+      {/* Tabla para ingresar el resultado */}
       {operationStarted && (
-        <>
-          <div className="table-container">
-            <table className="operation-table">
-              <tbody>
-                <tr>
-                  {userAnswer.map((digit, index) => (
-                    <td key={index}>
-                      <input
-                        type="text"
-                        maxLength="1"
-                        value={digit}
-                        onChange={(e) =>
-                          handleUserAnswerChange(index, e.target.value)
-                        }
-                      />
-                    </td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </>
+        <div className="table-container">
+          <table className="operation-table">
+            <tbody>
+              <tr>
+                {userAnswer.map((digit, index) => (
+                  <td key={index}>
+                    <input
+                      type="text"
+                      maxLength="1"
+                      value={digit}
+                      onChange={(e) =>
+                        handleUserAnswerChange(index, e.target.value)
+                      }
+                    />
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
+        </div>
       )}
 
       {/* Botones */}

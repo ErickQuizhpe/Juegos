@@ -175,7 +175,9 @@ button:hover {
   align-items: center;    /* Centra los botones verticalmente */
   gap: 10px;              /* Espaciado entre los botones */
   margin-top: 20px;       /* Separación del resto del contenido */
-  flex-wrap: wrap;        /* Permite que los botones se acomoden en varias filas si el espacio es reducido */
+  flex-wrap: nowrap;        /* Permite que los botones se acomoden en varias filas si el espacio es reducido */
+  animation: slideIn 1s forwards ease-out;
+
 }
 
 .button-group button {
@@ -188,4 +190,30 @@ button:hover {
 
 .button-group button:hover {
   background-color: #f0f0f0; /* Cambia el color al pasar el mouse */
+}
+
+
+
+/* .result-line {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  margin: 20px 0;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: scaleX(0);
+  transform-origin: center; }*/
+
+
+@keyframes slideIn {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+td.result-line {
+  padding: 0; /* Elimina el relleno de las celdas de la línea divisoria */
 }
