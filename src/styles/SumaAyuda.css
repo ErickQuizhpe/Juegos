@@ -9,11 +9,12 @@
   
   button {
     padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
+    background-color: #a3d5ff; /* Azul pastel */
+    color: #ffffff; /* Blanco para contraste */
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
   }
   
   button:hover {
