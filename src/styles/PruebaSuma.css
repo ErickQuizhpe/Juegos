@@ -1,0 +1,73 @@
+.operation-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+.operation-table td,
+.operation-table th {
+    text-align: center;
+    padding: 2px;
+    margin-top: 0;
+}
+
+.operation-table input {
+    width: 100%;
+    text-align: center;
+    background: transparent;
+    font-size: 2rem;
+}
+
+/* Degradado para la primera tabla */
+.table-container:nth-child(1) .operation-table {
+    background: linear-gradient(to right, #ffcccc, #ffb3b3); /* Rosa pastel degradado */
+    color: #000; /* Texto oscuro para contraste */
+}
+
+/* Degradado para la segunda tabla */
+.table-container:nth-child(2) .operation-table {
+    background: linear-gradient(to right, #cceeff, #99d6ff); /* Azul pastel degradado */
+    color: #000; /* Texto oscuro para contraste */
+}
+
+/* Degradado para la tercera tabla */
+.table-container:nth-child(3) .operation-table {
+    background: linear-gradient(to right, #ccffcc, #99ff99); /* Verde pastel degradado */
+    color: #000; /* Texto oscuro para contraste */
+}
+
+.table-container {
+    margin-bottom: 0px !important;
+}
+
+.operation-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto; /* Centra la tabla */
+}
+
+.operation-table td,
+.operation-table th {
+    padding: 5px; /* Reduce el espacio interno de las celdas */
+    text-align: center;
+}
+
+/* Color para la fila de las llevadas */
+.carry_row tr:nth-child(1) {
+    background-color: #ffe4e1; /* Rosa claro */
+    border-radius: 3px;
+}
+
+.operation-table input {
+    width: 100%;
+    text-align: center;
+    border: none;
+    background: transparent;
+    font-size: 2rem; /* Ajusta el tamaño de la fuente */
+}
+
+/* Celdas vacías */
+.empty-cell {
+    border: none;
+    background-color: transparent;
+}
