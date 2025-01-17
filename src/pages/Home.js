@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Particles } from "@tsparticles/react";
-import operaciones from "../assets/Image/operaciones.png";
+import operaciones from "../assets/Image/matematicas.png";
 import "../styles/Home.css";
 import agrupacion from "../assets/Image/agrupacion.png";
 
