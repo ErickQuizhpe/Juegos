@@ -35,17 +35,17 @@ const OperacionInput = ({ onOperacionSubmit, onLimpiar }) => {
         type="text"
         value={operacion}
         onChange={handleInputChange} // Usamos la nueva función para validar
-        placeholder="Ingresa una Operación ✍ (◠‿◠) "
+        placeholder="Ingresa una Operación ✍ "
       />
       <button className={styles.buttonStyle} type="submit">
-        Enviar Operación
+        Ingresar Operación
       </button>
       <button
         type="button"
         className={styles.buttonStyle}
         onClick={handleClear}
       >
-        Limpiar
+        Nueva Operación
       </button>
     </form>
   );
@@ -121,29 +121,35 @@ const Juego = () => {
   };
 
   const dividirOperacionEnPasos = (operacion) => {
-    const regex = /\(/g;
-    const cantidadAgrupaciones = (operacion.match(regex) || []).length;
+    // Expresiones regulares para buscar paréntesis, corchetes y llaves
+    const regexAgrupaciones = /(\[.*?\]|\{.*?\}|\(.*?\))/g;
+
+    // Contamos cuántas agrupaciones existen
+    const cantidadAgrupaciones = (operacion.match(regexAgrupaciones) || []).length;
 
     const pasosGenerados = [];
     let operacionTemp = operacion;
 
+    // Procesamos cada agrupación
     for (let i = 1; i <= cantidadAgrupaciones; i++) {
-      const regexPaso = /\(([^()]+)\)/;
-      const pasoOperacion = operacionTemp.match(regexPaso);
+      const agrupacion = operacionTemp.match(regexAgrupaciones)[0];
+      const pregunta = `Resuelve la operación dentro de la agrupación: ${agrupacion}`;
+      
+      // Evaluamos el contenido de la agrupación eliminando las llaves, corchetes o paréntesis
+      const contenidoAgrupacion = agrupacion.slice(1, -1); 
+      const resultado = eval(contenidoAgrupacion);  // Evaluamos la expresión dentro de la agrupación
 
-      if (pasoOperacion) {
-        const pregunta = `Resuelve la operación dentro de los paréntesis: ${pasoOperacion[1]}`;
-        const resultado = eval(pasoOperacion[1]);
-        pasosGenerados.push({
-          paso: i,
-          pregunta,
-          respuestaCorrecta: resultado,
-        });
+      pasosGenerados.push({
+        paso: i,
+        pregunta,
+        respuestaCorrecta: resultado,
+      });
 
-        operacionTemp = operacionTemp.replace(pasoOperacion[0], resultado);
-      }
+      // Reemplazamos la agrupación con el resultado en la operación
+      operacionTemp = operacionTemp.replace(agrupacion, resultado);
     }
 
+    // Añadimos el paso final con la operación resuelta
     pasosGenerados.push({
       paso: cantidadAgrupaciones + 1,
       pregunta: `Resuelve la operación completa: ${operacionTemp}`,
@@ -160,8 +166,9 @@ const Juego = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className="font-bold text-5xl text-blue-800
-      text-center"   >Operaciones con Agrupaciones</h1>
+      <h1 className="font-bold text-5xl text-blue-800 text-center">
+        Operaciones con Agrupaciones
+      </h1>
       <OperacionInput
         onOperacionSubmit={handleOperacionSubmit}
         onLimpiar={handleLimpiar}

@@ -1,189 +1,168 @@
+/* Fondo general */
 body {
-    font-family: 'sans-serif', cursive, sans-serif;
-    background-color: #f0f8ff;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
-    background-image: url('../assets/Image/fondo.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-/* Título principal */
-h1 {
+    background-color: #4992dc !important;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+  }
   
-    animation: fadeIn 1s ease-in-out;
-}
-
+ 
 /* Contenedor principal */
 .container {
-    height: 100vh !important;
-    width: 100%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: linear-gradient(to bottom, #c8e6c5, #f7fbf8);
+    border-radius: 20px;
     padding: 30px;
-    border-radius: 15px;
-    background: linear-gradient(135deg, #f9d6e3, #d6ff89);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    width: 90%;
-    max-width: 1000px;
-    animation: slideIn 0.8s ease-in-out;
-}
-
-/* Formulario */
-.formStyle {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    animation: zoomBounce 1.2s ease-out; /* Aplicamos la animación */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para hover */
+  }
+  
+  /* Animación de aparición con zoom y rebote */
+  @keyframes zoomBounce {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  /* Efecto al pasar el ratón por el contenedor */
+  .container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Título */
+  h1 {
+    font-size: 3.6rem !important;
+    color: rgb(20, 19, 19) !important;
+    text-shadow: 2px 2px 10px #7a5262;
+    margin-bottom: 30px;
+  }
+  
+  /* Formulario de entrada */
+  .formStyle {
     margin-bottom: 20px;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 15px;
     align-items: center;
-
-}
-
-
-.operacionInput {
-    width: 500px !important;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.inputStyle {
-    padding: 10px;
-    font-size: 18px;
-    border-radius: 10px;
-    border: 2px solid #cbff47;
-    margin-right: 10px;
-    width: 1000px;
-    border-radius: 10px;
-    box-sizing: border-box;
-}
-
-.inputStyle:focus {
-    border-color: #fffc58;
-    outline: none;
-}
-
-.buttonStyle {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #f7ad82;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-top: 20px ;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.buttonStyle:hover {
-    background-color: #ff6827;
-    transform: scale(1.2);
-    color: black;
-    text-align: center;
-    letter-spacing: 2px;
-    font-weight: bolder;
-    font-size: larger;
-}
-
-.buttonStyle:active {
-    transform: scale(0.95);
-}
-
-/* Estilos para cada paso */
-.paso {
-    background-color: #ffffff;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 350px;
-    text-align: center;
-}
-
-.paso p {
-    font-size: 20px;
-    color: #333;
-}
-
-.paso input {
-    margin-bottom: 15px;
-    width: 200px;
-    font-size: 16px;
-    padding: 8px;
+  }
+  
+  /* Estilo del input ingreso del ejercicio */
+  .operacionInput {
+    margin-top: 20px;
+    padding: 9px 80px;
+    text-align: center !important;
+    font-size: 1.8rem;
+    border: 2px solid #ff0066;
     border-radius: 8px;
-    border: 2px solid #ccc;
-    transition: border-color 0.3s;
-}
-
-.paso input:focus {
-    border-color: #66cc66;
     outline: none;
-}
-
-.paso button {
-    background-color: #66cc66;
-    border-radius: 12px;
-    font-size: 16px;
-    padding: 8px 15px;
+    transition: all 0.3s ease !important;
+  }
+  
+  .operacionInput:focus {
+    border-color: #ffbb33;
+    box-shadow: 0 0 10px rgba(255, 187, 51, 0.7);
+  }
+  
+  /* Estilo del input para respuesta (centrado del texto) */
+  .paso input {
+    padding: 4px;
+    font-size: 1.5rem;
+    text-align: center;  /* Centrado del texto */
+    border: 2px solid #00bcd4;
+    border-radius: 8px;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .paso input:focus {
+    border-color: #ff9800;
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.7);
+  }
+  
+  /* Botones */
+  .buttonStyle {
+    background-color: #2772eb;
     color: white;
+    margin-top: 10px;
+    margin-left: 40px !important;
+    padding: 8px 20px;
+    border-radius: 8px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.paso button:hover {
-    background-color: #32cd32;
-    transform: scale(1.05);
-}
-
-.paso button:active {
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+  }
+  
+  .buttonStyle:hover {
+    background-color: #a818e1;
+    transform: scale(1.1);
+  }
+  
+  .buttonStyle:active {
     transform: scale(0.95);
-}
-
-/* Estilo de feedback */
-.paso p.correct {
-    color: #32cd32;
-    font-size: 22px;
-    margin-top: 10px;
-}
-
-.paso p.incorrect {
-    color: #ff4500;
-    font-size: 22px;
-    margin-top: 10px;
-}
-
-/* Animaciones */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
+  }
+  
+  /* Estilos del paso */
+  .paso {
+    text-align: center !important;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    background-color: #fff3e0;
+    border: 2px solid #ff6600;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .paso p {
+    font-size: 1.25rem;
+    color: #ff6600;
+    text-align: center !important;
+  }
+  
+  /* Estilo del feedback */
+  .correct {
+    color: #00ff00 !important;
+    font-size: 1.5rem !important;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(17, 16, 16, 0.6);
+  }
+  
+  .incorrect {
+    color: #c41212 !important;
+    font-size: 1.6rem !important;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(183, 21, 21, 0.6);
+  }
+  
+  /* Animación para el feedback */
+  @keyframes feedbackAnimation {
+    0% {
+      transform: scale(1);
     }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    50% {
+      transform: scale(1.2);
     }
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(100px);
+    100% {
+      transform: scale(1);
     }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+  }
+  
+  .correct,
+  .incorrect {
+    animation: feedbackAnimation 0.5s ease-in-out;
+  }
+  
