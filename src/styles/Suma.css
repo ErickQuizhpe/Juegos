@@ -1,0 +1,128 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    letter-spacing: 2px !important;
+    background-color: #fce4ec; /* Fondo rosa pastel */
+}
+
+.grid {
+    box-sizing: border-box;
+    margin: auto;
+    display: grid;
+    align-content: center;
+    grid-template-columns: minmax(200px, 1fr) minmax(500px, 3fr) minmax(200px, 1fr);
+    grid-template-rows: auto 1fr auto;
+    grid-auto-flow: dense;
+    gap: 10px 0px;
+    grid-template-areas:
+        "header header header"
+        "nav main aside"
+        "footer footer footer";
+}
+
+.grid_item {
+    background-color: #ffffff;
+    border-radius: 9px;
+}
+
+h1 {
+    margin-top: 0;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: large;
+}
+
+.header {
+    grid-area: header;
+    background-color: #a3d5ff; /* Azul pastel */
+    color: #fff;
+}
+
+.nav {
+    grid-area: nav;
+    padding: 10px 30px;
+    border-radius: 6px;
+    background-color: #ffcccb; /* Rosa claro */
+    text-align: center;
+}
+
+.nav a {
+    color: #ff6f61; /* Rojo pastel */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav a:hover {
+    color: #e85d5a; /* Rojo pastel más oscuro */
+}
+
+.main {
+    grid-area: main;
+    padding: 10px 30px;
+    background-color: #fff6da; /* Amarillo pastel */
+}
+
+.aside {
+    grid-area: aside;
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #c6edfc; /* Celeste pastel */
+    border-radius: 6px;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #b5a0e2; /* Lila pastel */
+    color: #fff;
+    margin-top: auto;
+    padding: 40px;
+    text-align: center;
+}
+
+header ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+header li {
+    list-style: none;
+}
+
+header a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+nav li {
+    list-style: none;
+    padding: 10px;
+}
+
+@media screen and (max-width: 800px) {
+    .aside {
+        display: none;
+    }
+}
+
+.cuadricula {
+    display: grid;
+    height: 500px;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    letter-spacing: 2px;
+    background-color: #f8e5c2; /* Beige pastel */
+}
