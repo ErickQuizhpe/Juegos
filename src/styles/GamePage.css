@@ -5,10 +5,12 @@ body {
     color: #fff;
     margin: 0;
     padding: 0;
-
     display: flex;
     align-items: center;
     justify-content: center;
+  background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: center; /* Centra la imagen */
   }
   
   /* Contenedor principal */
