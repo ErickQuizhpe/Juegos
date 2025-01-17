@@ -1,11 +1,11 @@
 /* General */
 body {
-    font-family:'Poppins', sans-serif; 
+    font-family:'Comic Sans MS'; 
     margin: 0;
     padding: 0;
     text-align: center;
     color: #030303f4;
-    letter-spacing: 2px;
+  
     animation: floatingBubbles 5s ease-in-out infinite;
   
   
@@ -113,13 +113,13 @@ body {
 
 /* Botones */
 button {
-  font-size: 18px;
+  font-size: 20px;
   width: 260px;
   padding: 12px 24px;
   background: linear-gradient(135deg, #c6c2e8, #617ff8) ; 
   color: #ffffff;
   border: none;
-  border-radius: 30px;
+  border-radius: 30px !important;
   cursor: pointer;
   font-weight: bold;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -167,6 +167,7 @@ button:hover {
   margin-top: 20px;
 }
 .button-group {
+  font-family: 'Comic Sans MS';
   display: flex;
   flex-direction: column;  /* Alinea los botones en columnas */ 
   justify-content: center; /* Centra los botones horizontalmente */

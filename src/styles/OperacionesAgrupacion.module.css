@@ -2,7 +2,7 @@
 body {
    
     font-family: 'Comic Sans MS', cursive, sans-serif;
-    background: linear-gradient(to bottom, #2772eb, #49f073);
+    background: linear-gradient(to bottom, #2772eb, #81ef9c);
     margin: 0;
     padding: 0;
 
@@ -11,7 +11,7 @@ body {
  
 /* Contenedor principal */
 .container {
-    background: linear-gradient(to bottom, #c8e6c5, #f7fbf8);
+    background: linear-gradient(to bottom, #fdfdce, #f5ffba);
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -47,7 +47,7 @@ body {
   h1 {
     font-size: 3.6rem !important;
     color: rgb(20, 19, 19) !important;
-    text-shadow: 2px 2px 10px #7a5262;
+    text-shadow: 2px 2px 1px #7a5262;
     margin-bottom: 30px;
   }
   
@@ -133,7 +133,7 @@ body {
   
   .paso p {
     font-size: 1.25rem;
-    color: #ff6600;
+    color: #333;
     text-align: center !important;
   }
   

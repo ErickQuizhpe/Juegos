@@ -1,118 +1,124 @@
 /* Fondo de la página para escoger suma, resta, division, multiplicacion */
 body {
-    background: linear-gradient(to bottom right, #1e3c72, #2a5298);
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    color: #fff;
-    margin: 0;
-    padding: 0;
+  background: linear-gradient(to bottom right, #1e3c72, #2a5298);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  /* Ajusta la imagen para cubrir todo el fondo */
+  background-repeat: no-repeat;
+  /* Evita que la imagen se repita */
+  background-position: center;
+  /* Centra la imagen */
+}
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Contenedor principal */
+.games-page {
+  text-align: center;
+  padding: 40px 30px;
+  border-radius: 25px;
+  background: linear-gradient(to bottom, #ffffff, #e0f7fa);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  animation: popIn 1s ease;
+  width: 90%;
+  max-width: 600px;
+  border: 4px solid #80deea;
+}
+
+/* Título */
+.games-page h1 {
+  font-size: 3.1rem !important;
+  margin-bottom: 20px;
+  color: #006064;
+  text-shadow: 0 0 10px #80deea, 0 0 15px #4dd0e1;
+  animation: fadeInGlow 2s infinite alternate;
+}
+
+/* Contenedor de botones */
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Botones */
+.button-container button {
+  background: linear-gradient(to right, #a0f1a4, #aed581);
+  border: none;
+  text-align: center;
+  border-radius: 15px;
+  padding: 12px 20px;
+  color: #004d40;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  flex: 1 1 calc(50% - 20px);
+  max-width: calc(50% - 20px);
+}
+
+.button-container button:hover {
+  background: linear-gradient(to right, #f6f933, hsl(63, 89%, 59%));
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.button-container button:active {
+  transform: scale(0.95);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de salir */
+.logout-button {
+  background: linear-gradient(to right, #4dd0e1, #26c6da);
+  color: #ffffff;
+  border: 2px solid #00acc1;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.logout-button:hover {
+  background: linear-gradient(to right, #063dd4, #061bb5);
+  transform: scale(1.05);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.logout-button:active {
+  transform: scale(0.9);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Animaciones */
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
   }
-  
-  /* Contenedor principal */
-  .games-page {
-    text-align: center;
-    padding: 40px 30px;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #ffffff, #e0f7fa);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-    animation: popIn 1s ease;
-    width: 90%;
-    max-width: 500px;
-    border: 4px solid #80deea;
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  /* Título */
-  .games-page h1 {
-    font-size: 3.1rem !important;
-    margin-bottom: 20px;
-    color: #006064;
-    text-shadow: 0 0 10px #80deea, 0 0 15px #4dd0e1;
-    animation: fadeInGlow 2s infinite alternate;
+}
+
+@keyframes fadeInGlow {
+  from {
+    text-shadow: 0 0 10px #80deea, 0 0 20px #4dd0e1;
   }
-  
-  /* Contenedor de botones */
-  .button-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    margin-bottom: 20px;
+
+  to {
+    text-shadow: 0 0 15px #4dd0e1, 0 0 25px #26c6da;
   }
-  
-  /* Botones */
-  .button-container button {
-    background: linear-gradient(to right, #a0f1a4, #aed581);
-    border: none;
-    text-align: center;
-    border-radius: 15px;
-    padding: 12px 20px;
-    color: #004d40;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
-    flex: 1 1 calc(50% - 20px);
-    max-width: calc(50% - 20px);
-  }
-  
-  .button-container button:hover {
-    background: linear-gradient(to right, #f6f933, hsl(63, 89%, 59%));
-    transform: translateY(-5px);
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
-  }
-  
-  .button-container button:active {
-    transform: scale(0.95);
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Botón de salir */
-  .logout-button {
-    background: linear-gradient(to right, #4dd0e1, #26c6da);
-    color: #ffffff;
-    border: 2px solid #00acc1;
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-size: 1.3rem;
-    cursor: pointer;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .logout-button:hover {
-    background: linear-gradient(to right, #063dd4, #061bb5);
-    transform: scale(1.05);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-  }
-  
-  .logout-button:active {
-    transform: scale(0.9);
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Animaciones */
-  @keyframes popIn {
-    0% {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fadeInGlow {
-    from {
-      text-shadow: 0 0 10px #80deea, 0 0 20px #4dd0e1;
-    }
-    to {
-      text-shadow: 0 0 15px #4dd0e1, 0 0 25px #26c6da;
-    }
-  }
-  
+}
