@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
+  padding: 10px;
 padding-top: 40px;
 padding-bottom: 10px;
   background-size: 300% 300%;
@@ -118,11 +119,11 @@ padding-bottom: 10px;
 
 /* Estilos para el resultado */
 .multiplicacion-disco-result {
-  margin-top: 10px;
+  margin-top: 30px;
   font-weight: bold;
   font-size: 1.5rem;
   color: #ffeb3b;
-  padding: 20px;
+  padding: 30px 10px;
   background: rgba(0, 0, 0, 0.7);
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
