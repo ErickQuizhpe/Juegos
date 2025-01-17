@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Suma.css";
 import SumaDisco from "./SumaDisco"; // Cambiado a SumaDisco
-import PruebaSuma from "./PruebaSuma"; // Componente ajustado para suma
+import PruebaSuma from "./PruebaSuma.js"; // Componente ajustado para suma
 
 function Sumas() {
   return (
