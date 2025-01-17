@@ -1,6 +1,6 @@
 /* General */
 body {
-    font-family:'Poppins', sans-serif; 
+    font-family:'Comic Sans MS'; 
     margin: 0;
     padding: 0;
     text-align: center;
@@ -167,6 +167,7 @@ button:hover {
   margin-top: 20px;
 }
 .button-group {
+  font-family: 'Comic Sans MS';
   display: flex;
   flex-direction: column;  /* Alinea los botones en columnas */ 
   justify-content: center; /* Centra los botones horizontalmente */
