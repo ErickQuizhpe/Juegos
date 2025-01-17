@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/global.css";
+// import "../styles/global.css";
 import unidades from "../assets/UNIDADES.png";
 import operaciones from "../assets/Image/OperacionAgruaoacion.jpg";
 
@@ -19,7 +19,7 @@ const HomePage = () => {
         >
           <img className="size-3" src={operaciones}
            alt="Operaciones" style={styles.icon} />
-          <p className="font-bold text-5xl">Operaciones con agrupaciones</p>
+          <p className="font-bold text-5xl">Operaciones Matemáticas</p>
         </div>
 
 

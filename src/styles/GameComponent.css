@@ -1,15 +1,13 @@
 /* General */
 body {
     font-family:'Poppins', sans-serif; 
-    background: linear-gradient(135deg, #ffe53b, #ff2525); 
     margin: 0;
     padding: 0;
     text-align: center;
     color: #030303f4;
     letter-spacing: 2px;
     animation: floatingBubbles 5s ease-in-out infinite;
-    background: radial-gradient(circle, #ff4081, #ffeb3b);
-    background-size: 150% 150%;
+  
   
   }
 /*animacion para el body*/
@@ -129,7 +127,7 @@ button {
 }
 
 button:hover {
-  background: linear-gradient(135deg, #e3890a, #f98f15); /* Inversión de gradiente */
+  background: linear-gradient(135deg, #ea9b1e, #f98f15); /* Inversión de gradiente */
   transform: scale(1.3); /* Efecto de zoom */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Más profundidad */
   font-weight: bolder;

@@ -1,8 +1,12 @@
 /* Fondo general */
 body {
-    background-color: #4992dc !important;
+   
     font-family: 'Comic Sans MS', cursive, sans-serif;
-  }
+    background: linear-gradient(to bottom, #2772eb, #49f073);
+    margin: 0;
+    padding: 0;
+
+}
   
  
 /* Contenedor principal */
@@ -107,7 +111,7 @@ body {
   
   .buttonStyle:hover {
     background-color: #a818e1;
-    transform: scale(1.1);
+    transform: scale(1.3);
   }
   
   .buttonStyle:active {
