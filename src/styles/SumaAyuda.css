@@ -16,10 +16,11 @@
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
   }
-  
+
   button:hover {
-    background-color: #45a049;
+    background-color: #94c9e9; /* Turquesa suave */
   }
+  
 
   .disco-container {
     display: flex;
