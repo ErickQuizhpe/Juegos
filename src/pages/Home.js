@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import unidades from "../assets/UNIDADES.png";
 import operaciones from "../assets/Image/operaciones.png";
 import "../styles/Home.css";
 import agrupacion from "../assets/Image/agrupacion.png";
