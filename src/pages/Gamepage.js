@@ -14,7 +14,7 @@ const GamesPage = () => {
   };
   return (
     <div className="games-page">
-      <h1>Selecciona una Actividad</h1>
+      <h1>Que operación deseas practicar?</h1>
       <div className="button-container">
         <button onClick={() => goToGame("addition")}>Suma</button>
         <button onClick={() => navigate("/MinusPage")}>Resta</button>
