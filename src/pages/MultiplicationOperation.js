@@ -7,7 +7,7 @@ import "../styles/MultiplicationOperation.css";
  * It manages user input for two numbers, calculates the correct multiplication result,
  * and validates the user's answer. The component provides feedback on correctness,
  * supports multiple exercises, and includes UI elements for user interaction.
- * 
+ *
  * State Variables:
  * - feedback: Stores feedback messages for the user.
  * - exerciseCount: Tracks the number of exercises completed.
@@ -18,7 +18,7 @@ import "../styles/MultiplicationOperation.css";
  * - carry: Manages carry digits for calculations.
  * - partialResults: Stores partial results for display.
  * - operationStarted: Flags whether the operation has begun.
- * 
+ *
  * Functions:
  * - calculateCorrectAnswer: Computes the correct result of the multiplication.
  * - handleCarryChange: Updates the carry digits based on user input.
@@ -39,10 +39,10 @@ const MultiplicationOperation = () => {
   const [showCompletionMessage, setShowCompletionMessage] = useState(false);
 
   // Genera la tabla para ingresar la multiplicación
-  const [num1, setNum1] = useState(["", "", "", "", "", "", "", ""]);
-  const [num2, setNum2] = useState(["X", "", "", "", "", "", "", ""]);
-  const [userAnswer, setUserAnswer] = useState(Array(8).fill(""));
-  const [carry, setCarry] = useState(Array(8).fill(""));
+  const [num1, setNum1] = useState(["", "", "", "", "", "", ""]);
+  const [num2, setNum2] = useState(["", "", "", "", "", ""]);
+  const [userAnswer, setUserAnswer] = useState(Array(7).fill(""));
+  const [carry, setCarry] = useState(Array(7).fill(""));
   const [partialResults, setPartialResults] = useState([]); // Nueva tabla para los resultados parciales
   const [operationStarted, setOperationStarted] = useState(false); // Estado para controlar si la operación ha comenzado
 
@@ -74,7 +74,7 @@ const MultiplicationOperation = () => {
 
   // Función para limpiar la fila de acarreo
   const handleClearCarry = () => {
-    setCarry(Array(8).fill("")); // Restablece la fila de acarreo a valores vacíos
+    setCarry(Array(7).fill("")); // Restablece la fila de acarreo a valores vacíos
   };
 
   // Genera la tabla de resultados parciales
@@ -84,7 +84,7 @@ const MultiplicationOperation = () => {
     if (digitsInNum2 > 1) {
       const initialTable = Array(digitsInNum2)
         .fill(0)
-        .map(() => Array(8).fill("")); // Tabla vacía con filas = cifras de num2, columnas = 10
+        .map(() => Array(7).fill("")); // Tabla vacía con filas = cifras de num2, columnas = 10
       setPartialResults(initialTable);
     } else {
       setPartialResults([]); // No genera resultados parciales si num2 tiene solo una cifra válida
@@ -161,10 +161,10 @@ const MultiplicationOperation = () => {
 
   // Maneja la acción de limpiar todo
   const handleClear = () => {
-    setNum1(["", "", "", "", "", "", "", ""]);
-    setNum2(["X", "", "", "", "", "", "", ""]);
-    setUserAnswer(Array(8).fill(""));
-    setCarry(Array(8).fill(""));
+    setNum1(["", "", "", "", "", "", ""]);
+    setNum2(["", "", "", "", "", ""]);
+    setUserAnswer(Array(7).fill(""));
+    setCarry(Array(7).fill(""));
     setPartialResults([]);
     setOperationStarted(false);
     setFeedback("");
@@ -177,7 +177,6 @@ const MultiplicationOperation = () => {
         <table className="operation-table carry_row">
           <thead>
             <tr>
-              <th></th>
               <th></th>
               <th>Cm</th>
               <th>Dm</th>
@@ -194,6 +193,9 @@ const MultiplicationOperation = () => {
                   <input
                     type="text"
                     maxLength="1"
+                    placeholder={
+                      ["", "ll", "e", "v", "a", "d", "a", "s"][index]
+                    }
                     value={digit}
                     onChange={(e) => handleCarryChange(index, e.target.value)}
                   />
@@ -215,6 +217,8 @@ const MultiplicationOperation = () => {
               ))}
             </tr>
             <tr>
+              <td className="multiplication-sign">x</td>{" "}
+              {/* Agregamos una celda con el signo */}
               {num2.map((digit, index) => (
                 <td key={index}>
                   <input
@@ -239,7 +243,7 @@ const MultiplicationOperation = () => {
           {num2.filter((digit) => /^\d$/.test(digit)).length > 1 && (
             <tr>
               <td colSpan="7" className="result-line">
-              ------------------------------------------------------------------------
+                ------------------------------------------------------------------------
               </td>
             </tr>
           )}
@@ -279,7 +283,7 @@ const MultiplicationOperation = () => {
           {/* Línea encima de la tabla de resultados finales */}
           <tr>
             <td colSpan="7" className="result-line">
-            ------------------------------------------------------------------------
+              ------------------------------------------------------------------------
             </td>
           </tr>
 

@@ -19,7 +19,7 @@ const GamesPage = () => {
       <div className="button-container">
         <button onClick={() => navigate("/AdditionPage")}>Suma</button>
         <button onClick={() => navigate("/MinusPage")}>Resta</button>
-        <button onClick={() => goToGame("division")}>División</button>
+        <button onClick={() => navigate("/DivisionPage")}>División</button>
         <button onClick={() => navigate("/Multiplicaciones")}>
           Multiplicación
         </button>

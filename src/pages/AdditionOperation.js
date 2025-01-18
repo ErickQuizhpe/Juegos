@@ -113,7 +113,7 @@ const SumOperation = () => {
     <div className="game-component">
       
       <div>
-        <label htmlFor="termCount">Número de términos:</label>
+        <label htmlFor="termCount">¿Cuantos números deseas sumar?:</label>
         <input className="term-number"
           type="number"
           id="termCount"
@@ -154,10 +154,11 @@ const SumOperation = () => {
                       />
                     </td>
                   ))}
+
                 </tr>
                 {terms.map((term, termIndex) => (
                   <tr key={termIndex}>
-                    <td>{termIndex === 1 ? "+" : ""}</td>
+                    <td className="operation-symbol">{termIndex === 1 ? " + " : ""}</td>
                     {term.map((digit, digitIndex) => (
                       <td key={digitIndex}>
                         <input

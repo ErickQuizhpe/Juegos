@@ -8,10 +8,10 @@ const SubtractionOperation = () => {
   const [exerciseCount, setExerciseCount] = useState(0);
   const [showCompletionMessage, setShowCompletionMessage] = useState(false);
 
-  const [num1, setNum1] = useState(["", "", "", "", "", "", "", ""]);
-  const [num2, setNum2] = useState(["—", "", "", "", "", "", "", ""]);
-  const [userAnswer, setUserAnswer] = useState(Array(8).fill(""));
-  const [carry, setCarry] = useState(Array(8).fill(""));
+  const [num1, setNum1] = useState(["", "", "", "", "", "", ""]);
+  const [num2, setNum2] = useState(["", "", "", "", "", ""]);
+  const [userAnswer, setUserAnswer] = useState(Array(7).fill(""));
+  const [carry, setCarry] = useState(Array(7).fill(""));
   const [operationStarted, setOperationStarted] = useState(false);
   const [showResultLine, setShowResultLine] = useState(false); // Estado para la línea de resultado
 
@@ -60,8 +60,8 @@ const SubtractionOperation = () => {
     }
   
     const correctAnswer = calculateCorrectAnswer();
-    const correctAnswerStr = correctAnswer.toString().padStart(7, ""); // Aseguramos que tenga al menos 7 dígitos
-    const userAnswerStr = userAnswer.join("").padStart(7, ""); // Rellenamos con ceros si es necesario
+    const correctAnswerStr = correctAnswer.toString().padStart(7, "0"); // Aseguramos que tenga al menos 7 dígitos
+    const userAnswerStr = userAnswer.join("").padStart(7, "0"); // Rellenamos con ceros si es necesario
   
     if (userAnswerStr === correctAnswerStr) {
       setFeedback("¡Correcto! 🎉");
@@ -79,7 +79,7 @@ const SubtractionOperation = () => {
     const isNum2Valid = num2.some((digit) => /^\d$/.test(digit));
 
     if (isNum1Valid && isNum2Valid) {
-      setCarry(Array(8).fill("")); 
+      setCarry(Array(7).fill("")); 
       setOperationStarted(true);
       setFeedback("");
       setShowResultLine(true); // Mostrar la línea cuando se inicie la operación
@@ -89,10 +89,10 @@ const SubtractionOperation = () => {
   };
 
   const handleClear = () => {
-    setNum1(["", "", "", "", "", "", "", ""]);
-    setNum2(["—", "", "", "", "", "", "", ""]);
-    setUserAnswer(Array(8).fill(""));
-    setCarry(Array(8).fill(""));
+    setNum1(["", "", "", "", "", "", ""]);
+    setNum2(["", "", "", "", "", ""]);
+    setUserAnswer(Array(7).fill(""));
+    setCarry(Array(7).fill(""));
     setOperationStarted(false);
     setShowResultLine(false); // Ocultar la línea cuando se reinicie
     setFeedback("");
@@ -105,7 +105,7 @@ const SubtractionOperation = () => {
         <table className="operation-table carry_row">
           <thead>
             <tr>
-              <th></th>
+            
               <th></th>
               <th>Cm</th>
               <th>Dm</th>
@@ -124,7 +124,7 @@ const SubtractionOperation = () => {
                     maxLength="1"
                     value={digit}
                     onChange={(e) => handleCarryChange(index, e.target.value)}
-                    placeholder={["", "ll", "e", "v", "a", "d", "a","s"][index]} // Placeholder con las letras de "llevada"
+                    placeholder={["ll", "e", "v", "a", "d", "a","s"][index]} // Placeholder con las letras de "llevada"
                   />
                 </td>
               ))}
@@ -144,6 +144,8 @@ const SubtractionOperation = () => {
               ))}
             </tr>
             <tr>
+              <td className="multiplication-sign">—</td>{" "}
+              {/* Agregamos una celda con el signo */}
               {num2.map((digit, index) => (
                 <td key={index}>
                   <input

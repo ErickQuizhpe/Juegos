@@ -8,6 +8,7 @@ import Multiplicaciones from "./pages/MultiplicationPage";
 import OperacionesAgrupacion from "./pages/OperacionesAgrupacion";
 import MinusPage from "./pages/MinusPage";
 import AdditionPage from "./pages/AdditionPage";
+import DivisionPage from "./pages/DivisionPage";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           element={<OperacionesAgrupacion />}
         />
         <Route path="/MinusPage" element={<MinusPage />}></Route>
+        <Route path="/DivisionPage" element={<DivisionPage />}></Route>
         <Route path="/AdditionPage" element={<AdditionPage />}></Route>
       </Routes>
     </Router>

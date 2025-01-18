@@ -13,7 +13,9 @@
     letter-spacing: normal;
     
   }
-  
+  operation-symbol{
+    padding: 0px 20px;
+  }
   .result-table {
     padding: 0px 10px !important;
   }
