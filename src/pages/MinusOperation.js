@@ -60,19 +60,21 @@ const SubtractionOperation = () => {
     }
   
     const correctAnswer = calculateCorrectAnswer();
-    const correctAnswerStr = correctAnswer.toString().padStart(7, "0"); // Aseguramos que tenga al menos 7 dígitos
-    const userAnswerStr = userAnswer.join("").padStart(7, "0"); // Rellenamos con ceros si es necesario
+    const userAnswerValue = parseInt(userAnswer.join(""), 10) || 0;
   
-    if (userAnswerStr === correctAnswerStr) {
+    if (userAnswerValue === correctAnswer) {
       setFeedback("¡Correcto! 🎉");
       setExerciseCount(exerciseCount + 1);
       if (exerciseCount >= 100) {
         setShowCompletionMessage(true);
       }
     } else {
-      setFeedback(`Incorrecto. La respuesta correcta es ${correctAnswerStr}.`);
+      setFeedback(
+        `Incorrecto. La respuesta correcta es ${correctAnswer}.`
+      );
     }
   };
+  
   
   const handleStartOperation = () => {
     const isNum1Valid = num1.some((digit) => /^\d$/.test(digit));

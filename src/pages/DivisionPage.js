@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/MultiplicationPage.css";
 import AdditionOperacion from "./AdditionOperation";
-import AdditionTable from "./AdditionTable";
+import DivisionTable from "./DivisionTable";
 
 function AdditionPage() {
   return (
@@ -43,7 +43,7 @@ function AdditionPage() {
           {/* Aside Section */}
           <aside className="aside bg-pink-200 rounded-md shadow-lg p-6">
             <h2 className="text-3xl font-semibold mb-3">Ayuda para sumar</h2>
-            <AdditionTable />
+            <DivisionTable />
           </aside>
 
           <footer className="footer bg-gray-800 text-white py-4 text-center">

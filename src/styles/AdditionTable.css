@@ -88,14 +88,15 @@
   /* Estilo para el resultado */
   .suma-disco-result {
     font-size: 1.5rem;
-    color: #1f231f;
     font-weight: bold;
-    margin-top: 25px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    background-color: #f9b9bb;
-    padding: 12px;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    color: #0b0b0b;
+    background-color: #ed9c9c;
+    border: 2px solid #c3e6cb;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: bounce 1.5s infinite;
   }
   
   /* Animación y estilo de las filas de la tabla de suma */

@@ -1,38 +1,34 @@
 import React, { useState } from "react";
-import "../styles/AdditionTable.css";
+import "../styles/DivisionTable.css"; 
 
-function PlusTable() {
+function DivisionTable() {
   const [numero1, setNumero1] = useState(1);
   const [numero2, setNumero2] = useState(1);
   const [resultado, setResultado] = useState(null);
 
   const handleCalcular = () => {
-    setResultado(numero1 + numero2);
-  };
-
-  // Generar la tabla de suma para el número 1
-  const generarTablaSuma = (numero) => {
-    return [...Array(10).keys()].map((i) => (
-      <div key={i} className="plus-table-row">
-        {numero} + {i + 1} = {numero + i + 1}
-      </div>
-    ));
+    if (numero2 === 0) {
+      setResultado("No se puede dividir entre 0");
+    } else {
+      const division = numero1 / numero2;
+      setResultado(Number.isInteger(division) ? division : division.toFixed(2));
+    }
   };
 
   return (
-    <div className="suma-disco-container">
+    <div className="division-disco-container">
       {/* Selección de número 1 */}
-      <div className="suma-disco-item">
-        <label htmlFor="numero1" className="suma-disco-label">
+      <div className="division-disco-item">
+        <label htmlFor="numero1" className="division-disco-label">
           Número 1:
         </label>
         <select
-          className="suma-disco-select numero1-select"
+          className="division-disco-select numero1-select"
           id="numero1"
           value={numero1}
           onChange={(e) => setNumero1(Number(e.target.value))}
         >
-          {[...Array(12).keys()].map((i) => (
+          {[...Array(13).keys()].map((i) => (
             <option key={i} value={i}>
               {i}
             </option>
@@ -41,17 +37,17 @@ function PlusTable() {
       </div>
 
       {/* Selección de número 2 */}
-      <div className="suma-disco-item">
-        <label htmlFor="numero2" className="suma-disco-label">
+      <div className="division-disco-item">
+        <label htmlFor="numero2" className="division-disco-label">
           Número 2:
         </label>
         <select
-          className="suma-disco-select numero2-select"
+          className="division-disco-select numero2-select"
           id="numero2"
           value={numero2}
           onChange={(e) => setNumero2(Number(e.target.value))}
         >
-          {[...Array(12).keys()].map((i) => (
+          {[...Array(13).keys()].map((i) => (
             <option key={i} value={i}>
               {i}
             </option>
@@ -60,27 +56,25 @@ function PlusTable() {
       </div>
 
       {/* Botón para calcular */}
-      <div className="suma-disco-item">
+      <div className="division-disco-item">
         <button
           onClick={handleCalcular}
-          className="suma-disco-button"
+          className="division-disco-button"
         >
-          ¡Sumar!
+          Dividir!
         </button>
       </div>
 
       {/* Cuadro de resultado */}
       {resultado !== null && (
-        <div className="suma-disco-item">
-          <h3 className="suma-disco-result">
-            El resultado es: {resultado}
+        <div className="division-disco-item">
+          <h3 className="division-disco-result">
+            {typeof resultado === "string" ? resultado : `El resultado es: ${resultado}`}
           </h3>
         </div>
       )}
-
-  
     </div>
   );
 }
 
-export default PlusTable;
+export default DivisionTable;

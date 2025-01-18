@@ -24,8 +24,8 @@ function SubtractionTable() {
           onChange={(e) => setNumero1(Number(e.target.value))}
         >
           {[...Array(12).keys()].map((i) => (
-            <option key={i} value={i + 1}>
-              {i + 1}
+            <option key={i} value={i}>
+              {i}
             </option>
           ))}
         </select>
@@ -43,8 +43,8 @@ function SubtractionTable() {
           onChange={(e) => setNumero2(Number(e.target.value))}
         >
           {[...Array(12).keys()].map((i) => (
-            <option key={i} value={i + 1}>
-              {i + 1}
+            <option key={i} value={i}>
+              {i}
             </option>
           ))}
         </select>
