@@ -94,9 +94,9 @@ body {
 }
 
 /*color para la fila de acarreo*/
-.carry_row tr:nth-child(1) {
+/* .carry_row tr:nth-child(1) {
   background-color: #f975da;
-}
+} */
 
 .operation-table input {
   font-size: 25px;

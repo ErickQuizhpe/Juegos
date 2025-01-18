@@ -148,7 +148,7 @@ const SumOperation = () => {
                       <input
                         type="text"
                         maxLength="1"
-                        placeholder={["l", "l", "e", "v", "a", "d", "a"][index]}
+                        placeholder={["ll", "e", "v", "a", "d", "a","s"][index]}
                         value={digit}
                         onChange={(e) => handleCarryChange(index, e.target.value)}
                       />

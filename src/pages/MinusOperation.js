@@ -9,7 +9,7 @@ const SubtractionOperation = () => {
   const [showCompletionMessage, setShowCompletionMessage] = useState(false);
 
   const [num1, setNum1] = useState(["", "", "", "", "", "", "", ""]);
-  const [num2, setNum2] = useState(["-", "", "", "", "", "", "", ""]);
+  const [num2, setNum2] = useState(["—", "", "", "", "", "", "", ""]);
   const [userAnswer, setUserAnswer] = useState(Array(8).fill(""));
   const [carry, setCarry] = useState(Array(8).fill(""));
   const [operationStarted, setOperationStarted] = useState(false);
@@ -79,7 +79,7 @@ const SubtractionOperation = () => {
     const isNum2Valid = num2.some((digit) => /^\d$/.test(digit));
 
     if (isNum1Valid && isNum2Valid) {
-      setCarry(Array(8).fill(""));
+      setCarry(Array(8).fill("")); 
       setOperationStarted(true);
       setFeedback("");
       setShowResultLine(true); // Mostrar la línea cuando se inicie la operación
@@ -90,7 +90,7 @@ const SubtractionOperation = () => {
 
   const handleClear = () => {
     setNum1(["", "", "", "", "", "", "", ""]);
-    setNum2(["-", "", "", "", "", "", "", ""]);
+    setNum2(["—", "", "", "", "", "", "", ""]);
     setUserAnswer(Array(8).fill(""));
     setCarry(Array(8).fill(""));
     setOperationStarted(false);
@@ -124,6 +124,7 @@ const SubtractionOperation = () => {
                     maxLength="1"
                     value={digit}
                     onChange={(e) => handleCarryChange(index, e.target.value)}
+                    placeholder={["", "ll", "e", "v", "a", "d", "a","s"][index]} // Placeholder con las letras de "llevada"
                   />
                 </td>
               ))}
