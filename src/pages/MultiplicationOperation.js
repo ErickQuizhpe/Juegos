@@ -239,7 +239,7 @@ const MultiplicationOperation = () => {
           {num2.filter((digit) => /^\d$/.test(digit)).length > 1 && (
             <tr>
               <td colSpan="7" className="result-line">
-                ------------------------------------------------------------------------------------------------------
+              ------------------------------------------------------------------------
               </td>
             </tr>
           )}
@@ -279,13 +279,13 @@ const MultiplicationOperation = () => {
           {/* Línea encima de la tabla de resultados finales */}
           <tr>
             <td colSpan="7" className="result-line">
-              ------------------------------------------------------------------------------------------------------
+            ------------------------------------------------------------------------
             </td>
           </tr>
 
           {/* Tabla para la respuesta del usuario */}
           <div className="table-container">
-            <table className="operation-table">
+            <table className="operation-table result-table">
               <tbody>
                 <tr>
                   {userAnswer.map((digit, index) => (

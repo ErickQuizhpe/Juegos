@@ -1,15 +1,15 @@
 import React from "react";
 import "../styles/MultiplicationPage.css";
-import MultiplicacionDisco from "./MultiplicationTable";
-import MultiplicacionOperacion from "./MultiplicationOperation";
+import AdditionOperacion from "./AdditionOperation";
+import MinusTable from "./MinusTable";
 
-function MultiplicationPage() {
+function AdditionPage() {
   return (
     <div>
       <div className="bg-gray-100 min-h-screen">
         {/* Header */}
         <header className="header bg-blue-600 text-white py-3 text-center shadow-md">
-          <h1 className="text-6xl font-bold">Multiplicación de Números</h1>
+          <h1 className="text-6xl font-bold">Suma de Números</h1>
         </header>
 
         <div className="grid">
@@ -35,15 +35,15 @@ function MultiplicationPage() {
           {/* Main Content */}
           <main className="main">
             <h2 className="text-2xl font-bold mb-4">
-              Resuelve la multiplicación a continuación
+              Resuelve la suma a continuación
             </h2>
-            <div className="cuadricula">{<MultiplicacionOperacion />}</div>
+            <div className="cuadricula">{AdditionOperacion()}</div>
           </main>
 
           {/* Aside Section */}
           <aside className="aside bg-pink-200 rounded-md shadow-lg p-6">
-            <h2 className="text-3xl font-semibold mb-3">Ayuda para Multiplicar</h2>
-            <MultiplicacionDisco />
+            <h2 className="text-3xl font-semibold mb-3">Ayuda para sumar</h2>
+            <MinusTable />
           </aside>
 
           <footer className="footer bg-gray-800 text-white py-4 text-center">
@@ -55,4 +55,4 @@ function MultiplicationPage() {
   );
 }
 
-export default MultiplicationPage;
+export default AdditionPage;

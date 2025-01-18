@@ -7,6 +7,7 @@ import IdentificacionUnidadesJuego from "./componets/IdentificacionUnidadesJuego
 import Multiplicaciones from "./pages/MultiplicationPage";
 import OperacionesAgrupacion from "./pages/OperacionesAgrupacion";
 import MinusPage from "./pages/MinusPage";
+import AdditionPage from "./pages/AdditionPage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           element={<OperacionesAgrupacion />}
         />
         <Route path="/MinusPage" element={<MinusPage />}></Route>
+        <Route path="/AdditionPage" element={<AdditionPage />}></Route>
       </Routes>
     </Router>
   );

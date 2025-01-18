@@ -148,8 +148,12 @@ body {
   line-height: 0.5px;
   font-weight: 900;
   text-align: center;
+  padding: 0px 15px;
 }
 
+.operation-table-custom{
+  padding: 0px 10px;
+}
 /* Animaciones */
 @keyframes move-line {
   from {
