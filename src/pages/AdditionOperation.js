@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "../styles/MultiplicationOperation.css";
 import "../styles/AdditionOperation.css";
 
-
 const SumOperation = () => {
   const navigate = useNavigate();
   const [feedback, setFeedback] = useState("");
@@ -149,6 +148,7 @@ const SumOperation = () => {
                       <input
                         type="text"
                         maxLength="1"
+                        placeholder={["l", "l", "e", "v", "a", "d", "a"][index]}
                         value={digit}
                         onChange={(e) => handleCarryChange(index, e.target.value)}
                       />
@@ -178,16 +178,16 @@ const SumOperation = () => {
 
           {/* Línea divisoria entre tablas */}
           {showResultLine && (
-           <tr>
-           <td colSpan="7" className="result-line">
-             ------------------------------------------------------------------------
-           </td>
-         </tr>
+            <tr>
+              <td colSpan="7" className="result-line">
+                ------------------------------------------------------------------------
+              </td>
+            </tr>
           )}
 
           {/* Tabla de ingreso de resultados */}
           {operationStarted && (
-            <div className="table-container ">
+            <div className="table-container term-num">
               <table className="operation-table result-table">
                 <tbody>
                   <tr>
