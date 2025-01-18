@@ -34,7 +34,7 @@ function MinusPage() {
           {/* Main Content */}
           <main className="main">
             <h2 className="text-2xl font-bold mb-4">
-              Resuelve el resta a continuación
+              Resuelve la siguiente resta:
             </h2>
             <div className="cuadricula">{MinusOperation()}</div>
           </main>

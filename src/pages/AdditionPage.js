@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/MultiplicationPage.css";
 import AdditionOperacion from "./AdditionOperation";
-import MinusTable from "./MinusTable";
+import AdditionTable from "./AdditionTable";
 
 function AdditionPage() {
   return (
@@ -35,7 +35,7 @@ function AdditionPage() {
           {/* Main Content */}
           <main className="main">
             <h2 className="text-2xl font-bold mb-4">
-              Resuelve la suma a continuación
+              Resuelve la siguiente suma:
             </h2>
             <div className="cuadricula">{AdditionOperacion()}</div>
           </main>
@@ -43,7 +43,7 @@ function AdditionPage() {
           {/* Aside Section */}
           <aside className="aside bg-pink-200 rounded-md shadow-lg p-6">
             <h2 className="text-3xl font-semibold mb-3">Ayuda para sumar</h2>
-            <MinusTable />
+            <AdditionTable />
           </aside>
 
           <footer className="footer bg-gray-800 text-white py-4 text-center">

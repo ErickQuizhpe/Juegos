@@ -35,7 +35,7 @@ function MultiplicationPage() {
           {/* Main Content */}
           <main className="main">
             <h2 className="text-2xl font-bold mb-4">
-              Resuelve la multiplicación a continuación
+              Resuelve la siguiente multiplicación:
             </h2>
             <div className="cuadricula">{<MultiplicacionOperacion />}</div>
           </main>
