@@ -1,0 +1,84 @@
+.division-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .tables-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas */
+    gap: 0px;
+    justify-items: center;
+    border: 2px solid #bad8fc;
+    padding: 20px;
+    background-color: rgb(208, 220, 255);
+    border-radius: 30px;
+  }
+  
+  .table-container {
+    display: inline-block;
+    margin: 1px;
+    
+  }
+  
+  .operation-table {
+    width: 70%;
+    border-collapse: collapse;
+  }
+  
+  .operation-table th,
+  .operation-table td {
+    /* border: 1px solid #ccc; */
+    padding:7px;
+    text-align: center;
+  }
+  
+  .operation-table input {
+    width: 65px;
+    text-align: center;
+    border: none;
+    font-size: 1.7rem !important;
+  }
+  
+  .button-group {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  button {
+    padding: 10px;
+    font-size: 16px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+
+.divisor{
+    border-bottom: 8px solid #4a4747 !important;
+    border-left: 8px solid #434141 !important;
+    background-color: rgb(206, 241, 243);
+    
+}
+
+.cociente{
+background-color: bisque;}
+
+.dividendo{
+    background-color: rgb(242, 255, 178);
+}
+
+.resultados-parciales{
+    background-color: rgb(183, 197, 243);
+}
+
+h1{
+    margin-top: 2px !important;
+
+}
+
+.vertical-text {
+  writing-mode: vertical-rl; /* Esto coloca el texto en dirección vertical */
+  text-align: center; /* Centra el texto verticalmente */
+  transform: rotate(180deg); /* Rotar el texto si es necesario */
+}

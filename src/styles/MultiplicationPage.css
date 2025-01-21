@@ -83,7 +83,7 @@ body {
     flex-direction: column;
     align-items: stretch;
     justify-content: start;
-    background-color:#108cff;
+    background-color:#0d80ed;
     border-radius: 20px;
 }
 
@@ -182,7 +182,7 @@ nav {
 
     0%,
     100% {
-        text-shadow: 0 0 10px #ff6f61, 0 0 20px #ffcc33, 0 0 30px #ff6f61;
+        text-shadow: 0 0 10px #ff6f61, 0 0 20px #f1ef5f, 0 0 30px #ff6f61;
     }
 
     50% {
@@ -192,7 +192,7 @@ nav {
 
 /* Estilo general del nav */
 .nav {
-    background-color: #ffd700;
+    background-color: #f0ff4a;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
