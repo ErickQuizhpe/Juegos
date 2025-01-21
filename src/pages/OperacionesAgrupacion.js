@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/OperacionesAgrupacion.module.css";
 
 const OperacionInput = ({ onOperacionSubmit, onLimpiar }) => {
   const [operacion, setOperacion] = useState("");
 
-  // Función para validar la operación ingresada
   const handleInputChange = (e) => {
     const value = e.target.value;
-
-    // Expresión regular para permitir solo números, paréntesis, corchetes y operadores matemáticos
     const regex = /^[0-9+\-*/(){}\[\] ]*$/;
 
     if (regex.test(value)) {
@@ -34,7 +31,7 @@ const OperacionInput = ({ onOperacionSubmit, onLimpiar }) => {
         className={styles.operacionInput}
         type="text"
         value={operacion}
-        onChange={handleInputChange} // Usamos la nueva función para validar
+        onChange={handleInputChange}
         placeholder="Ingresa una Operación ✍ "
       />
       <button className={styles.buttonStyle} type="submit">
@@ -67,7 +64,7 @@ const Paso = ({ paso, pregunta, respuestaCorrecta, onRespuestaSubmit }) => {
         ? "¡Correcto!"
         : "Incorrecto, intenta nuevamente.";
     setFeedback(feedbackMessage);
-    onRespuestaSubmit(paso, resultado);
+    onRespuestaSubmit(paso, resultado === respuestaCorrecta);
   };
 
   const evaluarRespuesta = (respuesta) => {
@@ -109,35 +106,42 @@ const Paso = ({ paso, pregunta, respuestaCorrecta, onRespuestaSubmit }) => {
 const Juego = () => {
   const [operacion, setOperacion] = useState("");
   const [pasos, setPasos] = useState([]);
+  const [todosLosPasosCorrectos, setTodosLosPasosCorrectos] = useState(false);
+  const [operacionFinalCorrecta, setOperacionFinalCorrecta] = useState(false);
 
   const handleOperacionSubmit = (operacion) => {
     const operacionesDivididas = dividirOperacionEnPasos(operacion);
     setOperacion(operacion);
     setPasos(operacionesDivididas);
+    setTodosLosPasosCorrectos(false); // Reseteamos la verificación de pasos correctos
+    setOperacionFinalCorrecta(false); // Reseteamos el estado del resultado final
   };
 
-  const manejarRespuestaPaso = (paso, respuesta) => {
-    console.log(`Respuesta al paso ${paso}: ${respuesta}`);
+  const manejarRespuestaPaso = (paso, esCorrecto) => {
+    // Verificamos si todos los pasos son correctos
+    if (esCorrecto) {
+      // Verificar si todos los pasos han sido respondidos correctamente
+      const todosCorrectos = pasos.every((pasoData) => {
+        return pasoData.respuesta === pasoData.respuestaCorrecta;
+      });
+      setTodosLosPasosCorrectos(todosCorrectos);
+    }
   };
 
   const dividirOperacionEnPasos = (operacion) => {
-    // Expresiones regulares para buscar paréntesis, corchetes y llaves
     const regexAgrupaciones = /(\[.*?\]|\{.*?\}|\(.*?\))/g;
-
-    // Contamos cuántas agrupaciones existen
-    const cantidadAgrupaciones = (operacion.match(regexAgrupaciones) || []).length;
+    const cantidadAgrupaciones = (operacion.match(regexAgrupaciones) || [])
+      .length;
 
     const pasosGenerados = [];
     let operacionTemp = operacion;
 
-    // Procesamos cada agrupación
     for (let i = 1; i <= cantidadAgrupaciones; i++) {
       const agrupacion = operacionTemp.match(regexAgrupaciones)[0];
       const pregunta = `Resuelve la operación dentro de la agrupación: ${agrupacion}`;
-      
-      // Evaluamos el contenido de la agrupación eliminando las llaves, corchetes o paréntesis
-      const contenidoAgrupacion = agrupacion.slice(1, -1); 
-      const resultado = eval(contenidoAgrupacion);  // Evaluamos la expresión dentro de la agrupación
+
+      const contenidoAgrupacion = agrupacion.slice(1, -1);
+      const resultado = eval(contenidoAgrupacion);
 
       pasosGenerados.push({
         paso: i,
@@ -145,11 +149,9 @@ const Juego = () => {
         respuestaCorrecta: resultado,
       });
 
-      // Reemplazamos la agrupación con el resultado en la operación
       operacionTemp = operacionTemp.replace(agrupacion, resultado);
     }
 
-    // Añadimos el paso final con la operación resuelta
     pasosGenerados.push({
       paso: cantidadAgrupaciones + 1,
       pregunta: `Resuelve la operación completa: ${operacionTemp}`,
@@ -162,7 +164,24 @@ const Juego = () => {
   const handleLimpiar = () => {
     setOperacion("");
     setPasos([]);
+    setTodosLosPasosCorrectos(false);
+    setOperacionFinalCorrecta(false);
   };
+
+  const verificarOperacionFinal = () => {
+    const resultadoFinal = eval(operacion);
+    const resultadoPasoFinal = pasos[pasos.length - 1].respuestaCorrecta;
+    if (resultadoFinal === resultadoPasoFinal) {
+      setOperacionFinalCorrecta(true);
+    }
+  };
+
+  // Llamar a verificarOperacionFinal después de enviar todas las respuestas
+  React.useEffect(() => {
+    if (todosLosPasosCorrectos) {
+      verificarOperacionFinal();
+    }
+  }, [todosLosPasosCorrectos]);
 
   return (
     <div className={styles.container}>
@@ -185,6 +204,18 @@ const Juego = () => {
               onRespuestaSubmit={manejarRespuestaPaso}
             />
           ))}
+        </div>
+      )}
+
+      {/* Cuadro emergente con la operación y su resultado */}
+      {operacionFinalCorrecta && (
+        <div className={styles.finalMessage}>
+          <p className="text-green-500 font-bold">
+            ¡Felicidades! La operación es correcta: <br />
+            <span className="text-xl">
+              {operacion} = {eval(operacion)}
+            </span>
+          </p>
         </div>
       )}
     </div>
