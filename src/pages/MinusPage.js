@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/MultiplicationPage.css";
 import MinusTable from "./MinusTable";
 import MinusOperation from "./MinusOperation";
+import { Link } from "react-router-dom";
 function MinusPage() {
   return (
     <div>
@@ -17,16 +18,16 @@ function MinusPage() {
             <h2>Elige otra operación</h2>
             <ul>
               <li>
-                <a href="#">Sumas</a>
+                <Link to="/AdditionPage">Sumas</Link>
               </li>
               <li>
-                <a href="#">Restas</a>
+                <Link to="/MinusPage">Restas</Link>
               </li>
               <li>
-                <a href="#">Multiplicación</a>
+                <Link to="/Multiplicaciones">Multiplicación</Link>
               </li>
               <li>
-                <a href="#">División</a>
+                <Link to="/Division">División</Link>
               </li>
             </ul>
           </nav>
