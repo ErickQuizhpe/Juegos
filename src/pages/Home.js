@@ -50,7 +50,7 @@ const HomePage = () => {
         {/* Opción 1: Operaciones Matemáticas */}
         <div
           className="menu-option"
-          onClick={() => navigate("/games?type=operations")}
+          onClick={() => navigate("/games")}
         >
           <img className="menu-icon" src={operaciones} alt="Operaciones" />
           <p className="menu-text">Operaciones Matemáticas</p>

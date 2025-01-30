@@ -6,9 +6,6 @@ import "../styles/GamePage.css";
 const GamesPage = () => {
   const navigate = useNavigate();
 
-  const goToGame = (operation) => {
-    navigate(`/game/${operation}`);
-  };
   const handleLogout = () => {
     // Redirigir a la página principal (o cualquier otra página de salida)
     navigate("/");
@@ -20,9 +17,7 @@ const GamesPage = () => {
         <button onClick={() => navigate("/AdditionPage")}>Suma</button>
         <button onClick={() => navigate("/MinusPage")}>Resta</button>
         <button onClick={() => navigate("/DivisionPage")}>División</button>
-        <button onClick={() => navigate("/Multiplicaciones")}>
-          Multiplicación
-        </button>
+        <button onClick={() => navigate("/Multiplicaciones")}> Multiplicación</button>
       </div>
       <button className="logout-button" onClick={handleLogout}>
         Salir
