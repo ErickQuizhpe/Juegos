@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/OperacionesAgrupacion.module.css";
+import { useNavigate } from "react-router-dom";
 
 const OperacionInput = ({ onOperacionSubmit, onLimpiar }) => {
   const [operacion, setOperacion] = useState("");
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -43,6 +45,13 @@ const OperacionInput = ({ onOperacionSubmit, onLimpiar }) => {
         onClick={handleClear}
       >
         Nueva Operación
+      </button>
+      <button
+        type="button"
+        className={styles.buttonStyle}
+        onClick={() => navigate("/")}
+      >
+        Salir
       </button>
     </form>
   );
