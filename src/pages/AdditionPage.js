@@ -25,7 +25,7 @@ function AdditionPage() {
                 <Link to="/MinusPage">Restas</Link>
               </li>
               <li>
-                <Link to="/MultiplicationPage">Multiplicación</Link>
+                <Link to="/Multiplicaciones">Multiplicación</Link>
               </li>
               <li>
                 <Link to="/DivisionPage">División</Link>

@@ -27,7 +27,7 @@ function MinusPage() {
                 <Link to="/Multiplicaciones">Multiplicación</Link>
               </li>
               <li>
-                <Link to="/Division">División</Link>
+                <Link to="/DivisionPage">División</Link>
               </li>
             </ul>
           </nav>
