@@ -20,7 +20,7 @@ const GamesPage = () => {
         <button onClick={() => navigate("/Multiplicaciones")}> Multiplicación</button>
       </div>
       <button className="logout-button" onClick={handleLogout}>
-        Salir
+        Volver al inicio
       </button>
     </div>
   );
