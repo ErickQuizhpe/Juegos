@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const OperacionInput = ({ onOperacionSubmit, onLimpiar }) => {
   const [operacion, setOperacion] = useState("");
+  const [error, setError] = useState(""); // Estado para manejar errores
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -12,16 +13,63 @@ const OperacionInput = ({ onOperacionSubmit, onLimpiar }) => {
 
     if (regex.test(value)) {
       setOperacion(value);
+      setError(""); // Limpiar errores al escribir correctamente
     }
+  };
+
+  // Función para validar signos de agrupación
+  const validarAgrupacionBalanceada = (operacion) => {
+    const stack = [];
+    const pares = { "(": ")", "[": "]", "{": "}" };
+
+    for (let char of operacion) {
+      if (pares[char]) {
+        stack.push(char); // Agregar apertura al stack
+      } else if (Object.values(pares).includes(char)) {
+        if (stack.length === 0 || pares[stack.pop()] !== char) {
+          return false; // Agrupación incorrecta
+        }
+      }
+    }
+    return stack.length === 0; // El stack debe estar vacío si está balanceado
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Validar si no contiene ningún signo de agrupación
+    const tieneAgrupacion = /[(){}\[\]]/.test(operacion);
+    if (!tieneAgrupacion) {
+      setError("Error: La operación debe incluir al menos un signo de agrupación.");
+      return;
+    }
+
+    const validarOperacionCompleta = (operacion) => {
+      const regex = /[+\-*/]$/;
+      return !regex.test(operacion); // Retorna falso si la operación termina con un operador
+    };
+    
+
+    // Validar si los signos de agrupación están balanceados
+    if (!validarAgrupacionBalanceada(operacion)) {
+      setError("Error: Los signos de agrupación no están correctamente cerrados.");
+      return;
+    }
+
+    // Validar si la operación termina con un operador
+    if (!validarOperacionCompleta(operacion)) {
+      setError("Error: La operación no puede terminar con un operador.");
+      return;
+    }
+
+    // Validación pasada, enviar operación
+    setError(""); // Limpiar cualquier mensaje de error previo
     onOperacionSubmit(operacion);
   };
 
   const handleClear = () => {
     setOperacion("");
+    setError(""); // Limpiar errores al limpiar
     if (onLimpiar) {
       onLimpiar();
     }
@@ -53,6 +101,7 @@ const OperacionInput = ({ onOperacionSubmit, onLimpiar }) => {
       >
         Salir
       </button>
+      {error && <p className={styles.incorrect}>{error}</p>}
     </form>
   );
 };
