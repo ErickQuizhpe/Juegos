@@ -1,0 +1,141 @@
+/* Fondo de la página para escoger suma, resta, division, multiplicacion */
+body {
+    background: linear-gradient(to bottom right, #1e3c72, #2a5298);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Contenedor principal */
+  .games-page {
+    text-align: center;
+    padding: 40px 30px;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #ffffff, #e0f7fa);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    animation: popIn 1s ease;
+    width: 90%;
+    max-width: 600px;
+    border: 4px solid #80deea;
+  }
+  
+  /* Título */
+  .games-page h1 {
+    font-size: 3.1rem !important;
+    margin-bottom: 20px;
+    color: #006064;
+    text-shadow: 0 0 10px #80deea, 0 0 15px #4dd0e1;
+    animation: fadeInGlow 2s infinite alternate;
+  }
+  
+  /* Contenedor de botones */
+  .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Botones */
+  .button-container button {
+    background: linear-gradient(to right, #a0f1a4, #aed581);
+    border: none;
+    text-align: center;
+    border-radius: 15px;
+    padding: 12px 20px;
+    color: #004d40;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+  
+  /* Estilos específicos para cada botón */
+  .button-container button:nth-child(1) {
+    background: linear-gradient(to right, #FFB3BA, #FFC8CD); /* Rosa pastel para Suma */
+    color: #d63447;
+  }
+  
+  .button-container button:nth-child(2) {
+    background: linear-gradient(to right, #BAFFC9, #D1FFD7); /* Verde pastel para Resta */
+    color: #2d6a4f;
+  }
+  
+  .button-container button:nth-child(3) {
+    background: linear-gradient(to right, #BAE1FF, #CCE8FF); /* Azul pastel para División */
+    color: #1e4d8c;
+  }
+  
+  .button-container button:nth-child(4) {
+    background: linear-gradient(to right, #FFFFBA, #FFFFD1); /* Amarillo pastel para Multiplicación */
+    color: #b7990d;
+  }
+  
+  .button-container button:hover {
+    filter: brightness(1.1);
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .button-container button:active {
+    transform: scale(0.95);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Botón de salir */
+  .logout-button {
+    background: linear-gradient(to right, #FFD1DC, #FFE2E6); /* Rosa claro */
+    color: #d63447;
+    border: 2px solid #FFB3BA;
+    margin-top: 20px;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .logout-button:hover {
+    background: linear-gradient(to right, #FFB3BA, #FFC8CD);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .logout-button:active {
+    transform: scale(0.9);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Animaciones */
+  @keyframes popIn {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInGlow {
+    from {
+      text-shadow: 0 0 10px #80deea, 0 0 20px #4dd0e1;
+    }
+    to {
+      text-shadow: 0 0 15px #4dd0e1, 0 0 25px #26c6da;
+    }
+  }

@@ -1,0 +1,142 @@
+:root {
+    --color-green-primary: #7ED957;    /* Verde brillante principal */
+    --color-green-light: #A8E6CF;      /* Verde menta claro */
+    --color-green-dark: #3D8361;       /* Verde oscuro */
+    --color-lime: #B8F1B0;             /* Lima complementario */
+    --color-cream: #E3F4F4;            /* Crema verdoso para fondos */
+    --color-forest: #1C6758;           /* Verde bosque para texto */
+    --shadow-soft: rgba(126, 217, 87, 0.2);
+}
+
+/* Estilos generales para la tabla de restas */
+.resta-disco-container {
+    background: linear-gradient(135deg, var(--color-green-light), var(--color-green-primary));
+    border-radius: 20px;
+    padding: 15px;
+    width: 210px;
+    margin: 0 auto;
+    box-shadow: 0 15px 30px var(--shadow-soft);
+    border: 3px solid var(--color-green-dark);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Animación para el fade-in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para cada ítem (selección de números, botones, etc.) */
+.resta-disco-item {
+    margin-bottom: 10px;
+    padding: 8px;
+    animation: slideIn 0.5s ease-in-out;
+    /* Animación de deslizamiento */
+}
+
+/* Animación para el slide-in */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Estilos para las etiquetas de los números */
+.resta-disco-label {
+    font-size: 1.6rem;
+    color: var(--color-forest);
+    font-weight: bold;
+    text-shadow: 2px 2px 4px var(--shadow-soft);
+    /* Efecto de sombra */
+    margin-bottom: 8px;
+}
+
+/* Estilos para los selectores de número */
+.resta-disco-select {
+    text-align: center;
+    background-color: var(--color-cream);
+    border: 2px solid var(--color-green-dark);
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 1.3rem;
+    width: 60px;
+    margin-top: 5px;
+    box-shadow: 0 4px 10px var(--shadow-soft);
+    transition: all 0.3s ease;
+}
+
+.resta-disco-select:focus {
+    border-color: var(--color-green-primary);
+    outline: none;
+    transform: scale(1.05);
+    /* Efecto de aumento al hacer foco */
+    box-shadow: 0 0 15px var(--shadow-soft);
+    /* Sombra brillante */
+}
+
+/* Estilos para el botón de calcular */
+.resta-disco-button {
+    background: linear-gradient(45deg, var(--color-green-dark), var(--color-green-primary));
+    color: white;
+    font-size: 1.5rem;
+    padding: 15px;
+    border-radius: 25px;
+    border: none;
+    width: 180px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px var(--shadow-soft);
+    margin-top: 15px;
+}
+
+.resta-disco-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px var(--shadow-soft);
+}
+
+/* Estilos para mostrar el resultado */
+.resta-disco-result {
+    font-size: 1.5rem;
+    color: var(--color-forest);
+    font-weight: bold;
+    margin-top: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to right, var(--color-lime), var(--color-cream));
+    /* Fondo brillante */
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px var(--shadow-soft);
+    border: 2px solid var(--color-green-dark);
+}
+
+.resta-disco-result:hover {
+    background-color: #c9f3c9;
+    box-shadow: 0 8px 18px rgba(0, 255, 0, 0.4);
+    /* Efecto brillante al pasar el cursor */
+}
+
+@media (max-width: 480px) {
+    .resta-disco-container {
+        width: 90%;
+    }
+    
+    .resta-disco-button {
+        width: 90%;
+    }
+}

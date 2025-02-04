@@ -8,10 +8,26 @@ import IdentificacionUnidadesJuego from './componets/IdentificacionUnidadesJuego
 function App() {
   return (
     <Router>
+<<<<<<< Updated upstream
         <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/games" element={<GamesPage />} />
         <Route path="/game/:operation" element={<IdentificacionUnidadesJuego />} />
+=======
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/games" element={<GamesPage />} />
+        <Route path="/game/:operation" element={<IdentificacionUnidadesJuego />} />
+
+        <Route
+          path="/OperacionesAgrupaciones"
+          element={<OperacionesAgrupacion />}
+        />
+        <Route path="/MinusPage" element={<MinusPage />}></Route>
+        <Route path="/Multiplicaciones" element={<Multiplicaciones />} />
+        <Route path="/DivisionPage" element={<DivisionPage />}></Route>
+        <Route path="/AdditionPage" element={<AdditionPage />}></Route>
+>>>>>>> Stashed changes
       </Routes>
     </Router>
   );
