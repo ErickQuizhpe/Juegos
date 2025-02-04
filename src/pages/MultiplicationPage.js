@@ -1,56 +1,42 @@
 import React from "react";
-import "../styles/MultiplicationPage.css";
 import MultiplicacionDisco from "./MultiplicationTable";
 import MultiplicacionOperacion from "./MultiplicationOperation";
 import { Link } from "react-router-dom";
+import "../styles/MultiplicationPage1.css";
 
 function MultiplicationPage() {
   return (
-    <div>
-      <div className="bg-gray-100 min-h-screen">
-        {/* Header */}
-        <header className="header bg-blue-600 text-white py-3 text-center shadow-md">
-          <h1 className="text-6xl font-bold">Multiplicación de Números</h1>
+    <div className="multiplication-page">
+      <div className="multiplication-page__grid">
+        <header className="multiplication-page__header">
+          <h1>Multiplicación de Números</h1>
         </header>
 
-        <div className="grid">
-          {/* Navigation */}
-          <nav className="nav">
-            <h2>Elige otra operación</h2>
-            <ul>
-              <li>
-                <Link to="/AdditionPage">Sumas</Link>
-              </li>
-              <li>
-                <Link to="/MinusPage">Restas</Link>
-              </li>
-              <li>
-                <Link to="/DivisionPage">División</Link>
-              </li>
-              <li>
-                <Link to="/Multiplicaciones">Multiplicación</Link>
-              </li>
-            </ul>
-          </nav>
+        <nav className="multiplication-page__nav">
+          <h2 className="multiplication-page__nav-title">Elige otra operación</h2>
+          <ul className="multiplication-page__nav-list">
+            <li><Link className="multiplication-page__nav-link" to="/AdditionPage">Sumas</Link></li>
+            <li><Link className="multiplication-page__nav-link" to="/MinusPage">Restas</Link></li>
+            <li><Link className="multiplication-page__nav-link" to="/Multiplicaciones">Multiplicación</Link></li>
+            <li><Link className="multiplication-page__nav-link" to="/DivisionPage">División</Link></li>
+          </ul>
+        </nav>
 
-          {/* Main Content */}
-          <main className="main">
-            <h2 className="text-2xl font-bold mb-4">
-              Resuelve la siguiente multiplicación:
-            </h2>
-            <div className="cuadricula">{<MultiplicacionOperacion />}</div>
-          </main>
+        <main className="multiplication-page__main">
+          <h2>Resuelve la siguiente multiplicación:</h2>
+          <div className="multiplication-page__operation">
+            {MultiplicacionOperacion()}
+          </div>
+        </main>
 
-          {/* Aside Section */}
-          <aside className="aside bg-pink-200 rounded-md shadow-lg p-6">
-            <h2 className="text-3xl font-semibold mb-3">Ayuda para Multiplicar</h2>
-            <MultiplicacionDisco />
-          </aside>
+        <aside className="multiplication-page__aside">
+          <h2>Ayuda para multiplicar</h2>
+          <MultiplicacionDisco />
+        </aside>
 
-          <footer className="footer bg-gray-800 text-white py-4 text-center">
-            <p>UCACUE GRUPO 3 © Copyright 2025</p>
-          </footer>
-        </div>
+        <footer className="multiplication-page__footer">
+          <p>UCACUE GRUPO 3 © Copyright 2025</p>
+        </footer>
       </div>
     </div>
   );

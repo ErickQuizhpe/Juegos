@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "../styles/OperacionesAgrupacion.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -8,7 +8,7 @@ const OperacionInput = ({ onOperacionSubmit, onLimpiar }) => {
 
   const handleInputChange = (e) => {
     const value = e.target.value;
-    const regex = /^[0-9+\-*/(){}\[\] ]*$/;
+    const regex = /^[0-9+\-*/(){}[\] ]*$/;
 
     if (regex.test(value)) {
       setOperacion(value);

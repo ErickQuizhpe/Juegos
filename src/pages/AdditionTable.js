@@ -11,13 +11,6 @@ function PlusTable() {
   };
 
   // Generar la tabla de suma para el número 1
-  const generarTablaSuma = (numero) => {
-    return [...Array(10).keys()].map((i) => (
-      <div key={i} className="plus-table-row">
-        {numero} + {i + 1} = {numero + i + 1}
-      </div>
-    ));
-  };
 
   return (
     <div className="suma-disco-container">

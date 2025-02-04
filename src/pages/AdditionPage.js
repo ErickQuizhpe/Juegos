@@ -1,56 +1,41 @@
 import React from "react";
-import "../styles/MultiplicationPage.css";
+import "../styles/AdditionPage.css";
+import "../styles/AdditionOperation.css";
 import AdditionOperacion from "./AdditionOperation";
 import AdditionTable from "./AdditionTable";
 import { Link } from "react-router-dom";
 
 function AdditionPage() {
   return (
-    <div>
-      <div className="bg-gray-100 min-h-screen">
-        {/* Header */}
-        <header className="header bg-blue-600 text-white py-3 text-center shadow-md">
-          <h1 className="text-6xl font-bold">Suma de Números</h1>
+    <div className="addition-page">
+      <div className="addition-page__grid">
+        <header className="addition-page__header">
+          <h1>Suma de Números</h1>
         </header>
 
-        <div className="grid">
-          {/* Navigation */}
-          <nav className="nav">
-            <h2>Elige otra operación</h2>
-            <ul>
-              <li>
-                <Link to="/AdditionPage">Sumas</Link>
-              </li>
-              <li>
-                <Link to="/MinusPage">Restas</Link>
-              </li>
-              <li>
-                <Link to="/Multiplicaciones">Multiplicación</Link>
-              </li>
-              <li>
-                <Link to="/DivisionPage">División</Link>
-              </li>
-            </ul>
-          </nav>
+        <nav className="addition-page__nav">
+          <h2 className="addition-page__nav-title">Elige otra operación</h2>
+          <ul>
+            <li><Link className="addition-page__nav-link" to="/AdditionPage">Sumas</Link></li>
+            <li><Link className="addition-page__nav-link" to="/MinusPage">Restas</Link></li>
+            <li><Link className="addition-page__nav-link" to="/Multiplicaciones">Multiplicación</Link></li>
+            <li><Link className="addition-page__nav-link" to="/DivisionPage">División</Link></li>
+          </ul>
+        </nav>
 
-          {/* Main Content */}
-          <main className="main">
-            <h2 className="text-2xl font-bold mb-4">
-              Resuelve la siguiente suma:
-            </h2>
-            <div className="cuadricula">{AdditionOperacion()}</div>
-          </main>
+        <main className="addition-page__main">
+          <h2>Resuelve la siguiente suma:</h2>
+          <div className="addition-page__grid">{AdditionOperacion()}</div>
+        </main>
 
-          {/* Aside Section */}
-          <aside className="aside bg-pink-200 rounded-md shadow-lg p-6">
-            <h2 className="text-3xl font-semibold mb-3">Ayuda para sumar</h2>
-            <AdditionTable />
-          </aside>
+        <aside className="addition-page__aside">
+          <h2>Ayuda para sumar</h2>
+          <AdditionTable />
+        </aside>
 
-          <footer className="footer bg-gray-800 text-white py-4 text-center">
-            <p>UCACUE GRUPO 3 © Copyright 2025</p>
-          </footer>
-        </div>
+        <footer className="addition-page__footer">
+          <p>UCACUE GRUPO 3 © Copyright 2025</p>
+        </footer>
       </div>
     </div>
   );

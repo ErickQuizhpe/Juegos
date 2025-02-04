@@ -1,150 +1,198 @@
+:root {
+  --color-red-primary: #FF6B6B;     /* Rojo principal suave */
+  --color-red-light: #FFB4B4;       /* Rosa claro */
+  --color-red-dark: #FF4949;        /* Rojo oscuro */
+  --color-coral: #FF8787;           /* Coral complementario */
+  --color-cream: #FFF0F0;           /* Crema rosada para fondos */
+  --color-wine-text: #4A2828;       /* Vino para texto */
+  --shadow-soft: rgba(255, 107, 107, 0.2);
+}
+
 /* Estilos para el fondo general */
 .suma-disco-container {
-    background: linear-gradient(135deg, #d8d8d8, #e6e7e8);
-    border-radius: 20px;
-    padding: 10px;
-    width: 210px;
-    margin: 0 auto;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    animation: fadeIn 1s ease-in-out; /* Animación de entrada */
+  background: linear-gradient(135deg, var(--color-red-primary), var(--color-red-light));
+  border-radius: 20px;
+  padding: 15px;
+  width: 210px;
+  margin: 0 auto;
+  box-shadow: 0 15px 30px var(--shadow-soft);
+  border: 3px solid var(--color-coral);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  animation: containerEntrance 0.8s ease-out; /* Animación de entrada */
+}
+
+/* Animación de entrada para la tabla */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
   }
-  
-  /* Animación de entrada para la tabla */
-  @keyframes fadeIn {
-    0% {
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.suma-disco-item {
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  animation: itemPulse 0.5s ease-in-out;
+}
+
+/* Estilo de las etiquetas */
+.suma-disco-label {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--color-wine-text);
+  text-shadow: 2px 2px 4px var(--shadow-soft);
+  margin-bottom: 10px;
+}
+
+/* Estilo del selector */
+.suma-disco-select {
+  background-color: var(--color-cream);
+  font-size: 1.3rem;
+  padding: 8px 15px;
+  border-radius: 10px;
+  border: 2px solid var(--color-coral);
+  box-shadow: 0 4px 8px var(--shadow-soft);
+  color: var(--color-wine-text);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.suma-disco-select:hover {
+  border-color: var(--color-red-primary);
+  transform: translateY(-2px);
+}
+
+.suma-disco-select:focus {
+  outline: none;
+  border-color: #f39c12;
+  box-shadow: 0 0 15px rgba(243, 156, 18, 0.5);
+}
+
+/* Estilo del botón */
+.suma-disco-button {
+  background: linear-gradient(45deg, var(--color-red-dark), var(--color-coral));
+  color: var(--color-cream);
+  font-size: 1.5rem;
+  padding: 15px 0;
+  border-radius: 25px;
+  border: none;
+  width: 180px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 6px 12px var(--shadow-soft);
+  animation: buttonGlow 2s infinite;
+}
+
+.suma-disco-button:hover {
+  transform: scale(1.05);
+}
+
+.suma-disco-button:focus {
+  outline: none;
+}
+
+/* Estilo para el resultado */
+.suma-disco-result {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-wine-text);
+  background: linear-gradient(to right, var(--color-red-light), var(--color-cream));
+  border: 2px solid var(--color-coral);
+  border-radius: 15px;
+  padding: 20px 10px;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: bounce 1.5s infinite;
+}
+
+/* Animación y estilo de las filas de la tabla de suma */
+.plus-table-row {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  font-size: 1.25rem;
+  color: #e74c3c;
+  margin: 5px 0;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  animation: slideIn 0.5s ease-in-out; /* Animación de entrada de filas */
+}
+
+/* Efecto de deslizamiento en las filas de la tabla */
+@keyframes slideIn {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.plus-table-row:hover {
+  transform: translateY(-5px);
+  background-color: #ff5733;
+  color: #fff;
+}
+
+/* Estilo general de la tabla de suma */
+.plus-table {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 30px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+h3 {
+  font-size: 2rem;
+  color: #f39c12;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+@keyframes containerEntrance {
+  0% {
       opacity: 0;
-      transform: scale(0.8);
-    }
-    100% {
+      transform: translateY(-30px);
+  }
+  100% {
       opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  .suma-disco-item {
-    margin-bottom: 10px;
-  }
-  
-  /* Estilo de las etiquetas */
-  .suma-disco-label {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #151514;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    margin-bottom: 10px;
-  }
-  
-  /* Estilo del selector */
-  .suma-disco-select {
-    background-color: #fff;
-    font-size: 1.25rem;
-    padding: 15px;
-    border-radius: 15px;
-    border: 2px solid #f1c40f;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    color: #2c3e50;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-  }
-  
-  .suma-disco-select:hover {
-    border-color: #e74c3c;
-    box-shadow: 0 4px 20px rgba(231, 76, 60, 0.5);
-  }
-  
-  .suma-disco-select:focus {
-    outline: none;
-    border-color: #f39c12;
-    box-shadow: 0 0 15px rgba(243, 156, 18, 0.5);
-  }
-  
-  /* Estilo del botón */
-  .suma-disco-button {
-    background-color: #b8b7f4;
-    color: rgb(20, 19, 19);
-    font-size: 1.5rem;
-    padding: 18px 10px;
-    border-radius: 20px;
-    border: none;
-    width: 100%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-  }
-  
-  .suma-disco-button:hover {
-    background-color: #e74c3c;
-    transform: scale(1.1);
-    box-shadow: 0 10px 15px rgba(231, 76, 60, 0.4);
-  }
-  
-  .suma-disco-button:focus {
-    outline: none;
-  }
-  
-  /* Estilo para el resultado */
-  .suma-disco-result {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #0b0b0b;
-    background-color: #ed9c9c;
-    border: 2px solid #c3e6cb;
-    border-radius: 10px;
-    padding: 15px;
-    margin-top: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    animation: bounce 1.5s infinite;
-  }
-  
-  /* Animación y estilo de las filas de la tabla de suma */
-  .plus-table-row {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    font-size: 1.25rem;
-    color: #e74c3c;
-    margin: 5px 0;
-    border-radius: 8px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-    animation: slideIn 0.5s ease-in-out; /* Animación de entrada de filas */
-  }
-  
-  /* Efecto de deslizamiento en las filas de la tabla */
-  @keyframes slideIn {
-    0% {
-      transform: translateY(20px);
-      opacity: 0;
-    }
-    100% {
       transform: translateY(0);
-      opacity: 1;
-    }
+  }
+}
+
+@keyframes buttonGlow {
+  0%, 100% {
+      box-shadow: 0 0 10px var(--color-red-light);
+  }
+  50% {
+      box-shadow: 0 0 20px var(--color-red-primary);
+  }
+}
+
+@media (max-width: 480px) {
+  .suma-disco-container {
+      width: 90%;
+      padding: 10px;
   }
   
-  .plus-table-row:hover {
-    transform: translateY(-5px);
-    background-color: #ff5733;
-    color: #fff;
+  .suma-disco-button {
+      width: 90%;
   }
-  
-  /* Estilo general de la tabla de suma */
-  .plus-table {
-    width: 100%;
-    max-width: 500px;
-    margin-top: 30px;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  }
-  
-  h3 {
-    font-size: 2rem;
-    color: #f39c12;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-  
+}
