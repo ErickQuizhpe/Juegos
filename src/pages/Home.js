@@ -1,86 +1,71 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/global.css";
-import unidades from "../assets/UNIDADES.png"
-import operaciones from "../assets/Operaciones.jpg"
-
+import { Particles } from "@tsparticles/react";
+import operaciones from "../assets/Image/matematicas.png";
+import "../styles/Home.css";
+import agrupacion from "../assets/Image/agrupacion.png";
 
 const HomePage = () => {
   const navigate = useNavigate();
 
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>Seleccione una opción para empezar</h1>
-      <div style={styles.optionsContainer}>
+    <div className="home-container">
+      {/* Fondo animado con partículas */}
+      <Particles
+        options={{
+          particles: {
+            number: {
+              value: 50, // Número de partículas
+              density: {
+                enable: true,
+                value_area: 800, // Área donde las partículas se dispersan
+              },
+            },
+            size: {
+              value: 3, // Tamaño de las partículas
+            },
+            move: {
+              enable: true,
+              speed: 3, // Velocidad de las partículas
+              direction: "none", // Dirección aleatoria
+              random: true, // Hace que las partículas se muevan de manera más aleatoria
+            },
+            links: {
+              enable: false, // Desactiva las conexiones entre partículas
+            },
+          },
+          interactivity: {
+            events: {
+              onhover: {
+                enable: true,
+                mode: "repulse", // Las partículas se repelen cuando se pasa el mouse sobre ellas
+              },
+            },
+          },
+        }}
+      />
+
+      <h1 className="home-title">¡Selecciona una Actividad!</h1>
+      <div className="menu-container">
+        {/* Opción 1: Operaciones Matemáticas */}
         <div
-          style={styles.option}
-          onClick={() => navigate("/games?type=operations")}
+          className="menu-option"
+          onClick={() => navigate("/games")}
         >
-          <img
-            src={operaciones}
-            alt="Operaciones"
-            style={styles.icon}
-          />
-          <p>Operaciones con agrupaciones</p>
+          <img className="menu-icon" src={operaciones} alt="Operaciones" />
+          <p className="menu-text">Operaciones Matemáticas</p>
         </div>
+        {/* Opción 2: Identificación de Unidades */}
         <div
-          style={styles.option}
-          onClick={() => navigate("/games?type=units")}
+          className="menu-option"
+          onClick={() => navigate("/OperacionesAgrupaciones")}
         >
-          <img
-            src={unidades}
-            alt="Identificación de unidades"
-            style={styles.icon}
-          />
-          <p>Identificación unidades y operaciones matemáticas</p>
+          <img className="menu-icon" src={agrupacion} alt="Unidades" />
+          <p className="menu-text">Operaciones con Agrupación</p>
         </div>
       </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    backgroundColor: "#d0f0ff",
-    height: "100vh",
-    padding: "20px",
-  },
-  title: {
-    fontSize: "24px",
-    color: "#4a4a4a",
-    marginBottom: "20px",
-  },
-  optionsContainer: {
-    display: "flex",
-    justifyContent: "space-around",
-    width: "100%",
-  },
-  option: {
-    width: "40%",
-    textAlign: "center",
-    backgroundColor: "#f6e5fc",
-    padding: "20px",
-    borderRadius: "10px",
-    cursor: "pointer",
-    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-  },
-  icon: {
-    width: "400px",
-    height: "150px",
-    marginBottom: "10px",
-  },
-  exitButton: {
-    marginTop: "20px",
-    backgroundColor: "#ff6666",
-    color: "#fff",
-    padding: "10px 20px",
-    borderRadius: "5px",
-    border: "none",
-    cursor: "pointer",
-  },
 };
 
 export default HomePage;

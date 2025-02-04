@@ -1,0 +1,250 @@
+body {
+    min-height: 100vh;
+    /* Asegura que el cuerpo cubra toda la ventana */
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    letter-spacing: 2px !important;
+    display: flex;
+    flex-direction: column;
+    /* Estructura vertical para el contenido principal */
+}
+
+.grid {
+    box-sizing: border-box;
+    margin: auto;
+    display: grid;
+    align-content: center;
+    grid-template-columns: minmax(250px, 1fr) minmax(600px, 3fr) minmax(250px,
+            1fr);
+    grid-template-rows: auto 1fr auto;
+    /* El contenido principal (main) crece */
+    grid-auto-flow: dense;
+    gap: 10px 5px;
+    flex-flow: wrap;
+    grid-template-areas:
+        "header header header"
+        "nav main aside"
+        "footer footer footer";
+    min-height: 100vh;
+    /* Ocupa toda la altura de la ventana */
+}
+
+.main {
+    grid-area: main;
+    padding: 10px 30px;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #333;
+    color: #fff;
+    padding: 40px !important;
+    text-align: center;
+    margin-top: auto;
+    /* Empuja el footer al final */
+}
+
+@media screen and (max-width: 800px) {
+    .aside {
+        display: none;
+    }
+}
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.grid_item {
+    background-color: #fff;
+    border-radius: 9px;
+}
+
+.header {
+    grid-area: header;
+    background-color: rgba(83, 241, 96, 0.6);
+    color: #fff;
+}
+
+.nav {
+    grid-area: nav;
+    padding: 10px 30px;
+    border-radius: 20px!important;
+    min-height: 100vh;
+}
+
+.aside {
+    min-height: 100vh;
+    flex-wrap: nowrap;
+    grid-area: aside;
+    flex-flow: dense;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: start;
+    background-color:#0d80ed;
+    border-radius: 20px;
+}
+
+header ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+header li {
+    list-style: none;
+}
+
+header a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+nav li {
+    list-style: none;
+    padding: 10px;
+}
+
+nav a {
+    color: red;
+    text-decoration: none;
+}
+
+nav {
+    text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+    .aside {
+        display: none;
+    }
+}
+
+.cuadricula {
+    display: grid;
+
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    letter-spacing: 2px;
+}
+
+/* Animaciones personalizadas */
+@keyframes wiggle {
+
+    0%,
+    100% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(3deg);
+    }
+}
+
+@keyframes rainbowText {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Estilo general del nav */
+/* Animaciones personalizadas */
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes glowEffect {
+
+    0%,
+    100% {
+        text-shadow: 0 0 10px #ff6f61, 0 0 20px #f1ef5f, 0 0 30px #ff6f61;
+    }
+
+    50% {
+        text-shadow: 0 0 20px #33ccff, 0 0 40px #33ccff, 0 0 60px #33ccff;
+    }
+}
+
+/* Estilo general del nav */
+.nav {
+    background-color: #f0ff4a;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Títulos dentro de nav */
+.nav h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #382f2e;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Lista de enlaces */
+.nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.nav li {
+    margin-bottom: 15px;
+}
+
+/* Enlaces con efectos llamativos */
+.nav a {
+    width: 190px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px 0px;
+    background-color: #ff6f61;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 10px rgba(255, 111, 97, 0.5);
+    display: inline-block;
+}
+
+/* Efectos al pasar el ratón */
+.nav a:hover {
+    animation: bounceIn 0.5s ease-in-out;
+    background-color: #33ccff;
+    color: #ffffff;
+    box-shadow: 0 0 15px #33ccff, 0 0 25px #ffcc33;
+    transform: scale(1.1);
+}
+
+/* Efecto adicional cuando se selecciona */
+.nav a:focus {
+    outline: none;
+    animation: glowEffect 1s infinite alternate;
+    transform: rotate(3deg);
+}

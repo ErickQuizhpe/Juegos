@@ -1,0 +1,95 @@
+/* Estilos para las tablas de división */
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .division-disco-container {
+    background: linear-gradient(135deg, #efcf2f, #e6b41f);
+    border-radius: 20px;
+    padding: 10px;
+    width: 210px;
+    margin: 0 auto;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .division-disco-label {
+    font-size: 1.6rem;
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    /* Efecto de sombra */
+    margin-bottom: 5px;
+  }
+  
+  .division-disco-select {
+    width: 80px;
+    padding: 10px;
+    border: 2px solid #0078d7;
+    border-radius: 10px;
+    background-color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+  }
+  
+  .division-disco-select:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .division-disco-button {
+    background-color: #b8b7f4;
+    color: rgb(20, 19, 19);
+    font-size: 1.5rem;
+    padding: 18px 10px;
+    border-radius: 20px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+  }
+  
+  .division-disco-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .division-disco-result {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0b0b0b;
+    background-color: #b5bab6;
+    border: 2px solid #c3e6cb;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: bounce 1.5s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+  
