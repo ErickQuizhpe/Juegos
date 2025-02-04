@@ -4,16 +4,15 @@ import HomePage from './pages/Home';
 import GamesPage from './pages/Gamepage';
 import React from 'react';
 import IdentificacionUnidadesJuego from './componets/IdentificacionUnidadesJuego';
+import OperacionesAgrupacion from './pages/OperacionesAgrupaciones';
+import MinusPage from './pages/MinusPage';
+import Multiplicaciones from './pages/Multiplicaciones';
+import DivisionPage from './pages/DivisionPage';
+import AdditionPage from './pages/AdditionPage';
 
 function App() {
   return (
     <Router>
-<<<<<<< Updated upstream
-        <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/games" element={<GamesPage />} />
-        <Route path="/game/:operation" element={<IdentificacionUnidadesJuego />} />
-=======
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/games" element={<GamesPage />} />
@@ -27,7 +26,6 @@ function App() {
         <Route path="/Multiplicaciones" element={<Multiplicaciones />} />
         <Route path="/DivisionPage" element={<DivisionPage />}></Route>
         <Route path="/AdditionPage" element={<AdditionPage />}></Route>
->>>>>>> Stashed changes
       </Routes>
     </Router>
   );
