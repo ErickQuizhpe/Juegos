@@ -1,34 +1,27 @@
 import React from "react";
 import  { Link } from "react-router-dom";
 import "../styles/MultiplicationPage.css";
+import "../styles/DivisionPage.css";
 import DivisionOperation from "./DivisionOperation";
 
 function DivisionPage() {
   return (
     <div>
-      <div className="bg-gray-100 min-h-screen">
+      <div className="division-page">
         {/* Header */}
-        <header className="header bg-blue-600 text-white py-3 text-center shadow-md">
+        <header className="division-page__header ">
           <h1 className="text-6xl font-bold">División de Números</h1>
         </header>
 
         <div className="grid">
           {/* Navigation */}
-          <nav className="nav">
-            <h2>Elige otra operación</h2>
+          <nav className="division-page__nav">
+            <h2 className="division-page__nav-title">Elige otra operación</h2>
             <ul>
-              <li>
-                <Link to="/AdditionPage">Sumas</Link>
-              </li>
-              <li>
-                <Link to="/MinusPage">Restas</Link>
-              </li>
-              <li>
-                <Link to="/Multiplicaciones">Multiplicación</Link>
-              </li>
-              <li>
-                <Link to="/DivisionPage">División</Link>
-              </li>
+              <li><Link className="division-page__nav-link" to="/AdditionPage">Sumas</Link></li>
+              <li><Link className="division-page__nav-link" to="/MinusPage">Restas</Link></li>
+              <li><Link className="division-page__nav-link" to="/Multiplicaciones">Multiplicación</Link></li>
+              <li><Link className="division-page__nav-link" to="/DivisionPage">División</Link></li>
             </ul>
           </nav>
 
@@ -44,7 +37,7 @@ function DivisionPage() {
             < />
           </aside> */}
 
-          <footer className="footer bg-gray-800 text-white py-4 text-center">
+          <footer className="division-page__footer">
             <p>UCACUE GRUPO 3 © Copyright 2025</p>
           </footer>
         </div>

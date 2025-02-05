@@ -61,7 +61,7 @@
 .division-page__nav-link {
     display: block;
     width: 90%;
-    margin: 0 auto;
+    margin: 10 auto;
     padding: 10px;
     background: linear-gradient(to right, var(--color-blue-primary), var(--color-blue-dark));
     color: white;
