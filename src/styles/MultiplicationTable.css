@@ -1,20 +1,12 @@
 /* Estilo general para el contenedor */
 .multiplicacion-disco-container {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
+  width: 210px;
+  margin: 0 auto;
+  padding-block: 61px;
+  text-align: center;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  padding: 10px;
-padding-top: 40px;
-padding-bottom: 10px;
-  background-size: 300% 300%;
-  border-radius: 12px;
-  background-color: #f16c6c;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
-  animation: backgroundShift 10s ease-in-out infinite, containerEntrance 1s ease-out; /* Animación de entrada */
-  width: 210px;
+  animation: containerEntrance 0.8s ease-out;
 }
 
 /* Animación para la entrada del contenedor */
