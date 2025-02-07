@@ -9,16 +9,16 @@ const SubtractionOperation = () => {
   const [showCompletionMessage, setShowCompletionMessage] = useState(false);
 
   const [num1, setNum1] = useState(["", "", "", "", "", "", ""]);
-  const [num2, setNum2] = useState(["", "", "", "", "", ""]);
+  const [num2, setNum2] = useState(["", "", "", "", "", "", ""]);
   const [userAnswer, setUserAnswer] = useState(Array(7).fill(""));
   const [carry, setCarry] = useState(Array(7).fill(""));
   const [operationStarted, setOperationStarted] = useState(false);
   const [showResultLine, setShowResultLine] = useState(false); // Estado para la línea de resultado
 
   // Estados para mostrar las etiquetas
-  const [showMinuendoLabel, setShowMinuendoLabel] = useState(false);
-  const [showSustraendoLabel, setShowSustraendoLabel] = useState(false);
-  const [showResultadoLabel, setShowResultadoLabel] = useState(false);
+  const [showMinuendoLabel, setShowMinuendoLabel] = useState(null);
+  const [showSustraendoLabel, setShowSustraendoLabel] = useState(null);
+  const [showResultLabel, setShowResultLabel] = useState(false);
 
   const calculateCorrectAnswer = () => {
     const num1Value =
@@ -70,14 +70,14 @@ const handleCheckAnswer = () => {
 
   if (userAnswerValue === correctAnswer) {
     setFeedback("¡Correcto! 🎉");
-    setShowResultadoLabel(true); // Muestra la etiqueta después de verificar
+    setShowResultLabel(true);
     setExerciseCount((prevCount) => prevCount + 1);
 
     if (exerciseCount + 1 >= 100) {
       setShowCompletionMessage(true);
     }
   } else {
-    setFeedback('Incorrecto. La respuesta correcta es ${correctAnswer}.');
+    setFeedback(`Incorrecto. La respuesta correcta es ${correctAnswer}.`);
   }
 };
 
@@ -108,126 +108,134 @@ const handleCheckAnswer = () => {
 
   return (
     <div className="game-component">
-      {/* Tabla para ingresar los números */}
-      <div className="table-container">
-        <table className="operation-table carry_row">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Cm</th>
-              <th>Dm</th>
-              <th>Um</th>
-              <th>C</th>
-              <th>D</th>
-              <th>U</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              {carry.map((digit, index) => (
-                <td key={index}>
-                  <input
-                    type="text"
-                    maxLength="1"
-                    value={digit}
-                    onChange={(e) => handleCarryChange(index, e.target.value)}
-                    placeholder={["ll", "e", "v", "a", "d", "a", "s"][index]} // Placeholder con las letras de "llevada"
-                  />
-                </td>
-              ))}
-            </tr>
-            <tr
-              onMouseEnter={() => setShowMinuendoLabel(true)}
-              onMouseLeave={() => setShowMinuendoLabel(false)}
-            >
-              {num1.map((digit, index) => (
-                <td key={index}>
-                  <input
-                    type="text"
-                    maxLength="1"
-                    value={digit}
-                    onChange={(e) =>
-                      handleNumberChange(index, e.target.value, "num1")
-                    }
-                  />
-                </td>
-              ))}
-              {showMinuendoLabel && <td className="label">Minuendo</td>}
-            </tr>
-            <tr
-              onMouseEnter={() => setShowSustraendoLabel(true)}
-              onMouseLeave={() => setShowSustraendoLabel(false)}
-            >
-              <td className="multiplication-sign">—</td>{" "}
-              {/* Agregamos una celda con el signo */}
-              {num2.map((digit, index) => (
-                <td key={index}>
-                  <input
-                    type="text"
-                    maxLength="1"
-                    value={digit}
-                    onChange={(e) =>
-                      handleNumberChange(index, e.target.value, "num2")
-                    }
-                  />
-                </td>
-              ))}
-              {showSustraendoLabel && <td className="label">Sustraendo</td>}
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      {/* Línea divisoria visible solo cuando operationStarted es true */}
-      {showResultLine && (
-        <tr>
-          <td colSpan="7" className="result-line">
-            ---------------------------------------------------------------------------------------------------------
-          </td>
-        </tr>
-      )}
-
-      {/* Tabla para ingresar el resultado */}
-      {operationStarted && (
+      <div className="operation-container">
+        {/* Tabla principal */}
         <div className="table-container">
           <table className="operation-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th>Cm</th>
+                <th>Dm</th>
+                <th>Um</th>
+                <th>C</th>
+                <th>D</th>
+                <th>U</th>
+              </tr>
+            </thead>
             <tbody>
-              <tr
-           
-                onMouseLeave={() => setShowResultadoLabel(false)}
-              >
-                {userAnswer.map((digit, index) => (
+              <tr>
+                <td></td>
+                {carry.map((digit, index) => (
                   <td key={index}>
                     <input
                       type="text"
                       maxLength="1"
                       value={digit}
-                      onChange={(e) =>
-                        handleUserAnswerChange(index, e.target.value)
-                      }
+                      onChange={(e) => handleCarryChange(index, e.target.value)}
+                      placeholder={["ll", "e", "v", "a", "d", "a", "s"][index]}
                     />
                   </td>
                 ))}
-                {showResultadoLabel && <td className="label">Resultado</td>}
+              </tr>
+              <tr 
+                className="term-row"
+                onMouseEnter={() => setShowMinuendoLabel(0)}
+                onMouseLeave={() => setShowMinuendoLabel(null)}
+              >
+                <td></td>
+                {num1.map((digit, index) => (
+                  <td key={index}>
+                    <input
+                      type="text"
+                      maxLength="1"
+                      value={digit}
+                      onChange={(e) => handleNumberChange(index, e.target.value, "num1")}
+                    />
+                  </td>
+                ))}
+                {showMinuendoLabel === 0 && (
+                  <span className="term-label">Minuendo</span>
+                )}
+              </tr>
+              <tr 
+                className="term-row"
+                onMouseEnter={() => setShowSustraendoLabel(1)}
+                onMouseLeave={() => setShowSustraendoLabel(null)}
+              >
+                <td className="operation-symbol">-</td>
+                {num2.map((digit, index) => (
+                  <td key={index}>
+                    <input
+                      type="text"
+                      maxLength="1"
+                      value={digit}
+                      onChange={(e) => handleNumberChange(index, e.target.value, "num2")}
+                    />
+                  </td>
+                ))}
+                {showSustraendoLabel === 1 && (
+                  <span className="term-label">Sustraendo</span>
+                )}
               </tr>
             </tbody>
           </table>
         </div>
-      )}
 
-      {/* Botones */}
-      <div className="button-group">
-        {!operationStarted && (
-          <button onClick={handleStartOperation}>Ingresar operación</button>
+        {/* Línea divisoria */}
+        {showResultLine && (
+          <div className="result-line-container">
+            <span className="result-line">
+            --------------------------------------------------------------------------------
+            </span>
+          </div>
         )}
-        {feedback && <p>{feedback}</p>}
-        {showCompletionMessage ? (
-          <h2>¡Bien hecho! Has completado todos los ejercicios.</h2>
-        ) : (
-          <button onClick={handleCheckAnswer}>Comprobar Respuesta</button>
+
+        {/* Tabla de resultado */}
+        {operationStarted && (
+          <div className="table-container">
+            <table className="operation-table">
+              <tbody>
+                <tr 
+                  className="term-row"
+                  onMouseEnter={() => setShowResultLabel(true)}
+                  onMouseLeave={() => setShowResultLabel(false)}
+                >
+                  <td></td>
+                  {userAnswer.map((digit, index) => (
+                    <td key={index}>
+                      <input
+                        type="text"
+                        maxLength="1"
+                        value={digit}
+                        onChange={(e) => handleUserAnswerChange(index, e.target.value)}
+                      />
+                    </td>
+                  ))}
+                  {showResultLabel && (
+                    <span className="term-label">Resultado</span>
+                  )}
+                </tr>
+              </tbody>
+            </table>
+          </div>
         )}
-        <button onClick={handleClear}>Nueva Operación</button>
-        <button onClick={() => navigate("/")}>Volver</button>
+
+        {/* Botones */}
+        <div className="button-group">
+          {!operationStarted && (
+            <button onClick={handleStartOperation}>Ingresar operación</button>
+          )}
+          {feedback && <p>{feedback}</p>}
+          {showCompletionMessage ? (
+            <h2>¡Bien hecho! Has completado todos los ejercicios.</h2>
+          ) : (
+            <button onClick={handleCheckAnswer}>Comprobar Respuesta</button>
+          )}
+          <button onClick={handleClear}>Nueva Operación</button>
+          <button onClick={() => navigate("/")}>Volver</button>
+        </div>
       </div>
     </div>
   );
