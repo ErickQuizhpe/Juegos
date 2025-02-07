@@ -174,6 +174,10 @@ const MultiplicationOperation = () => {
     <div className="game-component">
       {/* Tabla de entrada principal */}
       <div className="table-container">
+        <div className="operation-labels">
+          <span className="multiplicando-label">Multiplicando</span>
+          <span className="multiplicador-label">Multiplicador</span>
+        </div>
         <table className="operation-table carry_row">
           <thead>
             <tr>
@@ -243,7 +247,7 @@ const MultiplicationOperation = () => {
           {num2.filter((digit) => /^\d$/.test(digit)).length > 1 && (
             <tr>
               <td colSpan="7" className="result-line">
-                ------------------------------------------------------------------------
+                -------------------------------------------------------------------------------
               </td>
             </tr>
           )}
@@ -283,12 +287,15 @@ const MultiplicationOperation = () => {
           {/* Línea encima de la tabla de resultados finales */}
           <tr>
             <td colSpan="7" className="result-line">
-              ------------------------------------------------------------------------
+            -------------------------------------------------------------------------------
             </td>
           </tr>
 
           {/* Tabla para la respuesta del usuario */}
           <div className="table-container">
+            <div className="operation-labels">
+              <span className="producto-label">Producto</span>
+            </div>
             <table className="operation-table result-table">
               <tbody>
                 <tr>
