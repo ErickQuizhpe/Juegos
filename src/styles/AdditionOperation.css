@@ -35,3 +35,71 @@
     align-items: center; /* Centra el input verticalmente (si es necesario) */
     height: 100vh; /* Asegura que se use todo el alto de la ventana */
 }
+
+.term-label {
+  font-weight: bold;
+  color: #333;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+.operation-symbol {
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+.term-row {
+  position: relative;
+}
+
+.floating-label {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 20px;
+}
+
+.sumando-tooltip {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  padding: 5px 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  white-space: nowrap;
+  font-weight: bold;
+  color: #333;
+}
+
+.table-container {
+  position: relative;
+}
+
+.operation-table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.operation-table td {
+  padding: 5px;
+  text-align: center;
+}
+
+.operation-table input {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.result-line {
+  border: none;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.carry_row input {
+  font-size: 0.8em;
+  color: #666;
+}
