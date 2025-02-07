@@ -331,8 +331,7 @@ const MultiplicationOperation = () => {
 
         <button onClick={handleClear}>Nueva Operación</button>
         <button onClick={handleClearCarry}>Limpiar Acarreo</button>
-
-        <button onClick={() => navigate("/games")}>Regresar</button>
+        <button onClick={() => navigate("/")}>Volver</button>
       </div>
     </div>
   );

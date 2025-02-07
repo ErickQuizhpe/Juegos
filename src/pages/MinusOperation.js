@@ -227,7 +227,7 @@ const handleCheckAnswer = () => {
           <button onClick={handleCheckAnswer}>Comprobar Respuesta</button>
         )}
         <button onClick={handleClear}>Nueva Operación</button>
-        <button onClick={() => navigate("/games")}>Regresar</button>
+        <button onClick={() => navigate("/")}>Volver</button>
       </div>
     </div>
   );
