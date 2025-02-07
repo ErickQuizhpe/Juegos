@@ -18,6 +18,9 @@ import "../styles/MultiplicationOperation.css";
  * - carry: Manages carry digits for calculations.
  * - partialResults: Stores partial results for display.
  * - operationStarted: Flags whether the operation has begun.
+ * - showMultiplicandoLabel: Indicates whether to show the multiplicando label.
+ * - showMultiplicadorLabel: Indicates whether to show the multiplicador label.
+ * - showProductoLabel: Indicates whether to show the producto label.
  *
  * Functions:
  * - calculateCorrectAnswer: Computes the correct result of the multiplication.
@@ -37,10 +40,13 @@ const MultiplicationOperation = () => {
   const [feedback, setFeedback] = useState("");
   const [exerciseCount, setExerciseCount] = useState(0);
   const [showCompletionMessage, setShowCompletionMessage] = useState(false);
+  const [showMultiplicandoLabel, setShowMultiplicandoLabel] = useState(false);
+  const [showMultiplicadorLabel, setShowMultiplicadorLabel] = useState(false);
+  const [showProductoLabel, setShowProductoLabel] = useState(false);
 
   // Genera la tabla para ingresar la multiplicación
   const [num1, setNum1] = useState(["", "", "", "", "", "", ""]);
-  const [num2, setNum2] = useState(["", "", "", "", "", ""]);
+  const [num2, setNum2] = useState(["", "", "", "", "", "", ""]);
   const [userAnswer, setUserAnswer] = useState(Array(7).fill(""));
   const [carry, setCarry] = useState(Array(7).fill(""));
   const [partialResults, setPartialResults] = useState([]); // Nueva tabla para los resultados parciales
@@ -172,166 +178,176 @@ const MultiplicationOperation = () => {
 
   return (
     <div className="game-component">
-      {/* Tabla de entrada principal */}
-      <div className="table-container">
-        <div className="operation-labels">
-          <span className="multiplicando-label">Multiplicando</span>
-          <span className="multiplicador-label">Multiplicador</span>
+      <div className="operation-container">
+        {/* Tabla principal */}
+        <div className="table-container">
+          <table className="operation-table carry_row">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Cm</th>
+                <th>Dm</th>
+                <th>Um</th>
+                <th>C</th>
+                <th>D</th>
+                <th>U</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                {carry.map((digit, index) => (
+                  <td key={index}>
+                    <input
+                      type="text"
+                      maxLength="1"
+                      placeholder={["ll", "e", "v", "a", "d", "a", "s"][index]}
+                      value={digit}
+                      onChange={(e) => handleCarryChange(index, e.target.value)}
+                    />
+                  </td>
+                ))}
+              </tr>
+              <tr 
+                className="term-row"
+                onMouseEnter={() => setShowMultiplicandoLabel(true)}
+                onMouseLeave={() => setShowMultiplicandoLabel(false)}
+              >
+                <td></td>
+                {num1.map((digit, index) => (
+                  <td key={index}>
+                    <input
+                      type="text"
+                      maxLength="1"
+                      value={digit}
+                      onChange={(e) => handleNumberChange(index, e.target.value, "num1")}
+                    />
+                  </td>
+                ))}
+                {showMultiplicandoLabel && (
+                  <span className="term-label">Multiplicando</span>
+                )}
+              </tr>
+              <tr 
+                className="term-row"
+                onMouseEnter={() => setShowMultiplicadorLabel(true)}
+                onMouseLeave={() => setShowMultiplicadorLabel(false)}
+              >
+                <td className="operation-symbol">x</td>
+                {num2.map((digit, index) => (
+                  <td key={index}>
+                    <input
+                      type="text"
+                      maxLength="1"
+                      value={digit}
+                      onChange={(e) => handleNumberChange(index, e.target.value, "num2")}
+                    />
+                  </td>
+                ))}
+                {showMultiplicadorLabel && (
+                  <span className="term-label">Multiplicador</span>
+                )}
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <table className="operation-table carry_row">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Cm</th>
-              <th>Dm</th>
-              <th>Um</th>
-              <th> C</th>
-              <th> D</th>
-              <th> U</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              {carry.map((digit, index) => (
-                <td key={index}>
-                  <input
-                    type="text"
-                    maxLength="1"
-                    placeholder={
-                      ["", "ll", "e", "v", "a", "d", "a", "s"][index]
-                    }
-                    value={digit}
-                    onChange={(e) => handleCarryChange(index, e.target.value)}
-                  />
-                </td>
-              ))}
-            </tr>
-            <tr>
-              {num1.map((digit, index) => (
-                <td key={index}>
-                  <input
-                    type="text"
-                    maxLength="1"
-                    value={digit}
-                    onChange={(e) =>
-                      handleNumberChange(index, e.target.value, "num1")
-                    }
-                  />
-                </td>
-              ))}
-            </tr>
-            <tr>
-              <td className="multiplication-sign">x</td>{" "}
-              {/* Agregamos una celda con el signo */}
-              {num2.map((digit, index) => (
-                <td key={index}>
-                  <input
-                    type="text"
-                    maxLength="1"
-                    value={digit}
-                    onChange={(e) =>
-                      handleNumberChange(index, e.target.value, "num2")
-                    }
-                  />
-                </td>
-              ))}
-            </tr>
-          </tbody>
-        </table>
-      </div>
 
-      {/* Mostrar las líneas solo cuando la operación ha comenzado */}
-      {operationStarted && (
-        <>
-          {/* Mostrar línea sobre el resultado final si num2 tiene solo una cifra */}
-          {num2.filter((digit) => /^\d$/.test(digit)).length > 1 && (
+        {/* Mostrar las líneas solo cuando la operación ha comenzado */}
+        {operationStarted && (
+          <>
+            {/* Mostrar línea sobre el resultado final si num2 tiene solo una cifra */}
+            {num2.filter((digit) => /^\d$/.test(digit)).length > 1 && (
+              <tr>
+                <td colSpan="7" className="result-line">
+                  -------------------------------------------------------------------------------
+                </td>
+              </tr>
+            )}
+
+            {/* Mostrar tabla de resultados parciales solo si hay más de una cifra en num2 */}
+            {partialResults.length > 0 && (
+              <div className="table-container">
+                <table className="operation-table">
+                  <tbody>
+                    {partialResults.map((row, rowIndex) => (
+                      <tr key={rowIndex}>
+                        {row
+                          .slice(0, row.length - rowIndex)
+                          .map((cell, colIndex) => (
+                            <td key={colIndex}>
+                              <input
+                                type="text"
+                                maxLength="1"
+                                value={cell}
+                                onChange={(e) =>
+                                  handlePartialResultChange(
+                                    rowIndex,
+                                    colIndex,
+                                    e.target.value
+                                  )
+                                }
+                              />
+                            </td>
+                          ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {/* Línea encima de la tabla de resultados finales */}
             <tr>
               <td colSpan="7" className="result-line">
-                -------------------------------------------------------------------------------
+              -------------------------------------------------------------------------------
               </td>
             </tr>
-          )}
-
-          {/* Mostrar tabla de resultados parciales solo si hay más de una cifra en num2 */}
-          {partialResults.length > 0 && (
-            <div className="table-container">
-              <table className="operation-table">
-                <tbody>
-                  {partialResults.map((row, rowIndex) => (
-                    <tr key={rowIndex}>
-                      {row
-                        .slice(0, row.length - rowIndex)
-                        .map((cell, colIndex) => (
-                          <td key={colIndex}>
-                            <input
-                              type="text"
-                              maxLength="1"
-                              value={cell}
-                              onChange={(e) =>
-                                handlePartialResultChange(
-                                  rowIndex,
-                                  colIndex,
-                                  e.target.value
-                                )
-                              }
-                            />
-                          </td>
-                        ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-
-          {/* Línea encima de la tabla de resultados finales */}
-          <tr>
-            <td colSpan="7" className="result-line">
-            -------------------------------------------------------------------------------
-            </td>
-          </tr>
-
-          {/* Tabla para la respuesta del usuario */}
-          <div className="table-container">
-            <div className="operation-labels">
-              <span className="producto-label">Producto</span>
-            </div>
-            <table className="operation-table result-table">
-              <tbody>
-                <tr>
-                  {userAnswer.map((digit, index) => (
-                    <td key={index}>
-                      <input
-                        type="text"
-                        maxLength="1"
-                        value={digit}
-                        onChange={(e) =>
-                          handleUserAnswerChange(index, e.target.value)
-                        }
-                      />
-                    </td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </>
-      )}
-
-      <div className="button-group">
-        {!operationStarted && (
-          <button onClick={handleStartOperation}>Ingresar operación</button>
-        )}
-        {feedback && <p>{feedback}</p>}
-        {showCompletionMessage ? (
-          <h2>¡Bien hecho! Has completado todos los ejercicios.</h2>
-        ) : (
-          <button onClick={handleCheckAnswer}>Comprobar Respuesta</button>
+          </>
         )}
 
-        <button onClick={handleClear}>Nueva Operación</button>
-        <button onClick={handleClearCarry}>Limpiar Acarreo</button>
-        <button onClick={() => navigate("/")}>Volver</button>
+        {/* Tabla para la respuesta del usuario */}
+        <div className="table-container">
+          <table className="operation-table result-table">
+            <tbody>
+              <tr 
+                className="term-row"
+                onMouseEnter={() => setShowProductoLabel(true)}
+                onMouseLeave={() => setShowProductoLabel(false)}
+              >
+                <td></td>
+                {userAnswer.map((digit, index) => (
+                  <td key={index}>
+                    <input
+                      type="text"
+                      maxLength="1"
+                      value={digit}
+                      onChange={(e) => handleUserAnswerChange(index, e.target.value)}
+                    />
+                  </td>
+                ))}
+                {showProductoLabel && (
+                  <span className="term-label">Producto</span>
+                )}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div className="button-group">
+          {!operationStarted && (
+            <button onClick={handleStartOperation}>Ingresar operación</button>
+          )}
+          {feedback && <p>{feedback}</p>}
+          {showCompletionMessage ? (
+            <h2>¡Bien hecho! Has completado todos los ejercicios.</h2>
+          ) : (
+            <button onClick={handleCheckAnswer}>Comprobar Respuesta</button>
+          )}
+
+          <button onClick={handleClear}>Nueva Operación</button>
+          <button onClick={handleClearCarry}>Limpiar Acarreo</button>
+          <button onClick={() => navigate("/")}>Volver</button>
+        </div>
       </div>
     </div>
   );
