@@ -24,8 +24,10 @@ function AdditionPage() {
         </nav>
 
         <main className="addition-page__main">
+          <div className="addition-page__content-center">
           <h2>Resuelve la siguiente suma:</h2>
           <div className="addition-page__grid">{AdditionOperacion()}</div>
+          </div>
         </main>
 
         <aside className="addition-page__aside">

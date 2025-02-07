@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+/* global.css */
+
+/* Estilo general para la página de juegos */
+.games-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Asegura que ocupe toda la pantalla */
+  background-color: #b3d9f5; /* Fondo azul claro */
+  text-align: center;
+  padding: 20px; /* Espaciado interno */
+}
+
+/* Título de la página */
+.games-page h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 30px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Contenedor de los botones */
+.button-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Un botón por fila */
+  gap: 20px; /* Espacio entre los botones */
+  width: 100%;
+  max-width: 400px; /* Limitar el ancho máximo */
+}
+
+/* Estilo de los botones */
+.button-container button {
+  border: none;
+  padding: 15px;
+  font-size: 1.3rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Efecto hover */
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+}
+
+/* Botón de Suma */
+.button-container button:nth-child(1) {
+  background-color: #e8c3ea; /* Rosa claro */
+  color: #000; /* Texto negro */
+}
+
+/* Botón de Resta */
+.button-container button:nth-child(2) {
+  background-color: #baf7b3; /* Verde claro */
+  color: #000;
+}
+
+/* Botón de Multiplicación */
+.button-container button:nth-child(3) {
+  background-color: #f6f09d; /* Amarillo */
+  color: #000;
+}
+
+/* Botón de División */
+.button-container button:nth-child(4) {
+  background-color: #f8b89e; /* Naranja */
+  color: #000;
+}
+
+/* Hover para botones */
+.button-container button:hover {
+  transform: translateY(-4px); /* Eleva ligeramente el botón */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+}
+
+/* Estilo para el botón de salir */
+.logout-button {
+  background-color: #f44336; /* Rojo (para distinguirlo) */
+  color: white;
+  padding: 15px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 30px; /* Espacio entre el botón de juegos y el botón de salir */
+  text-align: center;
+  width: 100%;
+  max-width: 400px; /* Limitar el ancho máximo */
+}
+
+/* Hover para el botón de salir */
+.logout-button:hover {
+  transform: translateY(-4px); /* Eleva ligeramente el botón */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+}

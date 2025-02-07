@@ -1,102 +1,218 @@
+/* General */
+body {
+    font-family:'Comic Sans MS'; 
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #030303f4;
+  
+    animation: floatingBubbles 5s ease-in-out infinite;
+  
+  
+  }
+/*animacion para el body*/
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+@keyframes floatingBubbles {
+  0% { background-color: rgba(255, 255, 255, 0.1); }
+  50% { background-color: rgba(255, 255, 255, 0.3); }
+  100% { background-color: rgba(255, 255, 255, 0.1); }
+}
+
+
+/* Contenedor principal */
 .game-component {
-    text-align: center;
-    font-family: 'Arial', sans-serif;
-    background-color: #f5eaf7; /* Fondo similar al borde morado */
-    padding: 20px;
-    border: 5px solid #d1addd; /* Borde exterior */
-    border-radius: 15px;
+  background-color: #fff4d2; /* Fondo beige cálido */
+  padding: 20px;
+  border: 10px solid #ffcc80; /* Borde naranja pastel */
+  border-radius: 25px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Efecto de profundidad */
+  display: inline-block;
+  margin: 0px auto;
+}
+
+/* Tablas */
+.table-container {
+  margin-top: 5px ;
+  margin-bottom: 0;
+  display: inline-block;
+  border: 4px dashed #89cff0; /* Bordes azul pastel */
+  padding: 2px;
+  border-radius: 15px;
+  background-color: #e3f7ff; /* Azul claro */
+}
+
+.table-container:hover{
+  animation: pulse 5s ease-in-out;
+}
+.operation-table {
+  width: 100%;
+  margin-top: 0 ;
+  margin-bottom: 0;
+}
+
+.operation-table th {
+  background-color: #ffee93; /* Amarillo pastel */
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+}
+.operation-table th:nth-child(3) {
+  background-color: #fda0a0;
+}
+
+.operation-table th:nth-child(4) {
+  background-color: rgb(131, 255, 255);}
+
+
+.operation-table th:nth-child(5){
+  background-color: #b5a2f8;
+}
+
+.operation-table th:nth-child(6) {
+  background-color: #fdd5a0;
+}
+
+.operation-table th:nth-child(7) {
+  background-color: rgb(249, 240, 142);}
+
+
+.operation-table th:nth-child(8){
+  background-color: #e8e2f5;
+}
+
+
+.operation-table td {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  padding: 2px;
+}
+
+/*color para la fila de acarreo*/
+/* .carry_row tr:nth-child(1) {
+  background-color: #f975da;
+} */
+
+.operation-table input {
+  font-size: 25px;
+  padding: 10px;
+  width: 60px;
+  border: 2px solid #ffa07a; /* Naranja suave */
+  border-radius: 10px;
+  text-align: center;
+  background-color: #fff; /* Blanco para claridad */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Ligero efecto 3D */
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Botones */
+button {
+  font-size: 20px;
+  width: 260px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #c6c2e8, #617ff8) ; 
+  color: #ffffff;
+  border: none;
+  border-radius: 30px !important;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #ea9b1e, #f98f15); /* Inversión de gradiente */
+  transform: scale(1.3); /* Efecto de zoom */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Más profundidad */
+  font-weight: bolder;
+}
+
+/* Línea de resultado */
+.result-line {
+  height: 1px !important;
+  border-radius: 3px;
+  background-color:transparent;
+  font-family: sans-serif;
+  margin-top: 0;
+  margin-bottom: 0;
+  background:transparent;
+  min-height: 1px;
+  line-height: 0.5px;
+  font-weight: 900;
+  text-align: center;
+ 
+}
+
+/* Animaciones */
+@keyframes move-line {
+  from {
+    background-position: 0;
   }
-  
-  .table-container {
-    margin: 20px auto;
-    display: inline-block;
+  to {
+    background-position: 200%;
   }
-  
-  .operation-table {
-    border-collapse: collapse;
-    margin: 0 auto;
-    background-color: white; /* Fondo blanco de la tabla */
-    border: 2px solid black; /* Borde grueso para toda la tabla */
+}
+
+/* Grupo de botones */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.button-group {
+  font-family: 'Comic Sans MS';
+  display: flex;
+  flex-direction: column;  /* Alinea los botones en columnas */ 
+  justify-content: center; /* Centra los botones horizontalmente */
+  align-items: center;    /* Centra los botones verticalmente */
+  gap: 10px;              /* Espaciado entre los botones */
+  margin-top: 20px;       /* Separación del resto del contenido */
+  flex-wrap: nowrap;        /* Permite que los botones se acomoden en varias filas si el espacio es reducido */
+  animation: slideIn 1s forwards ease-out;
+
+}
+
+.button-group button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.button-group button:hover {
+  background-color: #f0f0f0; /* Cambia el color al pasar el mouse */
+}
+
+
+
+/* .result-line {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  margin: 20px 0;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: scaleX(0);
+  transform-origin: center; }*/
+
+
+@keyframes slideIn {
+  from {
+    transform: scaleX(0);
   }
-  
-  .operation-table th {
-    background-color: #f0eefc; /* Fondo de encabezados */
-    color: #333; /* Texto de encabezados */
-    padding: 10px;
-    font-size: 18px;
-    text-transform: uppercase;
-    font-weight: bold;
-    border: 1px solid #999; /* Bordes sutiles */
+  to {
+    transform: scaleX(1);
   }
-  
-  .operation-table th:nth-child(1),
-  .operation-table th:nth-child(4) {
-    background-color: #99d7a8; /* Fondo verde para CM y C */
-    color: #005b2a; /* Color de texto */
-  }
-  
-  .operation-table th:nth-child(2),
-  .operation-table th:nth-child(5) {
-    background-color: #f7b0b4; /* Fondo rojo para DM y D */
-    color: #a7000c; /* Color de texto */
-  }
-  
-  .operation-table th:nth-child(3),
-  .operation-table th:nth-child(6) {
-    background-color: #b6d9f8; /* Fondo azul para UM y U */
-    color: #003e73; /* Color de texto */
-  }
-  
-  .operation-table td {
-    font-size: 22px; /* Tamaño de números */
-    font-weight: bold;
-    padding: 10px;
-    text-align: center;
-    border: 1px solid black; /* Bordes internos */
-  }
-  
-  .operation-symbol {
-    text-align: left;
-    font-weight: bold;
-    font-size: 24px;
-    color: black;
-    padding-left: 10px;
-  }
-  
-  .result-line {
-    text-align: center;
-    border-top: 3px solid black;
-  }
-  
-  input[type="text"] {
-    margin-top: 20px;
-    font-size: 20px;
-    padding: 10px;
-    width: 80px;
-    border: 2px solid #999;
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  button {
-    margin-top: 15px;
-    font-size: 18px;
-    padding: 10px 20px;
-    background-color: #99d7a8; /* Botón verde claro */
-    color: #005b2a; /* Texto verde oscuro */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  button:hover {
-    background-color: #88c495; /* Color más oscuro al pasar el mouse */
-  }
-  
-  .feedback {
-    font-size: 20px;
-    margin-top: 20px;
-    font-weight: bold;
-  }
-  
+}
+
+td.result-line {
+  padding: 0; /* Elimina el relleno de las celdas de la línea divisoria */
+}

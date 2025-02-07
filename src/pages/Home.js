@@ -58,7 +58,7 @@ const HomePage = () => {
         {/* Opción 2: Identificación de Unidades */}
         <div
           className="menu-option"
-          onClick={() => navigate("/OperacionesAgrupacion")}
+          onClick={() => navigate("/OperacionesAgrupaciones")}
         >
           <img className="menu-icon" src={agrupacion} alt="Unidades" />
           <p className="menu-text">Operaciones con Agrupación</p>

@@ -1,26 +1,12 @@
-:root {
-  --color-yellow-primary: #FFD93D;    /* Amarillo principal */
-  --color-yellow-light: #FFE17E;      /* Amarillo claro */
-  --color-yellow-dark: #F6C90E;       /* Amarillo oscuro */
-  --color-orange-accent: #FF9F29;     /* Naranja complementario */
-  --color-cream: #FFF8E7;             /* Crema para fondos */
-  --color-brown-text: #4A3F35;        /* Marrón para texto */
-  --shadow-soft: rgba(246, 201, 14, 0.2);
-}
-
 /* Estilo general para el contenedor */
 .multiplicacion-disco-container {
-  background: linear-gradient(135deg, var(--color-yellow-primary), var(--color-yellow-light));
-  border-radius: 20px;
-  padding: 15px;
   width: 210px;
   margin: 0 auto;
-  box-shadow: 0 15px 30px var(--shadow-soft);
-  border: 3px solid var(--color-yellow-dark);
+  padding-block: 61px;
   text-align: center;
   align-items: center;
   justify-content: center;
-  animation: fadeIn 1s ease-in-out; /* Animación de entrada */
+  animation: containerEntrance 0.8s ease-out;
 }
 
 /* Animación para la entrada del contenedor */
@@ -60,25 +46,24 @@
 .multiplicacion-disco-label {
   font-weight: bold;
   font-size: 1.6rem;
-  color: var(--color-brown-text);
-  text-shadow: 2px 2px 4px var(--shadow-soft);
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 /* Estilos para los select */
 .multiplicacion-disco-select {
   text-align: center;
   font-size: 1.3rem;
-  padding: 5px 10px;
+  padding: 1px 5px;
   border-radius: 10px;
-  border: 2px solid var(--color-yellow-dark);
-  background-color: var(--color-cream);
-  color: var(--color-brown-text);
-  box-shadow: 0 4px 8px var(--shadow-soft);
+  border: 2px solid #ffffff;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .multiplicacion-disco-select:hover {
-  background-color: white;
-  border-color: var(--color-orange-accent);
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .multiplicacion-disco-select:focus {
@@ -89,28 +74,29 @@
 /* Estilos para el botón */
 .multiplicacion-disco-button {
   width: 180px;
-  margin-top: 15px;
+  margin-top: 10px;
   padding: 20px 0px;
-  background: linear-gradient(45deg, var(--color-orange-accent), var(--color-yellow-dark));
-  color: var(--color-brown-text);
+  background: linear-gradient(45deg, #f8a264, #e8b777);
+  color: white;
   border: none;
   border-radius: 30px;
+  cursor: pointer;
   font-size: 1.5rem;
-  box-shadow: 0 6px 12px var(--shadow-soft);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
   animation: buttonGlow 3s ease-in-out infinite;
 }
 
 @keyframes buttonGlow {
   0% {
-    box-shadow: 0 0 10px var(--color-yellow-light), 0 0 20px var(--color-yellow-primary);
+    box-shadow: 0 0 10px #ff4081, 0 0 20px #f50057;
   }
 
   50% {
-    box-shadow: 0 0 20px var(--color-orange-accent), 0 0 30px var(--color-yellow-dark);
+    box-shadow: 0 0 20px #ffeb3b, 0 0 30px #ff4081;
   }
 
   100% {
-    box-shadow: 0 0 10px var(--color-yellow-light), 0 0 20px var(--color-yellow-primary);
+    box-shadow: 0 0 10px #ff4081, 0 0 20px #f50057;
   }
 }
 
@@ -128,32 +114,20 @@
   margin-top: 30px;
   font-weight: bold;
   font-size: 1.5rem;
-  color: var(--color-brown-text);
+  color: #ffeb3b;
   padding: 30px 10px;
-  background: linear-gradient(to right, var(--color-yellow-light), var(--color-cream));
+  background: rgba(0, 0, 0, 0.7);
   border-radius: 15px;
-  border: 2px solid var(--color-yellow-dark);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
   animation: resultGlow 2.5s ease-in-out infinite alternate;
 }
 
 @keyframes resultGlow {
   0% {
-    text-shadow: 0 0 10px var(--color-yellow-primary), 0 0 20px var(--color-yellow-dark);
+    text-shadow: 0 0 10px #ffeb3b, 0 0 20px #120c0e;
   }
 
   100% {
-    text-shadow: 0 0 20px var(--color-orange-accent), 0 0 30px var(--color-yellow-light);
-  }
-}
-
-/* Media queries para responsividad */
-@media (max-width: 480px) {
-  .multiplicacion-disco-container {
-    width: 90%;
-    padding: 10px;
-  }
-  
-  .multiplicacion-disco-button {
-    width: 90%;
+    text-shadow: 0 0 20px #ff4081, 0 0 30px #ffeb3b;
   }
 }
