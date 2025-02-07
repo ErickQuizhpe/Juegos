@@ -164,7 +164,7 @@ const handleCheckAnswer = () => {
                 onMouseEnter={() => setShowSustraendoLabel(1)}
                 onMouseLeave={() => setShowSustraendoLabel(null)}
               >
-                <td className="operation-symbol">-</td>
+                <td className="operation-symbol">—</td>
                 {num2.map((digit, index) => (
                   <td key={index}>
                     <input
