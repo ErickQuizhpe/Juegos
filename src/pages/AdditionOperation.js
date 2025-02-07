@@ -15,6 +15,8 @@ const SumOperation = () => {
   const [carry, setCarry] = useState([]);
   const [operationStarted, setOperationStarted] = useState(false);
   const [showResultLine, setShowResultLine] = useState(false);
+  const [showSumandoLabel, setShowSumandoLabel] = useState(null);
+  const [showResultLabel, setShowResultLabel] = useState(false);
 
   const handleTermCountChange = (e) => {
     const count = parseInt(e.target.value, 10);
@@ -157,7 +159,12 @@ const SumOperation = () => {
 
                 </tr>
                 {terms.map((term, termIndex) => (
-                  <tr key={termIndex}>
+                  <tr 
+                    key={termIndex}
+                    onMouseEnter={() => setShowSumandoLabel(termIndex)}
+                    onMouseLeave={() => setShowSumandoLabel(null)}
+                    className="term-row"
+                  >
                     <td className="operation-symbol">{termIndex === 1 ? " + " : ""}</td>
                     {term.map((digit, digitIndex) => (
                       <td key={digitIndex}>
@@ -171,6 +178,11 @@ const SumOperation = () => {
                         />
                       </td>
                     ))}
+                    {showSumandoLabel === termIndex && (
+                      <td className="floating-label">
+                        <div className="sumando-tooltip">Sumando</div>
+                      </td>
+                    )}
                   </tr>
                 ))}
               </tbody>
@@ -181,17 +193,21 @@ const SumOperation = () => {
           {showResultLine && (
             <tr>
               <td colSpan="7" className="result-line">
-                ------------------------------------------------------------------------
+                -------------------------------------------------------------------------------------------------------------
               </td>
             </tr>
           )}
 
           {/* Tabla de ingreso de resultados */}
           {operationStarted && (
-            <div className="table-container term-num">
+            <div className="table-container">
               <table className="operation-table result-table">
                 <tbody>
-                  <tr>
+                  <tr 
+                    className="term-row"
+                    onMouseEnter={() => setShowResultLabel(true)}
+                    onMouseLeave={() => setShowResultLabel(false)}
+                  >
                     {userAnswer.map((digit, index) => (
                       <td key={index}>
                         <input
@@ -202,6 +218,11 @@ const SumOperation = () => {
                         />
                       </td>
                     ))}
+                    {showResultLabel && (
+                      <td className="floating-label">
+                        <div className="sumando-tooltip">Resultado</div>
+                      </td>
+                    )}
                   </tr>
                 </tbody>
               </table>

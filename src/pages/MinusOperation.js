@@ -15,6 +15,11 @@ const SubtractionOperation = () => {
   const [operationStarted, setOperationStarted] = useState(false);
   const [showResultLine, setShowResultLine] = useState(false); // Estado para la línea de resultado
 
+  // Estados para mostrar las etiquetas
+  const [showMinuendoLabel, setShowMinuendoLabel] = useState(false);
+  const [showSustraendoLabel, setShowSustraendoLabel] = useState(false);
+  const [showResultadoLabel, setShowResultadoLabel] = useState(false);
+
   const calculateCorrectAnswer = () => {
     const num1Value =
       parseInt(num1.filter((digit) => /^\d$/.test(digit)).join(""), 10) || 0;
@@ -47,41 +52,42 @@ const SubtractionOperation = () => {
     }
   };
 
-  const handleCheckAnswer = () => {
-    const isNum1Valid = num1.some((digit) => /^\d$/.test(digit));
-    const isNum2Valid = num2.some((digit) => /^\d$/.test(digit));
-    const isUserAnswerValid = userAnswer.some((digit) => /^\d$/.test(digit));
-  
-    if (!isNum1Valid || !isNum2Valid || !isUserAnswerValid) {
-      setFeedback(
-        "Por favor, ingresa los números que deseas restar y el resultado antes de comprobar la respuesta."
-      );
-      return;
+
+const handleCheckAnswer = () => {
+  const isNum1Valid = num1.some((digit) => /^\d$/.test(digit));
+  const isNum2Valid = num2.some((digit) => /^\d$/.test(digit));
+  const isUserAnswerValid = userAnswer.some((digit) => /^\d$/.test(digit));
+
+  if (!isNum1Valid || !isNum2Valid || !isUserAnswerValid) {
+    setFeedback(
+      "Por favor, ingresa los números que deseas restar y el resultado antes de comprobar la respuesta."
+    );
+    return;
+  }
+
+  const correctAnswer = calculateCorrectAnswer();
+  const userAnswerValue = parseInt(userAnswer.join(""), 10) || 0;
+
+  if (userAnswerValue === correctAnswer) {
+    setFeedback("¡Correcto! 🎉");
+    setShowResultadoLabel(true); // Muestra la etiqueta después de verificar
+    setExerciseCount((prevCount) => prevCount + 1);
+
+    if (exerciseCount + 1 >= 100) {
+      setShowCompletionMessage(true);
     }
-  
-    const correctAnswer = calculateCorrectAnswer();
-    const userAnswerValue = parseInt(userAnswer.join(""), 10) || 0;
-  
-    if (userAnswerValue === correctAnswer) {
-      setFeedback("¡Correcto! 🎉");
-      setExerciseCount(exerciseCount + 1);
-      if (exerciseCount >= 100) {
-        setShowCompletionMessage(true);
-      }
-    } else {
-      setFeedback(
-        `Incorrecto. La respuesta correcta es ${correctAnswer}.`
-      );
-    }
-  };
-  
-  
+  } else {
+    setFeedback('Incorrecto. La respuesta correcta es ${correctAnswer}.');
+  }
+};
+
+
   const handleStartOperation = () => {
     const isNum1Valid = num1.some((digit) => /^\d$/.test(digit));
     const isNum2Valid = num2.some((digit) => /^\d$/.test(digit));
 
     if (isNum1Valid && isNum2Valid) {
-      setCarry(Array(7).fill("")); 
+      setCarry(Array(7).fill(""));
       setOperationStarted(true);
       setFeedback("");
       setShowResultLine(true); // Mostrar la línea cuando se inicie la operación
@@ -107,7 +113,6 @@ const SubtractionOperation = () => {
         <table className="operation-table carry_row">
           <thead>
             <tr>
-            
               <th></th>
               <th>Cm</th>
               <th>Dm</th>
@@ -126,12 +131,15 @@ const SubtractionOperation = () => {
                     maxLength="1"
                     value={digit}
                     onChange={(e) => handleCarryChange(index, e.target.value)}
-                    placeholder={["ll", "e", "v", "a", "d", "a","s"][index]} // Placeholder con las letras de "llevada"
+                    placeholder={["ll", "e", "v", "a", "d", "a", "s"][index]} // Placeholder con las letras de "llevada"
                   />
                 </td>
               ))}
             </tr>
-            <tr>
+            <tr
+              onMouseEnter={() => setShowMinuendoLabel(true)}
+              onMouseLeave={() => setShowMinuendoLabel(false)}
+            >
               {num1.map((digit, index) => (
                 <td key={index}>
                   <input
@@ -144,8 +152,12 @@ const SubtractionOperation = () => {
                   />
                 </td>
               ))}
+              {showMinuendoLabel && <td className="label">Minuendo</td>}
             </tr>
-            <tr>
+            <tr
+              onMouseEnter={() => setShowSustraendoLabel(true)}
+              onMouseLeave={() => setShowSustraendoLabel(false)}
+            >
               <td className="multiplication-sign">—</td>{" "}
               {/* Agregamos una celda con el signo */}
               {num2.map((digit, index) => (
@@ -160,6 +172,7 @@ const SubtractionOperation = () => {
                   />
                 </td>
               ))}
+              {showSustraendoLabel && <td className="label">Sustraendo</td>}
             </tr>
           </tbody>
         </table>
@@ -169,7 +182,7 @@ const SubtractionOperation = () => {
       {showResultLine && (
         <tr>
           <td colSpan="7" className="result-line">
-          ---------------------------------------------------------------------------------------------------------
+            ---------------------------------------------------------------------------------------------------------
           </td>
         </tr>
       )}
@@ -179,7 +192,10 @@ const SubtractionOperation = () => {
         <div className="table-container">
           <table className="operation-table">
             <tbody>
-              <tr>
+              <tr
+           
+                onMouseLeave={() => setShowResultadoLabel(false)}
+              >
                 {userAnswer.map((digit, index) => (
                   <td key={index}>
                     <input
@@ -192,6 +208,7 @@ const SubtractionOperation = () => {
                     />
                   </td>
                 ))}
+                {showResultadoLabel && <td className="label">Resultado</td>}
               </tr>
             </tbody>
           </table>
