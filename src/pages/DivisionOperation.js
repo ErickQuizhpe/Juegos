@@ -208,7 +208,7 @@ const DivisionOperation = () => {
       <div className="button-group">
         <button onClick={comprobarRespuesta}>Comprobar Respuesta</button>
         <button onClick={limpiarCeldas}>Nueva Operación</button>
-        <button onClick={() => navigate("/games")}>Regresar</button>
+        <button onClick={() => navigate("/")}>Volver</button>
       </div>
 
       {feedback && <p>{feedback}</p>}
